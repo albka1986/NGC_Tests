@@ -1,9 +1,9 @@
 package android.pages;
 
 import io.appium.java_client.AppiumDriver;
-import org.junit.Test;
 import org.openqa.selenium.By;
-import utilites.MyRandom;
+import org.testng.annotations.Test;
+import utilites.Validation;
 
 public class SignUpPage extends BasePage {
 
@@ -34,11 +34,11 @@ public class SignUpPage extends BasePage {
         waitForVisibilityOf(signUpButton);
         //step #1
         driver.findElement(signUpButton).click();
-        driver.findElement(email).sendKeys(MyRandom.randomValidEmail());
-        driver.findElement(password).sendKeys(MyRandom.randomPassword());
+        driver.findElement(email).sendKeys(Validation.randomValidEmail());
+        driver.findElement(password).sendKeys(Validation.randomValidPassword());
         driver.findElement(confirmPassword).sendKeys("12345678");
         hideKeyboard(driver);
-        driver.findElement(name).sendKeys(MyRandom.randomValidName());
+        driver.findElement(name).sendKeys(Validation.randomValidName());
         hideKeyboard(driver);
         try {
             swipingVertical(driver);

@@ -1,7 +1,6 @@
 package android.pages;/* Created by Ponomarenko Oleh on 03/11/16. */
 
 import io.appium.java_client.AppiumDriver;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriverException;
@@ -18,7 +17,6 @@ public class BasePage {
         this.driver = driver;
     }
 
-    @Test
     public static void swipingVertical(AppiumDriver driver) throws InterruptedException {
         //Get the size of screen.
         Dimension size = driver.manage().window().getSize();

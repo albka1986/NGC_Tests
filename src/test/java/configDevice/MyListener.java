@@ -1,4 +1,4 @@
-package android;/* Created by Ponomarenko Oleh on 16/11/16. */
+package configDevice;
 
 import io.appium.java_client.AppiumDriver;
 import org.testng.ITestResult;

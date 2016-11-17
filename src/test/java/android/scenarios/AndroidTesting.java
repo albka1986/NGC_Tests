@@ -1,8 +1,8 @@
 package android.scenarios;
 
-import android.MyListener;
 import android.config.AndroidSetup;
 import android.pages.*;
+import configDevice.MyListener;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
