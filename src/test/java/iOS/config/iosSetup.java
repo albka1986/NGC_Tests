@@ -3,9 +3,10 @@ package iOS.config;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utilites.Terminal;
 
 import java.io.File;
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.net.URL;
 
 public class iosSetup {
@@ -15,11 +16,13 @@ public class iosSetup {
     protected AppiumDriver driver;
 
 
-    protected void prepareIosSimulator() throws MalformedURLException {
+    protected void prepareIosSimulator() throws IOException, InterruptedException {
+
+        Terminal.sendCommandToTerminal();
 
         File appDir = new File(BUILD_PATH);
         File app = new File(appDir, BUILD_NAME);
-        System.out.println("Testing build: " + BUILD_NAME);
+        System.out.println("Testing build: iOS, " + BUILD_NAME);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone 5");

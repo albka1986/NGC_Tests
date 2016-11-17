@@ -1,5 +1,6 @@
 package android.config;
 
+import android.MyListener;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -10,15 +11,17 @@ import java.net.URL;
 public class AndroidSetup {
 
     final static String BUILD_NAME = "Campfiire-0.0.4_8-qaDebug.apk";
-    protected AndroidDriver driver;
+    public static AndroidDriver driver;
 
-    protected void prepareAndroidDevice() throws MalformedURLException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "AndroidTestDevice");
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    public static AndroidDriver getDriver() {
+        return driver;
     }
 
-    protected void prepareAndroidEmulator() throws MalformedURLException {
+    public static void setDriver(AndroidDriver driver) {
+        AndroidSetup.driver = driver;
+    }
+
+    public void prepareAndroidEmulator() throws MalformedURLException {
         File appDir = new File("/Users/oleh/Google Drive/QA DRIVE/Applications/NGC/sprint 2");
         File app = new File(appDir, BUILD_NAME);
         System.out.println("Testing build: " + BUILD_NAME);
@@ -35,6 +38,8 @@ public class AndroidSetup {
 
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+        MyListener.setDriver(driver);
     }
 
 

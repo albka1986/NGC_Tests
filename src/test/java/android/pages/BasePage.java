@@ -1,17 +1,12 @@
 package android.pages;/* Created by Ponomarenko Oleh on 03/11/16. */
 
 import io.appium.java_client.AppiumDriver;
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class BasePage {
 
@@ -21,40 +16,6 @@ public class BasePage {
 
     public BasePage(AppiumDriver driver) {
         this.driver = driver;
-    }
-
-    public void waitForVisibilityOf(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public void waitForClickabilityOf(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-
-    public void takeScreenShot() {
-        String destDir;
-        DateFormat dateFormat;
-        // Set folder name to store screenshots.
-        destDir = "screenshots";
-        // Capture screenshot.
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        // Set date format to set It as screenshot file name.
-        dateFormat = new SimpleDateFormat("dd-MMM-yyyy__hh_mm_ssaa");
-        // Create folder under project with name "screenshots" provided to destDir.
-        new File(destDir).mkdirs();
-        // Set file name using current date time.
-        String destFile = dateFormat.format(new Date()) + ".png";
-
-        try {
-            // Copy paste file at destination folder location
-            FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
-            System.err.println("~~~~~~~Have an error!!!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
@@ -85,6 +46,16 @@ public class BasePage {
             Thread.sleep(2000);
         } catch (WebDriverException | InterruptedException e) {
         }
+    }
+
+    public void waitForVisibilityOf(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitForClickabilityOf(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
 

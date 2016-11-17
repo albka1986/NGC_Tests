@@ -1,16 +1,18 @@
 package android.scenarios;
 
+import android.MyListener;
 import android.config.AndroidSetup;
+import android.pages.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import android.pages.*;
-import utilites.MyRandom;
 
+import static utilites.Utilities.takeScreenShot;
+
+@Listeners(MyListener.class)
 public class AndroidTesting extends AndroidSetup {
 
-    MyRandom random;
-    SignUpPage signUpPage;
 
     @BeforeClass
     public void setUp() throws Exception {
@@ -35,24 +37,17 @@ public class AndroidTesting extends AndroidSetup {
                 new SignUpPage(driver).registerWithPhoto();
                 new MyProfilePage(driver).logout();
             } catch (Exception e) {
-                new BasePage(driver).takeScreenShot();
+                takeScreenShot(driver);
                 e.printStackTrace();
             }
-
-
         }
     }
 
     @Test
     public void testWithPointsData() throws InterruptedException {
-        try {
-            new SignUpPage(driver).registerWithPointsData("123@ma.ru", "12345678", "12345678", "Oleh Ponomarenko");
-        } catch (Exception e) {
-            new BasePage(driver).takeScreenShot();
-            e.printStackTrace();
-        }
+        new SignUpPage(driver).registerWithPointsData("123@ma.ru", "12345678", "12345678", "Oleh Ponomarenko");
+        new MyProfilePage(driver).logout();
     }
-
 
     @Test
     public void testMapping() throws InterruptedException {
@@ -103,11 +98,10 @@ public class AndroidTesting extends AndroidSetup {
                 System.out.println("Mapping - OK!");
 
             } catch (Exception e) {
-                new BasePage(driver).takeScreenShot();
+                takeScreenShot(driver);
                 e.printStackTrace();
             }
         }
     }
-
 
 }
