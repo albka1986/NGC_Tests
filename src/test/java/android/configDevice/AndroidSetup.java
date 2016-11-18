@@ -1,6 +1,6 @@
-package android.config;
+package android.configDevice;
 
-import configDevice.MyListener;
+import config.MyListener;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -10,6 +10,7 @@ import java.net.URL;
 
 public class AndroidSetup {
 
+    public static final String APP_PACKAGE_NAME = "com.erminesoft.ngc:id/";
     final static String BUILD_NAME = "Campfiire-0.0.4_8-qaDebug.apk";
     public static AndroidDriver driver;
 

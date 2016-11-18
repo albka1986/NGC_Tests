@@ -1,4 +1,4 @@
-package configDevice;
+package config;
 
 import io.appium.java_client.AppiumDriver;
 import org.testng.ITestResult;

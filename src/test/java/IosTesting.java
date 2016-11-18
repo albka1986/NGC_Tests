@@ -1,5 +1,3 @@
-package iOS.scenarios;
-
 import iOS.configDevice.iosSetup;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

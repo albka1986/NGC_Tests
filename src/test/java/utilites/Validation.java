@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class Validation {
 
+    //Sign Up Page
+
     // email: - unique; - x@x.x;
     public final static int MIN_LENGTH_EMAIL = 5;
-
-    //Sign Up Page
     public final static int MAX_LENGTH_EMAIL = 30;
     public final static String EMAIL_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-";
     // password

@@ -1,11 +1,10 @@
 package android.pages;
 
-import io.appium.java_client.AppiumDriver;
+import android.configDevice.AndroidSetup;
+import interfaceScenarios.ScenarioRegistration;
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
-import utilites.Validation;
 
-public class SignUpPage extends BasePage {
+public class SignUpPage extends AndroidSetup implements ScenarioRegistration {
 
     public By signUpButton = By.id(APP_PACKAGE_NAME + "welcome_sign_up_tab");
     public By email = By.id(APP_PACKAGE_NAME + "welcome_sign_up_email");
@@ -25,13 +24,15 @@ public class SignUpPage extends BasePage {
     public By imageDone = By.id("com.android.camera:id/btn_done");
 
 
+
+/*
     public SignUpPage(AppiumDriver driver) {
         super(driver);
     }
 
 
     public SignUpPage validSignUp() throws InterruptedException {
-        waitForVisibilityOf(signUpButton);
+        waitForVisibilityOf(driver, signUpButton);
         //step #1
         driver.findElement(signUpButton).click();
         driver.findElement(email).sendKeys(Validation.randomValidEmail());
@@ -50,7 +51,7 @@ public class SignUpPage extends BasePage {
         driver.findElement(nextButton).click();
 
         //step #2
-        waitForVisibilityOf(tagSports);
+        waitForVisibilityOf(driver, tagSports);
         driver.findElement(tagSports).click();
         driver.findElement(createAccount).click();
 
@@ -63,9 +64,9 @@ public class SignUpPage extends BasePage {
         return new SignUpPage(driver);
     }
 
-
+    @Test
     public SignUpPage registerWithPointsData(String email, String password, String confirmPassword, String name) throws InterruptedException {
-        waitForVisibilityOf(signUpButton);
+        waitForVisibilityOf(driver, signUpButton);
         //step #1
         driver.findElement(signUpButton).click();
         driver.findElement(this.email).sendKeys(email);
@@ -84,7 +85,7 @@ public class SignUpPage extends BasePage {
         driver.findElement(nextButton).click();
 
         //step #2
-        waitForVisibilityOf(tagSports);
+        waitForVisibilityOf(driver, tagSports);
         driver.findElement(tagSports).click();
         driver.findElement(createAccount).click();
 
@@ -95,10 +96,8 @@ public class SignUpPage extends BasePage {
                 "; Name: " + name +
                 "]");
 
-
         return new SignUpPage(driver);
     }
-
 
     @Test
     public SignUpPage registerWithoutPhoto() throws InterruptedException {
@@ -113,11 +112,10 @@ public class SignUpPage extends BasePage {
         return new SignUpPage(driver);
     }
 
-
     @Test
     public SignUpPage addPhoto() throws InterruptedException {
 
-        waitForVisibilityOf(signUpButton);
+        waitForVisibilityOf(driver, signUpButton);
 
         driver.findElement(signUpButton).click();
 
@@ -126,16 +124,14 @@ public class SignUpPage extends BasePage {
         Thread.sleep(2000);
         driver.findElement(selectCamera).click();
 
-        waitForVisibilityOf(makeShoot);
+        waitForVisibilityOf(driver, makeShoot);
         driver.findElement(makeShoot).click();
 
-        waitForVisibilityOf(imageDone);
+        waitForVisibilityOf(driver, imageDone);
         driver.findElement(imageDone).click();
 
         driver.findElement(imageCrop).click();
 
         return new SignUpPage(driver);
-    }
-
-
+    }*/
 }

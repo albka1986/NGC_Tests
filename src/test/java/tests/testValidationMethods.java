@@ -1,4 +1,4 @@
-package testMethods;/* Created by Ponomarenko Oleh on 17/11/16. */
+package tests;/* Created by Ponomarenko Oleh on 17/11/16. */
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
