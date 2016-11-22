@@ -1,7 +1,6 @@
 import android.configDevice.AndroidSetup;
-import android.scenarios.ScenarioRegistrationAndroid;
+import android.scenarios.RegistrationAndroid;
 import config.MyListener;
-import interfaceScenarios.ScenarioRegistration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -20,15 +19,21 @@ public class AndroidTesting extends AndroidSetup {
     @AfterClass
     public void tearDown() throws Exception {
         System.out.println("Quit");
-        Thread.sleep(10000);
+        Thread.sleep(30000);
         driver.quit();
         Runtime.getRuntime().exec("adb -s emulator-5554 emu kill");
     }
 
-    @Test(invocationCount = 1)
+    @Test(invocationCount = 15)
     public void validRandomRegistration() throws InterruptedException {
-        ScenarioRegistration signUpAndroid = new ScenarioRegistrationAndroid();
-        signUpAndroid.validRandomRegistration(driver);
+        RegistrationAndroid registrationAndroid = new RegistrationAndroid();
+        registrationAndroid.validRandomRegistration(driver);
+    }
+
+    @Test
+    public void registrationByData() throws InterruptedException {
+        RegistrationAndroid registrationAndroid = new RegistrationAndroid();
+        registrationAndroid.registrationByData(driver, "qLOil@70jz.X0Y", "oxjCAryovRrwVK7", "g.dmhFFwT", "");
     }
 
 /*    @Test(invocationCount = 1)

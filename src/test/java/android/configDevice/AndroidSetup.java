@@ -11,7 +11,7 @@ import java.net.URL;
 public class AndroidSetup {
 
     public static final String APP_PACKAGE_NAME = "com.erminesoft.ngc:id/";
-    final static String BUILD_NAME = "Campfiire-0.0.4_8-qaDebug.apk";
+    final static String BUILD_NAME = "Campfiire-0.0.5_20-qaDebug.apk";
     public static AndroidDriver driver;
 
     public static AndroidDriver getDriver() {
@@ -23,7 +23,7 @@ public class AndroidSetup {
     }
 
     public void prepareAndroidEmulator() throws MalformedURLException {
-        File appDir = new File("/Users/oleh/Google Drive/QA DRIVE/Applications/NGC/sprint 2");
+        File appDir = new File("/Users/oleh/Documents/App/NGC/Android/build/sprint_3");
         File app = new File(appDir, BUILD_NAME);
         System.out.println("Testing build: " + BUILD_NAME);
 

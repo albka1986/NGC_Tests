@@ -21,9 +21,7 @@ public class MyListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult tr) {
 
         Utilities.takeScreenShot(this.driver);
-        if (this.driver == null) {
-            System.out.println("Driver == null!!!");
-        }
+
     }
 
     @Override

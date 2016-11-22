@@ -1,10 +1,9 @@
 package android.pages;
 
 import android.configDevice.AndroidSetup;
-import interfaceScenarios.ScenarioRegistration;
 import org.openqa.selenium.By;
 
-public class SignUpPage extends AndroidSetup implements ScenarioRegistration {
+public class SignUpPage extends AndroidSetup {
 
     public By signUpButton = By.id(APP_PACKAGE_NAME + "welcome_sign_up_tab");
     public By email = By.id(APP_PACKAGE_NAME + "welcome_sign_up_email");
@@ -26,45 +25,7 @@ public class SignUpPage extends AndroidSetup implements ScenarioRegistration {
 
 
 /*
-    public SignUpPage(AppiumDriver driver) {
-        super(driver);
-    }
-
-
-    public SignUpPage validSignUp() throws InterruptedException {
-        waitForVisibilityOf(driver, signUpButton);
-        //step #1
-        driver.findElement(signUpButton).click();
-        driver.findElement(email).sendKeys(Validation.randomValidEmail());
-        driver.findElement(password).sendKeys(Validation.randomValidPassword());
-        driver.findElement(confirmPassword).sendKeys("12345678");
-        hideKeyboard(driver);
-        driver.findElement(name).sendKeys(Validation.randomValidName());
-        hideKeyboard(driver);
-        try {
-            swipingVertical(driver);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Thread.sleep(3000);
-        driver.findElement(nextButton).click();
-
-        //step #2
-        waitForVisibilityOf(driver, tagSports);
-        driver.findElement(tagSports).click();
-        driver.findElement(createAccount).click();
-
-        System.out.println("User created: " +
-                "[" +
-                "Email: " + email +
-                "; Password: " + password +
-                "; Name: " + name +
-                "]");
-        return new SignUpPage(driver);
-    }
-
-    @Test
+       @Test
     public SignUpPage registerWithPointsData(String email, String password, String confirmPassword, String name) throws InterruptedException {
         waitForVisibilityOf(driver, signUpButton);
         //step #1
@@ -99,11 +60,6 @@ public class SignUpPage extends AndroidSetup implements ScenarioRegistration {
         return new SignUpPage(driver);
     }
 
-    @Test
-    public SignUpPage registerWithoutPhoto() throws InterruptedException {
-        validSignUp();
-        return new SignUpPage(driver);
-    }
 
     @Test
     public SignUpPage registerWithPhoto() throws InterruptedException {

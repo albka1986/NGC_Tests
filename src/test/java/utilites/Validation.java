@@ -58,14 +58,23 @@ public class Validation {
                     x += randomChar;
                     break;
                 case 1:
+                    if (randomChar == '_') {
+                        continue;
+                    }
                     y += randomChar;
                     break;
                 case 2:
+                    if (randomChar == '_') {
+                        continue;
+                    }
                     z += randomChar;
                     break;
             }
         }
         while ((x.length() + y.length() + z.length()) != randomLengthOfEmail - 2);
+        if (x.length() == 0) {
+            randomValidEmail();
+        }
         validEmail = validEmail.append(x).append("@").append(y).append(".").append(z);
         return validEmail.toString();
     }
@@ -141,6 +150,17 @@ public class Validation {
                 } while (favoriteProduct.length() != randomLengthFavoriteProduct);
                 result = favoriteProduct.toString();
                 break;
+        }
+        return result;
+    }
+
+    public boolean trueOrFalse() {
+        boolean result = false;
+        switch (new Random().nextInt(2)) {
+            case 0:
+                result = false;
+            case 1:
+                result = true;
         }
         return result;
     }

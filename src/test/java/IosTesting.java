@@ -13,7 +13,7 @@ public class IosTesting extends iosSetup {
     @Test
     public void testApp() {
 
-            driver.tap(1, 100, 100, 1);
+        driver.tap(1, 100, 100, 1);
 
     }
 
