@@ -24,7 +24,7 @@ public class AndroidTesting extends AndroidSetup {
         Runtime.getRuntime().exec("adb -s emulator-5554 emu kill");
     }
 
-    @Test(invocationCount = 15)
+    @Test(invocationCount = 100)
     public void validRandomRegistration() throws InterruptedException {
         RegistrationAndroid registrationAndroid = new RegistrationAndroid();
         registrationAndroid.validRandomRegistration(driver);
@@ -33,7 +33,7 @@ public class AndroidTesting extends AndroidSetup {
     @Test
     public void registrationByData() throws InterruptedException {
         RegistrationAndroid registrationAndroid = new RegistrationAndroid();
-        registrationAndroid.registrationByData(driver, "qLOil@70jz.X0Y", "oxjCAryovRrwVK7", "g.dmhFFwT", "");
+        registrationAndroid.registrationByData(driver, "qLOil@70jz.X0M", "oxjCAryovRrwVK7", "g.dmhFFwT", "");
     }
 
 /*    @Test(invocationCount = 1)

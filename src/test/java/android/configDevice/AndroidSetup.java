@@ -11,7 +11,7 @@ import java.net.URL;
 public class AndroidSetup {
 
     public static final String APP_PACKAGE_NAME = "com.erminesoft.ngc:id/";
-    final static String BUILD_NAME = "Campfiire-0.0.5_20-qaDebug.apk";
+    final static String BUILD_NAME = "Campfiire-0.0.5_25-qaDebug.apk";
     public static AndroidDriver driver;
 
     public static AndroidDriver getDriver() {

@@ -21,7 +21,7 @@ public class MyListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult tr) {
 
         Utilities.takeScreenShot(this.driver);
-
+        driver.quit();
     }
 
     @Override

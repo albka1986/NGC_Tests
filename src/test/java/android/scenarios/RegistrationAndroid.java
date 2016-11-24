@@ -54,10 +54,12 @@ public class RegistrationAndroid {
 
         if (validation.trueOrFalse()) {
             driver.findElement(signUpPage.location).sendKeys(validation.randomValidLocation());
+            hideKeyboard(driver);
         }
 
 
-        System.out.println("[" +
+        System.out.println("Try to create:\n" +
+                "[" +
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
@@ -165,5 +167,9 @@ public class RegistrationAndroid {
                 "; Password: " + password +
                 "; Name: " + name +
                 "]");
+    }
+
+    public void registrationForProduction() {
+
     }
 }
