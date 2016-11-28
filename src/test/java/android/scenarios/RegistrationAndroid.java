@@ -52,8 +52,9 @@ public class RegistrationAndroid {
             e.printStackTrace();
         }
 
+        String location = validation.randomFavoriteProduct();
         if (validation.trueOrFalse()) {
-            driver.findElement(signUpPage.location).sendKeys(validation.randomValidLocation());
+            driver.findElement(signUpPage.location).sendKeys(location);
             hideKeyboard(driver);
         }
 
@@ -63,6 +64,7 @@ public class RegistrationAndroid {
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
+                "; Location" + location +
                 "]");
 
 
@@ -79,6 +81,7 @@ public class RegistrationAndroid {
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
+                "; Location" + location +
                 "]");
     }
 

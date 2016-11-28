@@ -32,7 +32,7 @@ public class Utilities {
         try {
             // Copy paste file at destination folder location
             FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
-            System.err.println("~~~~~~~Have an error!!!");
+            System.err.println("~~~~~~~Have took a capture!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -61,11 +61,17 @@ public class Utilities {
         int startx = size.width / 2;
 //        System.out.println("starty = " + starty + " ,endy = " + endy + " , startx = " + startx);
         //Swipe from Bottom to Top.
-        driver.swipe(startx, starty, startx, endy, 3000);
-        Thread.sleep(2000);
+//        driver.swipe(startx, starty, startx, endy, 3000);
+//        Thread.sleep(2000);
         //Swipe from Top to Bottom.
         driver.swipe(startx, endy, startx, starty, 3000);
         Thread.sleep(2000);
+    }
+
+    public static void swipeRightToLeft(AppiumDriver driver) {
+        driver.swipe(300, 300, 1, 300, 1500);
+
+
     }
 
     public static void waitForVisibilityOf(AppiumDriver driver, By locator) {
