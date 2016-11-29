@@ -17,4 +17,6 @@ public interface Registration {
     void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws InterruptedException;
 
     void registrationForProduction();
+
+    void setDateOfBirth();
 }

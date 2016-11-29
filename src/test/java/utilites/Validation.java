@@ -26,8 +26,12 @@ public class Validation {
     public final static int MIN_LENGTH_LOCATION = 5;
     public final static int MAX_LENGTH_LOCATION = 40;
     public final static String LOCATION_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz /.,";
-    /***/
-    // Birthday: minAge >= 18;
+
+    /*
+     Birthday: minAge >= 18;
+     format: dd/mm/yyyy
+     */
+
 
 
     public final static String gender[] = {"Male", "Female", "None"};

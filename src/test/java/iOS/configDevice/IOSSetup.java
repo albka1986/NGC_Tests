@@ -1,5 +1,6 @@
 package iOS.configDevice;
 
+import config.MyListener;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utilites.Terminal;
@@ -39,6 +40,8 @@ public class IOSSetup {
         System.out.printf("Begin to create a new Driver");
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         System.out.println("Has prepared emulator");
+
+        MyListener.setDriver(driver);
     }
 
 

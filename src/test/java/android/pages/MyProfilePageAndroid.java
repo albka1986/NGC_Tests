@@ -5,7 +5,7 @@ package android.pages;
 import android.configDevice.AndroidSetup;
 import org.openqa.selenium.By;
 
-public class MyProfilePage extends AndroidSetup {
+public class MyProfilePageAndroid extends AndroidSetup {
 
     public static By logoutButton = By.id(APP_PACKAGE_NAME + "my_profile_logout");
 

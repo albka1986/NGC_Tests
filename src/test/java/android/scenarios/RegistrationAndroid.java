@@ -1,8 +1,8 @@
 package android.scenarios;
 
 
-import android.pages.DrawerPage;
-import android.pages.MyProfilePage;
+import android.pages.DrawerPageAndroid;
+import android.pages.MyProfilePageAndroid;
 import android.pages.SignInPageAndroid;
 import android.pages.SignUpPageAndroid;
 import interfaces.Registration;
@@ -16,7 +16,7 @@ public class RegistrationAndroid implements Registration {
     SignUpPageAndroid signUpPage = new SignUpPageAndroid();
     SignInPageAndroid signInPage = new SignInPageAndroid();
     Validation validation = new Validation();
-    MyProfilePage myProfilePage = new MyProfilePage();
+    MyProfilePageAndroid myProfilePage = new MyProfilePageAndroid();
 
     public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
 
@@ -80,11 +80,11 @@ public class RegistrationAndroid implements Registration {
 
     public void logout(AppiumDriver driver) throws InterruptedException {
         Thread.sleep(10000);
-        new DrawerPage().drawerOpen();
-        waitForClickabilityOf(driver, DrawerPage.drawerAvatar);
-        driver.findElement(DrawerPage.drawerAvatar).click();
-        waitForVisibilityOf(driver, MyProfilePage.logoutButton);
-        driver.findElement(MyProfilePage.logoutButton).click();
+        new DrawerPageAndroid().drawerOpen();
+        waitForClickabilityOf(driver, DrawerPageAndroid.drawerAvatar);
+        driver.findElement(DrawerPageAndroid.drawerAvatar).click();
+        waitForVisibilityOf(driver, MyProfilePageAndroid.logoutButton);
+        driver.findElement(MyProfilePageAndroid.logoutButton).click();
     }
 
     public void addPhoto(AppiumDriver driver) throws InterruptedException {
@@ -161,6 +161,11 @@ public class RegistrationAndroid implements Registration {
     }
 
     public void registrationForProduction() {
+
+    }
+
+    @Override
+    public void setDateOfBirth() {
 
     }
 }

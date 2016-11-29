@@ -1,12 +1,14 @@
+import config.MyListener;
 import iOS.configDevice.IOSSetup;
 import iOS.scenarios.RegistrationIOS;
 import interfaces.Registration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utilites.Utilities;
 
-
+@Listeners(MyListener.class)
 public class IOSTesting extends IOSSetup {
 
 

@@ -40,13 +40,13 @@ public class AndroidTesting extends AndroidSetup {
     public void testValidSignUp() throws InterruptedException {
         System.out.println("Entered in Android: testValidSignUp");
         new SignUpPageAndroid(driver).registerWithPhoto();
-        new MyProfilePage(driver).logout();
+        new MyProfilePageAndroid(driver).logout();
     }
 
     @Test
     public void testWithPointsData() throws InterruptedException {
         new SignUpPageAndroid(driver).registerWithPointsData("asdasdasd2@ma.ru", "12345678", "12345678", "Oleh Ponomarenko");
-        new MyProfilePage(driver).logout();
+        new MyProfilePageAndroid(driver).logout();
     }
 
     @Test (invocationCount = 1)
@@ -55,7 +55,7 @@ public class AndroidTesting extends AndroidSetup {
 
         SignUpPageAndroid signUpPage = new SignUpPageAndroid(driver);
         SignInPageIOS signInPage = new SignInPageIOS(driver);
-        DrawerPage drawerPage = new DrawerPage(driver);
+        DrawerPageAndroid drawerPage = new DrawerPageAndroid(driver);
         SearchPage searchPage = new SearchPage(driver);
 
         waitForVisibilityOf(driver, signUpPage.signUpButton);
@@ -89,9 +89,9 @@ public class AndroidTesting extends AndroidSetup {
 
         drawerPage.drawerOpen();
 
-        driver.findElement(DrawerPage.drawerAvatar).click();
+        driver.findElement(DrawerPageAndroid.drawerAvatar).click();
 
-        driver.findElement(MyProfilePage.logoutButton).click();
+        driver.findElement(MyProfilePageAndroid.logoutButton).click();
 
         driver.navigate().back();
         System.out.println("Mapping - OK!");

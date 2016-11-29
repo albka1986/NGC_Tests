@@ -47,8 +47,6 @@ public class testValidationMethods {
     public void testRandomValidTag() {
         String s = validation.randomValidTag();
         Assert.assertTrue(s.length() >= validation.MIN_LENGTH_TAG && s.length() <= validation.MAX_LENGTH_TAG);
-        System.out.println(s);
-        System.out.println(s.length());
     }
 
 }
