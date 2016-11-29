@@ -33,8 +33,8 @@ public class AndroidSetup {
         capabilities.setCapability("deviceName", "AndroidTestDevice");
         capabilities.setCapability("platformName", "Android");
 
+        capabilities.setCapability("fullReset", "false");
         capabilities.setCapability("noReset", "true");
-        capabilities.setCapability("fullReset", "False");
 
 
         capabilities.setCapability("app", app.getAbsolutePath());

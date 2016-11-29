@@ -21,10 +21,10 @@ public class AndroidTesting extends AndroidSetup {
         System.out.println("Quit");
         Thread.sleep(30000);
         driver.quit();
-        Runtime.getRuntime().exec("adb -s emulator-5554 emu kill");
+//        Runtime.getRuntime().exec("adb -s emulator-5554 emu kill");
     }
 
-    @Test(invocationCount = 100)
+    @Test(invocationCount = 1)
     public void validRandomRegistration() throws InterruptedException {
         RegistrationAndroid registrationAndroid = new RegistrationAndroid();
         registrationAndroid.validRandomRegistration(driver);
@@ -39,13 +39,13 @@ public class AndroidTesting extends AndroidSetup {
 /*    @Test(invocationCount = 1)
     public void testValidSignUp() throws InterruptedException {
         System.out.println("Entered in Android: testValidSignUp");
-        new SignUpPage(driver).registerWithPhoto();
+        new SignUpPageAndroid(driver).registerWithPhoto();
         new MyProfilePage(driver).logout();
     }
 
     @Test
     public void testWithPointsData() throws InterruptedException {
-        new SignUpPage(driver).registerWithPointsData("asdasdasd2@ma.ru", "12345678", "12345678", "Oleh Ponomarenko");
+        new SignUpPageAndroid(driver).registerWithPointsData("asdasdasd2@ma.ru", "12345678", "12345678", "Oleh Ponomarenko");
         new MyProfilePage(driver).logout();
     }
 
@@ -53,8 +53,8 @@ public class AndroidTesting extends AndroidSetup {
     public void testMapping() throws InterruptedException {
         System.out.println("Entered in testMapping");
 
-        SignUpPage signUpPage = new SignUpPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
+        SignUpPageAndroid signUpPage = new SignUpPageAndroid(driver);
+        SignInPageIOS signInPage = new SignInPageIOS(driver);
         DrawerPage drawerPage = new DrawerPage(driver);
         SearchPage searchPage = new SearchPage(driver);
 

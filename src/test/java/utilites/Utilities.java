@@ -32,7 +32,7 @@ public class Utilities {
         try {
             // Copy paste file at destination folder location
             FileUtils.copyFile(scrFile, new File(destDir + "/" + destFile));
-            System.err.println("~~~~~~~Have took a capture!");
+            System.out.println("~~~~~~~Have took a capture!");
         } catch (IOException e) {
             e.printStackTrace();
         }

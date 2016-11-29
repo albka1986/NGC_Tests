@@ -3,39 +3,32 @@ package android.scenarios;
 
 import android.pages.DrawerPage;
 import android.pages.MyProfilePage;
-import android.pages.SignUpPage;
-import io.appium.java_client.android.AndroidDriver;
+import android.pages.SignInPageAndroid;
+import android.pages.SignUpPageAndroid;
+import interfaces.Registration;
+import io.appium.java_client.AppiumDriver;
 import utilites.Validation;
 
 import static utilites.Utilities.*;
 
-public class RegistrationAndroid {
+public class RegistrationAndroid implements Registration {
 
-    SignUpPage signUpPage = new SignUpPage();
+    SignUpPageAndroid signUpPage = new SignUpPageAndroid();
+    SignInPageAndroid signInPage = new SignInPageAndroid();
     Validation validation = new Validation();
     MyProfilePage myProfilePage = new MyProfilePage();
 
-    private void validRandomSignUp(AndroidDriver driver) throws InterruptedException {
+    public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
 
-        waitForVisibilityOf(driver, signUpPage.signUpButton);
+        waitForVisibilityOf(driver, signInPage.signUpButton);
         if (validation.trueOrFalse()) {
             addPhoto(driver);
-            waitForVisibilityOf(driver, signUpPage.signUpButton);
+            waitForVisibilityOf(driver, signInPage.signUpButton);
         }
         //step #1
-        driver.findElement(signUpPage.signUpButton).click();
+        driver.findElement(signInPage.signUpButton).click();
 
         String email = validation.randomValidEmail();
-
-        /***/
-        //TODO: BUG #3417, ошибка при email с количеством символов до собачки меньше 3. Удалить строки 22-28;
-    /*    String x[];
-        do {
-            email = validation.randomValidEmail();
-            x = email.split("@");
-        }
-        while (x[0].length() <= 2);*/
-        /***/
 
         driver.findElement(signUpPage.email).sendKeys(email);
 
@@ -85,7 +78,7 @@ public class RegistrationAndroid {
                 "]");
     }
 
-    private void logout(AndroidDriver driver) throws InterruptedException {
+    public void logout(AppiumDriver driver) throws InterruptedException {
         Thread.sleep(10000);
         new DrawerPage().drawerOpen();
         waitForClickabilityOf(driver, DrawerPage.drawerAvatar);
@@ -94,11 +87,11 @@ public class RegistrationAndroid {
         driver.findElement(MyProfilePage.logoutButton).click();
     }
 
-    private void addPhoto(AndroidDriver driver) throws InterruptedException {
+    public void addPhoto(AppiumDriver driver) throws InterruptedException {
 
-        waitForVisibilityOf(driver, signUpPage.signUpButton);
+        waitForVisibilityOf(driver, signInPage.signUpButton);
 
-        driver.findElement(signUpPage.signUpButton).click();
+        driver.findElement(signInPage.signUpButton).click();
 
         driver.findElement(signUpPage.addPhotoButton).click();
 
@@ -114,17 +107,12 @@ public class RegistrationAndroid {
         driver.findElement(signUpPage.imageCrop).click();
     }
 
-    public void validRandomRegistration(AndroidDriver driver) throws InterruptedException {
-        validRandomSignUp(driver);
-        logout(driver);
-    }
+    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws InterruptedException {
 
-    public void registrationByData(AndroidDriver driver, String email, String password, String name, String location) throws InterruptedException {
-
-        waitForVisibilityOf(driver, signUpPage.signUpButton);
+        waitForVisibilityOf(driver, signInPage.signUpButton);
 
         //step #1
-        driver.findElement(signUpPage.signUpButton).click();
+        driver.findElement(signInPage.signUpButton).click();
 
         driver.findElement(signUpPage.email).sendKeys(email);
 

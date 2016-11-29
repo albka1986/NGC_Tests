@@ -3,9 +3,9 @@ package android.pages;
 import android.configDevice.AndroidSetup;
 import org.openqa.selenium.By;
 
-public class SignUpPage extends AndroidSetup {
+public class SignUpPageAndroid extends AndroidSetup {
 
-    public By signUpButton = By.id(APP_PACKAGE_NAME + "welcome_sign_up_tab");
+    public By signInButton = By.id(APP_PACKAGE_NAME + "welcome_sign_in_tab");
     public By email = By.id(APP_PACKAGE_NAME + "welcome_sign_up_email");
     public By password = By.id(APP_PACKAGE_NAME + "welcome_sign_up_password");
     public By confirmPassword = By.id(APP_PACKAGE_NAME + "welcome_sign_up_confirm_password");
@@ -26,7 +26,7 @@ public class SignUpPage extends AndroidSetup {
 
 /*
        @Test
-    public SignUpPage registerWithPointsData(String email, String password, String confirmPassword, String name) throws InterruptedException {
+    public SignUpPageAndroid registerWithPointsData(String email, String password, String confirmPassword, String name) throws InterruptedException {
         waitForVisibilityOf(driver, signUpButton);
         //step #1
         driver.findElement(signUpButton).click();
@@ -57,19 +57,19 @@ public class SignUpPage extends AndroidSetup {
                 "; Name: " + name +
                 "]");
 
-        return new SignUpPage(driver);
+        return new SignUpPageAndroid(driver);
     }
 
 
     @Test
-    public SignUpPage registerWithPhoto() throws InterruptedException {
+    public SignUpPageAndroid registerWithPhoto() throws InterruptedException {
         addPhoto();
         validSignUp();
-        return new SignUpPage(driver);
+        return new SignUpPageAndroid(driver);
     }
 
     @Test
-    public SignUpPage addPhoto() throws InterruptedException {
+    public SignUpPageAndroid addPhoto() throws InterruptedException {
 
         waitForVisibilityOf(driver, signUpButton);
 
@@ -88,6 +88,6 @@ public class SignUpPage extends AndroidSetup {
 
         driver.findElement(imageCrop).click();
 
-        return new SignUpPage(driver);
+        return new SignUpPageAndroid(driver);
     }*/
 }

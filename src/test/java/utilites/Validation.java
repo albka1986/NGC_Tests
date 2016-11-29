@@ -64,7 +64,7 @@ public class Validation {
                     y += randomChar;
                     break;
                 case 2:
-                    if (randomChar == '_') {
+                    if (randomChar == '_' && randomChar == '-') {
                         continue;
                     }
                     z += randomChar;
