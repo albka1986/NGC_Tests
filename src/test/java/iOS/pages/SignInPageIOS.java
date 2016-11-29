@@ -8,4 +8,5 @@ public class SignInPageIOS extends IOSSetup {
 
     public By signUpButton = By.name("Sign Up");
 
+    public By signInButton = By.name("Sign In");
 }

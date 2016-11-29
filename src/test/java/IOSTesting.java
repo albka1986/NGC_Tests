@@ -6,7 +6,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utilites.Utilities;
 
 @Listeners(MyListener.class)
 public class IOSTesting extends IOSSetup {
@@ -25,8 +24,15 @@ public class IOSTesting extends IOSSetup {
         Registration registration = new RegistrationIOS();
         registration.validRandomRegistration(driver);
 
-        Thread.sleep(2000);
-        Utilities.takeScreenShot(driver);
+    }
+
+    @Test
+    public void testSignIn() throws InterruptedException {
+        System.out.println("Ready to test");
+
+        Registration registration = new RegistrationIOS();
+        registration.signIn(driver);
+        registration.logout(driver);
     }
 
     @AfterClass

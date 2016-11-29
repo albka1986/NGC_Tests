@@ -14,6 +14,7 @@ public class AndroidSetup {
     final static String BUILD_NAME = "Campfiire-0.0.5_25-qaDebug.apk";
     public static AndroidDriver driver;
 
+
     public static AndroidDriver getDriver() {
         return driver;
     }

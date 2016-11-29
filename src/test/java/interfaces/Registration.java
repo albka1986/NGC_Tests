@@ -18,5 +18,7 @@ public interface Registration {
 
     void registrationForProduction();
 
-    void setDateOfBirth();
+    void setDateOfBirth(AppiumDriver driver);
+
+    void signIn(AppiumDriver driver);
 }

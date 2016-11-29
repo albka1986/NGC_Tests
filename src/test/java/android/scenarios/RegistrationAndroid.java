@@ -45,7 +45,7 @@ public class RegistrationAndroid implements Registration {
             e.printStackTrace();
         }
 
-        String location = validation.randomFavoriteProduct();
+        String location = validation.randomValidLocation();
         if (validation.trueOrFalse()) {
             driver.findElement(signUpPage.location).sendKeys(location);
             hideKeyboard(driver);
@@ -62,12 +62,12 @@ public class RegistrationAndroid implements Registration {
 
 
         Thread.sleep(3000);
-        driver.findElement(signUpPage.nextButton).click();
+        driver.findElement(signUpPage.nextStepButton).click();
 
         //step #2
         waitForVisibilityOf(driver, signUpPage.tagSports);
         driver.findElement(signUpPage.tagSports).click();
-        driver.findElement(signUpPage.createAccount).click();
+        driver.findElement(signUpPage.createAccountButton).click();
 
         System.out.println("User created: " +
                 "[" +
@@ -143,12 +143,12 @@ public class RegistrationAndroid implements Registration {
 
 
         Thread.sleep(3000);
-        driver.findElement(signUpPage.nextButton).click();
+        driver.findElement(signUpPage.nextStepButton).click();
 
         //step #2
         waitForVisibilityOf(driver, signUpPage.tagSports);
         driver.findElement(signUpPage.tagSports).click();
-        driver.findElement(signUpPage.createAccount).click();
+        driver.findElement(signUpPage.createAccountButton).click();
 
         waitForVisibilityOf(driver, myProfilePage.logoutButton);
 
@@ -165,7 +165,12 @@ public class RegistrationAndroid implements Registration {
     }
 
     @Override
-    public void setDateOfBirth() {
+    public void setDateOfBirth(AppiumDriver driver) {
+
+    }
+
+    @Override
+    public void signIn(AppiumDriver driver) {
 
     }
 }

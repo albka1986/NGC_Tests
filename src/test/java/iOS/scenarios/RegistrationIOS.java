@@ -1,14 +1,16 @@
 package iOS.scenarios;/* Created by Ponomarenko Oleh on 28/11/16. */
 
-import iOS.pages.DrawerPageIOS;
-import iOS.pages.MyProfilePageIOS;
 import iOS.pages.SignInPageIOS;
 import iOS.pages.SignUpPageIOS;
 import interfaces.Registration;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import utilites.Validation;
 
-import static utilites.Utilities.*;
+import java.util.Random;
+
+import static utilites.Utilities.tapOn;
+import static utilites.Utilities.waitForVisibilityOf;
 
 public class RegistrationIOS implements Registration {
     SignInPageIOS signInPage = new SignInPageIOS();
@@ -29,30 +31,34 @@ public class RegistrationIOS implements Registration {
         waitForVisibilityOf(driver, signUpPage.email);
         driver.findElement(signInPage.signUpButton).click();
 
+        /** Bug #3594 - Sign Up: validation for field email is wrong
+         waitForVisibilityOf(driver, signUpPage.email);
+         String email = validation.randomValidEmail();
+         */
+
         waitForVisibilityOf(driver, signUpPage.email);
-        String email = validation.randomValidEmail();
+        String email = "newUser" + new Random().nextInt(9999) + "@gmail.com";
+
         driver.findElement(signUpPage.email).sendKeys(email);
 
         String password = validation.randomValidPassword();
         driver.findElement(signUpPage.password).sendKeys(password);
+
         driver.findElement(signUpPage.confirmPassword).sendKeys(password);
-        hideKeyboard(driver);
+
         String name = validation.randomValidName();
         driver.findElement(signUpPage.name).sendKeys(name);
-        hideKeyboard(driver);
-        try {
-            swipingVertical(driver);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        String location = validation.randomFavoriteProduct();
+        String location = validation.randomValidLocation();
         if (validation.trueOrFalse()) {
             driver.findElement(signUpPage.location).sendKeys(location);
-            hideKeyboard(driver);
         }
 
-        System.out.println("Try to create:\n" +
+        setDateOfBirth(driver);
+
+
+        System.out.println("Step1\n" +
+                "Try to create:\n" +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
@@ -61,12 +67,13 @@ public class RegistrationIOS implements Registration {
                 "]");
 
         Thread.sleep(3000);
-        driver.findElement(signUpPage.nextButton).click();
+        driver.findElement(signUpPage.nextStepButton).click();
 
         //step #2
-        waitForVisibilityOf(driver, signUpPage.tagSports);
-        driver.findElement(signUpPage.tagSports).click();
-        driver.findElement(signUpPage.createAccount).click();
+        By tag = signUpPage.tags[new Random().nextInt(7)];
+        waitForVisibilityOf(driver, tag);
+        driver.findElement(tag).click();
+        driver.findElement(signUpPage.createAccountButton).click();
 
         System.out.println("User created: " +
                 "[" +
@@ -79,13 +86,13 @@ public class RegistrationIOS implements Registration {
 
     @Override
     public void logout(AppiumDriver driver) throws InterruptedException {
-        Thread.sleep(10000);
-        DrawerPageIOS drawerPage = new DrawerPageIOS();
-        new DrawerPageIOS().drawerOpen();
-        waitForClickabilityOf(driver, drawerPage.drawerAvatar);
-        driver.findElement(drawerPage.drawerAvatar).click();
-        waitForVisibilityOf(driver, MyProfilePageIOS.logoutButton);
-        driver.findElement(MyProfilePageIOS.logoutButton).click();
+        System.out.println("Logout method...");
+        waitForVisibilityOf(driver, By.xpath(""));
+        driver.findElement(By.xpath("//*[@name='drawerButton'")).click();
+
+
+//        waitForVisibilityOf(driver, MyProfilePageIOS.logoutButton);
+//        driver.findElement(MyProfilePageIOS.logoutButton).click();
     }
 
     @Override
@@ -105,7 +112,14 @@ public class RegistrationIOS implements Registration {
     }
 
     @Override
-    public void setDateOfBirth() {
+    public void setDateOfBirth(AppiumDriver driver) {
+        driver.findElement(signUpPage.dateOfBirth).click();
+        driver.findElement(signUpPage.dateOfBirthDone).click();
+    }
 
+    @Override
+    public void signIn(AppiumDriver driver) {
+        waitForVisibilityOf(driver, signInPage.signInButton);
+        tapOn(signInPage.signInButton);
     }
 }

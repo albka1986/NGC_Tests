@@ -13,9 +13,9 @@ public class SignUpPageAndroid extends AndroidSetup {
     public By location = By.id(APP_PACKAGE_NAME + "welcome_sign_up_location");
     public By age = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
     public By genderMenu = By.id(APP_PACKAGE_NAME + "welcome_sign_up_gender");
-    public By nextButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
+    public By nextStepButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
     public By tagSports = By.id(APP_PACKAGE_NAME + "welcome_sign_up_sports_tag");
-    public By createAccount = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
+    public By createAccountButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
     public By addPhotoButton = By.id("welcome_sign_up_avatar");
     public By imageCrop = By.id(APP_PACKAGE_NAME + "crop_image_menu_crop");
     public By selectCamera = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
@@ -43,12 +43,12 @@ public class SignUpPageAndroid extends AndroidSetup {
         }
 
         Thread.sleep(3000);
-        driver.findElement(nextButton).click();
+        driver.findElement(nextStepButton).click();
 
         //step #2
         waitForVisibilityOf(driver, tagSports);
         driver.findElement(tagSports).click();
-        driver.findElement(createAccount).click();
+        driver.findElement(createAccountButton).click();
 
         System.out.println("User created: " +
                 "[" +

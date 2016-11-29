@@ -12,6 +12,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static config.MyListener.driver;
+
 public class Utilities {
 
 
@@ -49,17 +51,10 @@ public class Utilities {
     }
 
     public static void swipingVertical(AppiumDriver driver) throws InterruptedException {
-        //Get the size of screen.
         Dimension size = driver.manage().window().getSize();
-//        System.out.println(size);
-        //Find swipe start and end point from screen's with and height.
-        //Find starty point which is at bottom side of screen.
         int starty = (int) (size.height * 0.80);
-        //Find endy point which is at top side of screen.
         int endy = (int) (size.height * 0.20);
-        //Find horizontal point where you wants to swipe. It is in middle of screen width.
         int startx = size.width / 2;
-//        System.out.println("starty = " + starty + " ,endy = " + endy + " , startx = " + startx);
         //Swipe from Bottom to Top.
 //        driver.swipe(startx, starty, startx, endy, 3000);
 //        Thread.sleep(2000);
@@ -82,6 +77,18 @@ public class Utilities {
     public static void waitForClickabilityOf(AppiumDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public static By xpathBuilderByValue(String value) {
+        String xpathPart1 = "//*[@value='";
+        String xpathPart2 = "']";
+        String xpath = xpathPart1 + value + xpathPart2;
+        return By.xpath(xpath);
+    }
+
+    public static void tapOn(By identification) {
+        driver.findElement(identification).click();
+        System.out.println("Clicked on: " + identification);
     }
 
 }

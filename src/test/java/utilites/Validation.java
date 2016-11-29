@@ -1,7 +1,11 @@
 package utilites;
 
 
+import org.openqa.selenium.By;
+
 import java.util.Random;
+
+import static utilites.Utilities.xpathBuilderByValue;
 
 public class Validation {
 
@@ -27,11 +31,12 @@ public class Validation {
     public final static int MAX_LENGTH_LOCATION = 40;
     public final static String LOCATION_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz /.,";
 
+    //[]*
+
     /*
      Birthday: minAge >= 18;
      format: dd/mm/yyyy
      */
-
 
 
     public final static String gender[] = {"Male", "Female", "None"};
@@ -40,9 +45,11 @@ public class Validation {
     public final static int MAX_LENGTH_FAVORITE_PRODUCT = 20;
     public final static String FAVORITE_PRODUCT_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz _-.";
     // tag: amount of tags: >=1 && <=10;
+    public final static String[] TAGS = {"clubs", "games", "cars", "sports", "business", "music", "shops"};
     public final static int MIN_LENGTH_TAG = 2;
     public final static int MAX_LENGTH_TAG = 15;
     public final static String TAG_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
     static Random random = new Random();
 
     public static String randomValidEmail() {
@@ -167,5 +174,23 @@ public class Validation {
                 result = true;
         }
         return result;
+    }
+
+    public By[] randomTags() {
+        int randomAmount = new Random().nextInt(TAGS.length);
+        System.out.println("Количество тэгов: " + randomAmount);
+        By randomTags[] = new By[randomAmount];
+        for (int i = 0; i < randomAmount; i++) {
+            if (randomTags.length > 0) {
+                for (By randomTag : randomTags) {
+                    TAGS[i].equals(randomTag);
+                    continue;
+                }
+                randomTags[i] = xpathBuilderByValue(TAGS[i]);
+            } else {
+                randomTags[i] = xpathBuilderByValue(TAGS[i]);
+            }
+        }
+        return randomTags;
     }
 }
