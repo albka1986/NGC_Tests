@@ -8,10 +8,13 @@ public class testValidationMethods {
 
     Validation validation = new Validation();
 
-    @Test(invocationCount = 1000)
+    @Test(invocationCount = 10000)
     public void testRandomValidEmail() {
         String s = validation.randomValidEmail();
         Assert.assertTrue(s.length() >= validation.MIN_LENGTH_EMAIL && s.length() <= validation.MAX_LENGTH_EMAIL);
+        Assert.assertTrue(s.charAt(0) != '@', s);
+        Assert.assertTrue(s.contains("@"));
+        Assert.assertTrue(s.contains("."));
     }
 
     @Test(invocationCount = 1000)

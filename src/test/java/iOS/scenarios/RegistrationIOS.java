@@ -49,7 +49,15 @@ public class RegistrationIOS implements Registration {
         String name = validation.randomValidName();
         driver.findElement(signUpPage.name).sendKeys(name);
 
+
         String location = validation.randomValidLocation();
+
+        //TODO: Bug #3587 (User can't use ",/")
+        while (location.contains(",") || location.contains("/")) {
+            location = validation.randomValidLocation();
+        }
+        //end
+
         if (validation.trueOrFalse()) {
             driver.findElement(signUpPage.location).sendKeys(location);
         }
@@ -63,7 +71,7 @@ public class RegistrationIOS implements Registration {
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
-                "; Location" + location +
+                "; Location: " + location +
                 "]");
 
         Thread.sleep(3000);
@@ -80,7 +88,7 @@ public class RegistrationIOS implements Registration {
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
-                "; Location" + location +
+                "; Location: " + location +
                 "]");
     }
 
@@ -88,7 +96,7 @@ public class RegistrationIOS implements Registration {
     public void logout(AppiumDriver driver) throws InterruptedException {
         System.out.println("Logout method...");
         waitForVisibilityOf(driver, By.xpath(""));
-        driver.findElement(By.xpath("//*[@name='drawerButton'")).click();
+        driver.findElement(By.name("drawerButton")).click();
 
 
 //        waitForVisibilityOf(driver, MyProfilePageIOS.logoutButton);
@@ -113,13 +121,16 @@ public class RegistrationIOS implements Registration {
 
     @Override
     public void setDateOfBirth(AppiumDriver driver) {
-        driver.findElement(signUpPage.dateOfBirth).click();
-        driver.findElement(signUpPage.dateOfBirthDone).click();
+        tapOn(signUpPage.dateOfBirth);
+        tapOn(signUpPage.dateOfBirthDone);
+//        driver.findElement(signUpPage.dateOfBirth).click();
+//        driver.findElement(signUpPage.dateOfBirthDone).click();
     }
 
     @Override
     public void signIn(AppiumDriver driver) {
         waitForVisibilityOf(driver, signInPage.signInButton);
         tapOn(signInPage.signInButton);
+
     }
 }

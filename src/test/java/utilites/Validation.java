@@ -62,8 +62,8 @@ public class Validation {
         do {
             int numberRandomChar = random.nextInt(EMAIL_CONTAINS.length());
             char randomChar = EMAIL_CONTAINS.charAt(numberRandomChar);
-
             int switcher = random.nextInt(3);
+
             switch (switcher) {
                 case 0:
                     x += randomChar;
@@ -81,11 +81,13 @@ public class Validation {
                     z += randomChar;
                     break;
             }
+            if ((x.length() + y.length() + z.length()) == randomLengthOfEmail - 2) {
+                if (x.length() == 0) {
+                    y = z = x;
+                }
+            }
         }
         while ((x.length() + y.length() + z.length()) != randomLengthOfEmail - 2);
-        if (x.length() == 0) {
-            randomValidEmail();
-        }
         validEmail = validEmail.append(x).append("@").append(y).append(".").append(z);
         return validEmail.toString();
     }

@@ -36,20 +36,9 @@ public class AndroidTesting extends AndroidSetup {
         registrationAndroid.registrationByData(driver, "qLOil@70jz.X0M", "oxjCAryovRrwVK7", "g.dmhFFwT", "");
     }
 
-/*    @Test(invocationCount = 1)
-    public void testValidSignUp() throws InterruptedException {
-        System.out.println("Entered in Android: testValidSignUp");
-        new SignUpPageAndroid(driver).registerWithPhoto();
-        new MyProfilePageAndroid(driver).logout();
-    }
+/*
 
-    @Test
-    public void testWithPointsData() throws InterruptedException {
-        new SignUpPageAndroid(driver).registerWithPointsData("asdasdasd2@ma.ru", "12345678", "12345678", "Oleh Ponomarenko");
-        new MyProfilePageAndroid(driver).logout();
-    }
 
-    @Test (invocationCount = 1)
     public void testMapping() throws InterruptedException {
         System.out.println("Entered in testMapping");
 

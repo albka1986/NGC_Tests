@@ -38,6 +38,6 @@ public class IOSTesting extends IOSSetup {
     @AfterClass
     public void tearDown() throws Exception {
         Thread.sleep(5000);
-//        driver.quit();
+        driver.quit();
     }
 }

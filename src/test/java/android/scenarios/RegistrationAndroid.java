@@ -69,6 +69,8 @@ public class RegistrationAndroid implements Registration {
         driver.findElement(signUpPage.tagSports).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
+        takeScreenShot(driver);
+
         System.out.println("User created: " +
                 "[" +
                 "Email: " + email +
@@ -90,12 +92,12 @@ public class RegistrationAndroid implements Registration {
     public void addPhoto(AppiumDriver driver) throws InterruptedException {
 
         waitForVisibilityOf(driver, signInPage.signUpButton);
-
         driver.findElement(signInPage.signUpButton).click();
 
+        waitForVisibilityOf(driver, signUpPage.addPhotoButton);
         driver.findElement(signUpPage.addPhotoButton).click();
 
-        Thread.sleep(2000);
+        waitForVisibilityOf(driver, signUpPage.selectCamera);
         driver.findElement(signUpPage.selectCamera).click();
 
         waitForVisibilityOf(driver, signUpPage.makeShoot);
@@ -166,7 +168,8 @@ public class RegistrationAndroid implements Registration {
 
     @Override
     public void setDateOfBirth(AppiumDriver driver) {
-
+        tapOn(signUpPage.dateOfBirth);
+        tapOn(signUpPage.dateOfBirthDone);
     }
 
     @Override

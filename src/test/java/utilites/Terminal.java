@@ -8,7 +8,7 @@ public class Terminal {
         System.out.println("Running Appium ");
         String command = "appium --reboot --address 127.0.0.1 --port 4723";
         Runtime.getRuntime().exec(command);
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         System.out.println("Appium launched");
     }
 }

@@ -21,6 +21,8 @@ public class SignUpPageAndroid extends AndroidSetup {
     public By selectCamera = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     public By makeShoot = By.id("com.android.camera:id/shutter_button");
     public By imageDone = By.id("com.android.camera:id/btn_done");
+    public By dateOfBirth = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
+    public By dateOfBirthDone = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/com.prolificinteractive.materialcalendarview.MaterialCalendarView[1]/android.support.v4.view.ViewPager[1]/com.prolificinteractive.materialcalendarview.CalendarPagerView[1]/android.widget.CheckedTextView[1]");
 
 
 
