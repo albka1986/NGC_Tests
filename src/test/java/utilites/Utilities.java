@@ -70,13 +70,13 @@ public class Utilities {
 
     }
 
-    public static void waitForVisibilityOf(AppiumDriver driver1, By locator) {
+    public static void waitForVisibilityOf(By locator) {
         AppiumDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void waitForClickabilityOf(AppiumDriver driver1, By locator) {
+    public static void waitForClickabilityOf(By locator) {
         AppiumDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(locator));

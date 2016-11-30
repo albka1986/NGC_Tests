@@ -4,14 +4,16 @@ import iOS.configDevice.IOSSetup;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
+import static utilites.Utilities.tapOn;
 import static utilites.Utilities.waitForVisibilityOf;
 
 public class DrawerPageIOS extends IOSSetup {
 
-    public By drawer = By.name("drawerButton");
+    public By drawerButton = MobileBy.id("hamburger");
+    public By drawerAvatar;
 
     public void drawerOpen() throws InterruptedException {
-        waitForVisibilityOf(driver, MobileBy.id("hamburger"));
-        driver.findElement(MobileBy.id("hamburger")).click();
+        waitForVisibilityOf(MobileBy.id("hamburger"));
+        tapOn(drawerButton);
     }
 }

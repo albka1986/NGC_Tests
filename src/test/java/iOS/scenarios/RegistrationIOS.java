@@ -1,5 +1,7 @@
 package iOS.scenarios;/* Created by Ponomarenko Oleh on 28/11/16. */
 
+import iOS.pages.DrawerPageIOS;
+import iOS.pages.MyProfilePageIOS;
 import iOS.pages.SignInPageIOS;
 import iOS.pages.SignUpPageIOS;
 import interfaces.Registration;
@@ -16,6 +18,8 @@ public class RegistrationIOS implements Registration {
     SignInPageIOS signInPage = new SignInPageIOS();
     SignUpPageIOS signUpPage = new SignUpPageIOS();
     Validation validation = new Validation();
+    DrawerPageIOS drawerPage = new DrawerPageIOS();
+    MyProfilePageIOS myProfilePage = new MyProfilePageIOS();
 
     @Override
     public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
@@ -24,11 +28,11 @@ public class RegistrationIOS implements Registration {
         if (validation.trueOrFalse()) {
             addPhoto(driver);
         }
-        waitForVisibilityOf(driver, signInPage.signUpButton);
+        waitForVisibilityOf(signInPage.signUpButton);
         driver.findElement(signInPage.signUpButton).click();
 
         //step #1
-        waitForVisibilityOf(driver, signUpPage.email);
+        waitForVisibilityOf(signUpPage.email);
         driver.findElement(signInPage.signUpButton).click();
 
         /** Bug #3594 - Sign Up: validation for field email is wrong
@@ -36,7 +40,7 @@ public class RegistrationIOS implements Registration {
          String email = validation.randomValidEmail();
          */
 
-        waitForVisibilityOf(driver, signUpPage.email);
+        waitForVisibilityOf(signUpPage.email);
         String email = "newUser" + new Random().nextInt(9999) + "@gmail.com";
 
         driver.findElement(signUpPage.email).sendKeys(email);
@@ -79,7 +83,7 @@ public class RegistrationIOS implements Registration {
 
         //step #2
         By tag = signUpPage.tags[new Random().nextInt(7)];
-        waitForVisibilityOf(driver, tag);
+        waitForVisibilityOf(tag);
         driver.findElement(tag).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
@@ -95,12 +99,14 @@ public class RegistrationIOS implements Registration {
     @Override
     public void logout(AppiumDriver driver) throws InterruptedException {
         System.out.println("Logout method...");
-        waitForVisibilityOf(driver, By.xpath(""));
-        driver.findElement(By.name("drawerButton")).click();
 
+        waitForVisibilityOf(drawerPage.drawerAvatar);
+        tapOn(drawerPage.drawerAvatar);
 
-//        waitForVisibilityOf(driver, MyProfilePageIOS.logoutButton);
-//        driver.findElement(MyProfilePageIOS.logoutButton).click();
+        drawerPage.drawerOpen();
+
+        waitForVisibilityOf(myProfilePage.logoutButton);
+        tapOn(myProfilePage.logoutButton);
     }
 
     @Override
@@ -129,7 +135,7 @@ public class RegistrationIOS implements Registration {
 
     @Override
     public void signIn(AppiumDriver driver) {
-        waitForVisibilityOf(driver, signInPage.signInButton);
+        waitForVisibilityOf(signInPage.signInButton);
         tapOn(signInPage.signInButton);
 
     }

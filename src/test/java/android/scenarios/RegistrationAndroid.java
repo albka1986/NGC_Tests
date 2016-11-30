@@ -20,10 +20,10 @@ public class RegistrationAndroid implements Registration {
 
     public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
 
-        waitForVisibilityOf(driver, signInPage.signUpButton);
+        waitForVisibilityOf(signInPage.signUpButton);
         if (validation.trueOrFalse()) {
             addPhoto(driver);
-            waitForVisibilityOf(driver, signInPage.signUpButton);
+            waitForVisibilityOf(signInPage.signUpButton);
         }
         //step #1
         driver.findElement(signInPage.signUpButton).click();
@@ -65,7 +65,7 @@ public class RegistrationAndroid implements Registration {
         driver.findElement(signUpPage.nextStepButton).click();
 
         //step #2
-        waitForVisibilityOf(driver, signUpPage.tagSports);
+        waitForVisibilityOf(signUpPage.tagSports);
         driver.findElement(signUpPage.tagSports).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
@@ -83,27 +83,27 @@ public class RegistrationAndroid implements Registration {
     public void logout(AppiumDriver driver) throws InterruptedException {
         Thread.sleep(10000);
         new DrawerPageAndroid().drawerOpen();
-        waitForClickabilityOf(driver, DrawerPageAndroid.drawerAvatar);
+        waitForClickabilityOf(DrawerPageAndroid.drawerAvatar);
         driver.findElement(DrawerPageAndroid.drawerAvatar).click();
-        waitForVisibilityOf(driver, MyProfilePageAndroid.logoutButton);
+        waitForVisibilityOf(MyProfilePageAndroid.logoutButton);
         driver.findElement(MyProfilePageAndroid.logoutButton).click();
     }
 
     public void addPhoto(AppiumDriver driver) throws InterruptedException {
 
-        waitForVisibilityOf(driver, signInPage.signUpButton);
+        waitForVisibilityOf(signInPage.signUpButton);
         driver.findElement(signInPage.signUpButton).click();
 
-        waitForVisibilityOf(driver, signUpPage.addPhotoButton);
+        waitForVisibilityOf(signUpPage.addPhotoButton);
         driver.findElement(signUpPage.addPhotoButton).click();
 
-        waitForVisibilityOf(driver, signUpPage.selectCamera);
+        waitForVisibilityOf(signUpPage.selectCamera);
         driver.findElement(signUpPage.selectCamera).click();
 
-        waitForVisibilityOf(driver, signUpPage.makeShoot);
+        waitForVisibilityOf(signUpPage.makeShoot);
         driver.findElement(signUpPage.makeShoot).click();
 
-        waitForVisibilityOf(driver, signUpPage.imageDone);
+        waitForVisibilityOf(signUpPage.imageDone);
         driver.findElement(signUpPage.imageDone).click();
 
         driver.findElement(signUpPage.imageCrop).click();
@@ -111,7 +111,7 @@ public class RegistrationAndroid implements Registration {
 
     public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws InterruptedException {
 
-        waitForVisibilityOf(driver, signInPage.signUpButton);
+        waitForVisibilityOf(signInPage.signUpButton);
 
         //step #1
         driver.findElement(signInPage.signUpButton).click();
@@ -148,11 +148,11 @@ public class RegistrationAndroid implements Registration {
         driver.findElement(signUpPage.nextStepButton).click();
 
         //step #2
-        waitForVisibilityOf(driver, signUpPage.tagSports);
+        waitForVisibilityOf(signUpPage.tagSports);
         driver.findElement(signUpPage.tagSports).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
-        waitForVisibilityOf(driver, myProfilePage.logoutButton);
+        waitForVisibilityOf(myProfilePage.logoutButton);
 
         System.out.println("User created: " +
                 "[" +
