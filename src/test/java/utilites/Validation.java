@@ -167,16 +167,6 @@ public class Validation {
         return result;
     }
 
-    public boolean trueOrFalse() {
-        boolean result = false;
-        switch (new Random().nextInt(2)) {
-            case 0:
-                result = false;
-            case 1:
-                result = true;
-        }
-        return result;
-    }
 
     public By[] randomTags() {
         int randomAmount = new Random().nextInt(TAGS.length);

@@ -10,7 +10,6 @@ import static utilites.Utilities.waitForVisibilityOf;
 public class DrawerPageIOS extends IOSSetup {
 
     public By drawerButton = MobileBy.id("hamburger");
-    public By drawerAvatar;
 
     public void drawerOpen() throws InterruptedException {
         waitForVisibilityOf(MobileBy.id("hamburger"));

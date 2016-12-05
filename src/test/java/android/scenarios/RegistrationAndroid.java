@@ -21,7 +21,7 @@ public class RegistrationAndroid implements Registration {
     public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
 
         waitForVisibilityOf(signInPage.signUpButton);
-        if (validation.trueOrFalse()) {
+        if (trueOrFalse()) {
             addPhoto(driver);
             waitForVisibilityOf(signInPage.signUpButton);
         }
@@ -46,7 +46,7 @@ public class RegistrationAndroid implements Registration {
         }
 
         String location = validation.randomValidLocation();
-        if (validation.trueOrFalse()) {
+        if (trueOrFalse()) {
             driver.findElement(signUpPage.location).sendKeys(location);
             hideKeyboard(driver);
         }

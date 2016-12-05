@@ -12,7 +12,7 @@ import java.net.URL;
 public class IOSSetup {
 
     public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_3";
-    public final static String BUILD_NAME = "ngc_0.3.2_Oleg.app";
+    public final static String BUILD_NAME = "Campfiire.app";
     //    public final static String BUILD_NAME = "ngc_0.3.2.app";
     protected IOSDriver driver;
 
@@ -31,11 +31,8 @@ public class IOSSetup {
         capabilities.setCapability("platformVersion", "10.1");
         capabilities.setCapability("udid", "17E09D32-9C73-4461-997F-F9F92CC1B64A");
         capabilities.setCapability("app", app.getAbsolutePath());
-
-        //experiment with noReset & fullReset
         capabilities.setCapability("fullReset", "false");
         capabilities.setCapability("noReset", "true");
-        //end
 
         System.out.printf("Begin to create a new Driver");
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
@@ -43,6 +40,4 @@ public class IOSSetup {
 
         MyListener.setDriver(driver);
     }
-
-
 }

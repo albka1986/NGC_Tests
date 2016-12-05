@@ -16,14 +16,15 @@ public class IOSTesting extends IOSSetup {
         prepareIosSimulator();
     }
 
-    @Test(invocationCount = 1)
-    public void testApp() throws InterruptedException {
+    @Test(invocationCount = 50)
+    public void testValidRandomRegistration() throws InterruptedException {
         System.out.println("Ready for tests");
         Thread.sleep(1000);
 
         Registration registration = new RegistrationIOS();
-        registration.validRandomRegistration(driver);
 
+        registration.validRandomRegistration(driver);
+        registration.logout(driver);
     }
 
     @Test

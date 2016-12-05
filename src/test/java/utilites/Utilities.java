@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import static config.MyListener.driver;
 import static config.MyListener.getDriver;
@@ -94,4 +95,7 @@ public class Utilities {
         System.out.println("Clicked on: " + identification);
     }
 
+    public static boolean trueOrFalse() {
+        return new Random().nextBoolean();
+    }
 }
