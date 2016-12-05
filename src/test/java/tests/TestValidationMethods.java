@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilites.Validation;
 
-public class testValidationMethods {
+public class TestValidationMethods {
 
     Validation validation = new Validation();
 

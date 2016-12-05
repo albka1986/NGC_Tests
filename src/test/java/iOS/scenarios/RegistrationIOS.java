@@ -7,11 +7,13 @@ import iOS.pages.SignUpPageIOS;
 import interfaces.Registration;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilites.Validation;
 
 import java.util.Random;
 
-import static utilites.Utilities.*;
+import static utilites.Utilities.tapOn;
+import static utilites.Utilities.waitForVisibilityOf;
 
 public class RegistrationIOS implements Registration {
     SignInPageIOS signInPage = new SignInPageIOS();
@@ -24,8 +26,16 @@ public class RegistrationIOS implements Registration {
     public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
 
         //attaching a photo
-        if (trueOrFalse()) {
+
+        /***
+         * take a photo is not ready;
+         */
+
+        if (false) {
+            System.out.println("With a photo");
             addPhoto(driver);
+        } else {
+            System.out.println("Without any photo");
         }
         waitForVisibilityOf(signInPage.signUpButton);
         driver.findElement(signInPage.signUpButton).click();
@@ -61,9 +71,7 @@ public class RegistrationIOS implements Registration {
         }
         //end
 
-        if (trueOrFalse()) {
-            driver.findElement(signUpPage.location).sendKeys(location);
-        }
+        driver.findElement(signUpPage.location).sendKeys(location);
 
         setDateOfBirth(driver);
 
@@ -86,6 +94,8 @@ public class RegistrationIOS implements Registration {
         driver.findElement(tag).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
+
+        waitForVisibilityOf(drawerPage.drawerButton);
         System.out.println("User created: " +
                 "[" +
                 "Email: " + email +
@@ -103,10 +113,9 @@ public class RegistrationIOS implements Registration {
         Thread.sleep(5000);
         driver.tap(1, 100, 100, 500); //tap on drawerAvatar
 
-        System.out.println("Trying to find logout-button");
-
         waitForVisibilityOf(myProfilePage.logoutButton);
         tapOn(myProfilePage.logoutButton);
+
     }
 
     @Override
@@ -114,9 +123,19 @@ public class RegistrationIOS implements Registration {
 
     }
 
+    private void allowingCamera(AppiumDriver driver) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(signUpPage.titleRequestCamera);
+            tapOn(signUpPage.allowCamera);
+        } catch (Exception e) {
+            System.out.println("Права уже предоставлены");
+        }
+    }
+
 
     @Override
-    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws InterruptedException {
+    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws
+            InterruptedException {
 
     }
 

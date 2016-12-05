@@ -1,11 +1,13 @@
-package tests;/* Created by Ponomarenko Oleh on 01/12/16. */
+package tests;
 
+import static utilites.Utilities.trueOrFalse;
 
 public class Test {
 
-    public static void main(String[] args) {
-
-
+    @org.testng.annotations.Test(invocationCount = 100)
+    public void testFalseOrTrue() {
+        boolean result = trueOrFalse();
+        System.out.println(result);
     }
 
 }

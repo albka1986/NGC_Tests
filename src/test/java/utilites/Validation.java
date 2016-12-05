@@ -129,6 +129,8 @@ public class Validation {
                 } while (location.length() != randomLengthLocation);
                 result = location.toString();
                 break;
+            default:
+                System.out.println("Without location");
         }
 
         return result;

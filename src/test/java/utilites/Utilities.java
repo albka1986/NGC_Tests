@@ -90,6 +90,14 @@ public class Utilities {
         return By.xpath(xpath);
     }
 
+
+    public static By xpathBuilderByText(String text) {
+        String xpathPart1 = "//text()[contains('";
+        String xpathPart2 = "')]";
+        String xpath = xpathPart1 + text + xpathPart2;
+        return By.xpath(xpath);
+    }
+
     public static void tapOn(By identification) {
         driver.findElement(identification).click();
         System.out.println("Clicked on: " + identification);

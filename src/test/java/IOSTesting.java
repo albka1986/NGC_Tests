@@ -10,28 +10,23 @@ import org.testng.annotations.Test;
 @Listeners(MyListener.class)
 public class IOSTesting extends IOSSetup {
 
+    Registration registration = new RegistrationIOS();
 
     @BeforeClass
     public void setUp() throws Exception {
         prepareIosSimulator();
     }
 
-    @Test(invocationCount = 50)
+    @Test(invocationCount = 200)
     public void testValidRandomRegistration() throws InterruptedException {
         System.out.println("Ready for tests");
-        Thread.sleep(1000);
-
-        Registration registration = new RegistrationIOS();
-
         registration.validRandomRegistration(driver);
-        registration.logout(driver);
     }
 
     @Test
     public void testSignIn() throws InterruptedException {
         System.out.println("Ready to test");
 
-        Registration registration = new RegistrationIOS();
         registration.signIn(driver);
         registration.logout(driver);
     }
