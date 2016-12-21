@@ -1,12 +1,13 @@
 package android.scenarios;
 
 
-import android.pages.DrawerPageAndroid;
+import android.pages.MyPostsPageAndroid;
 import android.pages.MyProfilePageAndroid;
 import android.pages.SignInPageAndroid;
 import android.pages.SignUpPageAndroid;
 import interfaces.Registration;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.Keys;
 import utilites.Validation;
 
 import static utilites.Utilities.*;
@@ -15,8 +16,8 @@ public class RegistrationAndroid implements Registration {
 
     SignUpPageAndroid signUpPage = new SignUpPageAndroid();
     SignInPageAndroid signInPage = new SignInPageAndroid();
-    Validation validation = new Validation();
     MyProfilePageAndroid myProfilePage = new MyProfilePageAndroid();
+    Validation validation = new Validation();
 
     public void validRandomSignUp(AppiumDriver driver) throws InterruptedException {
 
@@ -25,41 +26,47 @@ public class RegistrationAndroid implements Registration {
             addPhoto(driver);
             waitForVisibilityOf(signInPage.signUpButton);
         }
+
         //step #1
         driver.findElement(signInPage.signUpButton).click();
 
         String email = validation.randomValidEmail();
-
         driver.findElement(signUpPage.email).sendKeys(email);
 
         String password = validation.randomValidPassword();
         driver.findElement(signUpPage.password).sendKeys(password);
+
         driver.findElement(signUpPage.confirmPassword).sendKeys(password);
-        hideKeyboard(driver);
+        hideKeyboard();
+
         String name = validation.randomValidName();
         driver.findElement(signUpPage.name).sendKeys(name);
-        hideKeyboard(driver);
+        hideKeyboard();
+
+
         try {
-            swipingVertical(driver);
+            swipingVerticalToTop();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         String location = validation.randomValidLocation();
-        if (trueOrFalse()) {
-            driver.findElement(signUpPage.location).sendKeys(location);
-            hideKeyboard(driver);
-        }
+        driver.findElement(signUpPage.location).sendKeys(location);
+        hideKeyboard();
 
+        setDateOfBirth(driver);
+        String birth = driver.findElement(signUpPage.dateOfBirthField).getText();
+
+        driver.findElement(signUpPage.termAndConditions).click();
 
         System.out.println("Try to create:\n" +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
-                "; Location" + location +
+                "; Location: " + location +
+                "; Birthday: " + birth +
                 "]");
-
 
         Thread.sleep(3000);
         driver.findElement(signUpPage.nextStepButton).click();
@@ -69,25 +76,23 @@ public class RegistrationAndroid implements Registration {
         driver.findElement(signUpPage.tagSports).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
-        takeScreenShot(driver);
+        waitForVisibilityOf(MyPostsPageAndroid.titleScreen);
 
-        System.out.println("User created: " +
+        System.out.println("Try to create:\n" +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
-                "; Location" + location +
+                "; Location: " + location +
+                "; Birthday: " + birth +
                 "]");
     }
 
+    @Override
     public void logout(AppiumDriver driver) throws InterruptedException {
-        Thread.sleep(10000);
-        new DrawerPageAndroid().drawerOpen();
-        waitForClickabilityOf(DrawerPageAndroid.drawerAvatar);
-        driver.findElement(DrawerPageAndroid.drawerAvatar).click();
-        waitForVisibilityOf(MyProfilePageAndroid.logoutButton);
-        driver.findElement(MyProfilePageAndroid.logoutButton).click();
+        myProfilePage.logout();
     }
+
 
     public void addPhoto(AppiumDriver driver) throws InterruptedException {
 
@@ -114,35 +119,53 @@ public class RegistrationAndroid implements Registration {
         waitForVisibilityOf(signInPage.signUpButton);
 
         //step #1
-        driver.findElement(signInPage.signUpButton).click();
+        tapOn(signInPage.signUpButton);
 
-        driver.findElement(signUpPage.email).sendKeys(email);
+        waitForVisibilityOf(signUpPage.email);
 
-        driver.findElement(signUpPage.password).sendKeys(password);
+        sendKeys(signUpPage.email, email);
+        hideKeyboard();
+        Thread.sleep(2000);
 
-        driver.findElement(signUpPage.confirmPassword).sendKeys(password);
+        sendKeys(signUpPage.password, password);
+        hideKeyboard();
+        Thread.sleep(2000);
 
-        hideKeyboard(driver);
+        sendKeys(signUpPage.confirmPassword, password);
+        hideKeyboard();
+        Thread.sleep(2000);
 
-        driver.findElement(signUpPage.name).sendKeys(name);
-        hideKeyboard(driver);
-        try {
-            swipingVertical(driver);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sendKeys(signUpPage.name, name);
+        hideKeyboard();
+        Thread.sleep(2000);
+
+        swipingVerticalToTop();
 
         if (!location.equals("")) {
             driver.findElement(signUpPage.location).sendKeys(location);
+            Thread.sleep(10000);
+            driver.getKeyboard().pressKey(Keys.RETURN);
         }
 
+        Thread.sleep(10000);
 
-        System.out.println("[" +
+
+        setDateOfBirth(driver);
+        Thread.sleep(2000);
+        hideKeyboard();
+
+        String birth = driver.findElement(signUpPage.dateOfBirthField).getText();
+
+        driver.findElement(signUpPage.termAndConditions).click();
+
+        System.out.println("Try to create:\n" +
+                "[" +
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
+                "; Location: " + location +
+                "; Birthday: " + birth +
                 "]");
-
 
         Thread.sleep(3000);
         driver.findElement(signUpPage.nextStepButton).click();
@@ -152,7 +175,7 @@ public class RegistrationAndroid implements Registration {
         driver.findElement(signUpPage.tagSports).click();
         driver.findElement(signUpPage.createAccountButton).click();
 
-        waitForVisibilityOf(myProfilePage.logoutButton);
+        waitForVisibilityOf(MyPostsPageAndroid.titleScreen);
 
         System.out.println("User created: " +
                 "[" +
@@ -169,11 +192,10 @@ public class RegistrationAndroid implements Registration {
     @Override
     public void setDateOfBirth(AppiumDriver driver) {
         tapOn(signUpPage.dateOfBirth);
-        tapOn(signUpPage.dateOfBirthDone);
+        tapOn(signUpPage.dateOfBirthSet);
     }
 
     @Override
     public void signIn(AppiumDriver driver) {
-
     }
 }

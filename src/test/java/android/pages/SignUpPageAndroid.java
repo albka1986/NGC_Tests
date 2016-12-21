@@ -13,7 +13,7 @@ public class SignUpPageAndroid extends AndroidSetup {
     public By location = By.id(APP_PACKAGE_NAME + "welcome_sign_up_location");
     public By age = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
     public By genderMenu = By.id(APP_PACKAGE_NAME + "welcome_sign_up_gender");
-    public By nextStepButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
+    public By nextStepButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
     public By tagSports = By.id(APP_PACKAGE_NAME + "welcome_sign_up_sports_tag");
     public By createAccountButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.TextView[1]");
     public By addPhotoButton = By.id("welcome_sign_up_avatar");
@@ -22,9 +22,9 @@ public class SignUpPageAndroid extends AndroidSetup {
     public By makeShoot = By.id("com.android.camera:id/shutter_button");
     public By imageDone = By.id("com.android.camera:id/btn_done");
     public By dateOfBirth = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
-    public By dateOfBirthDone = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/com.prolificinteractive.materialcalendarview.MaterialCalendarView[1]/android.support.v4.view.ViewPager[1]/com.prolificinteractive.materialcalendarview.CalendarPagerView[1]/android.widget.CheckedTextView[1]");
-
-
+    public By dateOfBirthSet = By.id(APP_PACKAGE_NAME + "ok");
+    public By dateOfBirthField = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
+    public By termAndConditions = By.id(APP_PACKAGE_NAME + "welcome_sign_up_terms_and_conditions_checkbox");
 
 /*
        @Test
@@ -39,7 +39,7 @@ public class SignUpPageAndroid extends AndroidSetup {
         driver.findElement(this.name).sendKeys(name);
         hideKeyboard(driver);
         try {
-            swipingVertical(driver);
+            swipingVerticalToTop(driver);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

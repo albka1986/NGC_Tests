@@ -84,8 +84,13 @@ public class Validation {
             if ((x.length() + y.length() + z.length()) == randomLengthOfEmail - 2) {
                 if (x.length() == 0) {
                     y = z = x;
+                } else if (y.length() == 0) {
+                    z = x = y;
+                } else if (z.length() == 0) {
+                    x = y = z;
                 }
             }
+
         }
         while ((x.length() + y.length() + z.length()) != randomLengthOfEmail - 2);
         validEmail = validEmail.append(x).append("@").append(y).append(".").append(z);
@@ -172,7 +177,7 @@ public class Validation {
 
     public By[] randomTags() {
         int randomAmount = new Random().nextInt(TAGS.length);
-        System.out.println("Количество тэгов: " + randomAmount);
+        System.out.println("Amount of tag: " + randomAmount);
         By randomTags[] = new By[randomAmount];
         for (int i = 0; i < randomAmount; i++) {
             if (randomTags.length > 0) {

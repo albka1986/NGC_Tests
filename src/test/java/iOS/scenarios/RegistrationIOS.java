@@ -27,9 +27,7 @@ public class RegistrationIOS implements Registration {
 
         //attaching a photo
 
-        /***
-         * take a photo is not ready;
-         */
+        //TODO: always without photo. The function doesn't work.
 
         if (false) {
             System.out.println("With a photo");
@@ -62,14 +60,13 @@ public class RegistrationIOS implements Registration {
         String name = validation.randomValidName();
         driver.findElement(signUpPage.name).sendKeys(name);
 
-
         String location = validation.randomValidLocation();
 
-        //TODO: Bug #3587 (User can't use ",/")
-        while (location.contains(",") || location.contains("/")) {
-            location = validation.randomValidLocation();
-        }
-        //end
+        //TODO: Bug #3587 (User can't use ",/"). (DONE)
+//        while (location.contains(",") || location.contains("/")) {
+        location = validation.randomValidLocation();
+//        }
+//        end
 
         driver.findElement(signUpPage.location).sendKeys(location);
 
@@ -107,16 +104,9 @@ public class RegistrationIOS implements Registration {
 
     @Override
     public void logout(AppiumDriver driver) throws InterruptedException {
-
-        drawerPage.drawerOpen();
-
-        Thread.sleep(5000);
-        driver.tap(1, 100, 100, 500); //tap on drawerAvatar
-
-        waitForVisibilityOf(myProfilePage.logoutButton);
-        tapOn(myProfilePage.logoutButton);
-
+        myProfilePage.logout();
     }
+
 
     @Override
     public void addPhoto(AppiumDriver driver) throws InterruptedException {
@@ -137,6 +127,55 @@ public class RegistrationIOS implements Registration {
     public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws
             InterruptedException {
 
+        waitForVisibilityOf(signInPage.signUpButton);
+        driver.findElement(signInPage.signUpButton).click();
+
+        //step #1
+        waitForVisibilityOf(signUpPage.email);
+        driver.findElement(signInPage.signUpButton).click();
+
+        waitForVisibilityOf(signUpPage.email);
+
+        driver.findElement(signUpPage.email).sendKeys(email);
+
+        driver.findElement(signUpPage.password).sendKeys(password);
+
+        driver.findElement(signUpPage.confirmPassword).sendKeys(password);
+
+        driver.findElement(signUpPage.name).sendKeys(name);
+
+        driver.findElement(signUpPage.location).sendKeys(location);
+
+        setDateOfBirth(driver);
+
+
+        System.out.println("Step1\n" +
+                "Try to create:\n" +
+                "[" +
+                "Email: " + email +
+                "; Password: " + password +
+                "; Name: " + name +
+                "; Location: " + location +
+                "]");
+
+        Thread.sleep(3000);
+        driver.findElement(signUpPage.nextStepButton).click();
+
+        //step #2
+        By tag = signUpPage.tags[new Random().nextInt(7)];
+        waitForVisibilityOf(tag);
+        driver.findElement(tag).click();
+        driver.findElement(signUpPage.createAccountButton).click();
+
+        waitForVisibilityOf(drawerPage.drawerButton);
+
+        System.out.println("User created: " +
+                "[" +
+                "Email: " + email +
+                "; Password: " + password +
+                "; Name: " + name +
+                "; Location: " + location +
+                "]");
     }
 
     @Override

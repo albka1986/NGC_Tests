@@ -17,9 +17,10 @@ public class IOSTesting extends IOSSetup {
         prepareIosSimulator();
     }
 
-    @Test(invocationCount = 200)
+    @Test(invocationCount = 30)
     public void testValidRandomRegistration() throws InterruptedException {
-        System.out.println("Ready for tests");
+        System.out.println("Ready to test");
+
         registration.validRandomRegistration(driver);
     }
 
@@ -29,6 +30,15 @@ public class IOSTesting extends IOSSetup {
 
         registration.signIn(driver);
         registration.logout(driver);
+    }
+
+    @Test
+    public void registrationByData() throws InterruptedException {
+        System.out.println("Ready for test");
+
+        registration.registrationByData(driver, "newUser5771@gmail.com", "5Th1LhQO3FZdkJ", ".RsOlGdAffObc.sZB", "");
+        registration.logout(driver);
+
     }
 
     @AfterClass

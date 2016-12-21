@@ -10,8 +10,7 @@ public class DrawerPageAndroid extends AndroidSetup {
     public static By searchButton = By.id(APP_PACKAGE_NAME + "drawer_search_btn");
 
     public void drawerOpen() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(2500);
         driver.tap(1, 100, 190, 1);
-        Thread.sleep(2000);
     }
 }

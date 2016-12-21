@@ -1,5 +1,6 @@
 package utilites;
 
+import config.MyListener;
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -43,8 +44,9 @@ public class Utilities {
 
     }
 
-    public static void hideKeyboard(AppiumDriver driver) {
+    public static void hideKeyboard() {
         try {
+            getDriver();
             Thread.sleep(2000);
             driver.hideKeyboard();
             Thread.sleep(2000);
@@ -52,15 +54,22 @@ public class Utilities {
         }
     }
 
-    public static void swipingVertical(AppiumDriver driver) throws InterruptedException {
+    public static void swipingVerticalToTop() throws InterruptedException {
+        AppiumDriver driver = MyListener.getDriver();
         Dimension size = driver.manage().window().getSize();
         int starty = (int) (size.height * 0.80);
         int endy = (int) (size.height * 0.20);
-        int startx = size.width / 2;
-        //Swipe from Bottom to Top.
-//        driver.swipe(startx, starty, startx, endy, 3000);
-//        Thread.sleep(2000);
-        //Swipe from Top to Bottom.
+        int startx = (int) (size.width * 0.3);
+        driver.swipe(startx, starty, startx, endy, 3000);
+        Thread.sleep(2000);
+    }
+
+    public static void swipingVerticalToDown() throws InterruptedException {
+        AppiumDriver driver = MyListener.getDriver();
+        Dimension size = driver.manage().window().getSize();
+        int starty = (int) (size.height * 0.80);
+        int endy = (int) (size.height * 0.20);
+        int startx = (int) (size.width * 0.3);
         driver.swipe(startx, endy, startx, starty, 3000);
         Thread.sleep(2000);
     }
@@ -101,6 +110,10 @@ public class Utilities {
     public static void tapOn(By identification) {
         driver.findElement(identification).click();
         System.out.println("Clicked on: " + identification);
+    }
+
+    public static void sendKeys(By identification, String keys) {
+        driver.findElement(identification).sendKeys(keys);
     }
 
     public static boolean trueOrFalse() {
