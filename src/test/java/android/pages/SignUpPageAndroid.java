@@ -2,6 +2,10 @@ package android.pages;
 
 import android.configDevice.AndroidSetup;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+
+import static android.pages.SignInPageAndroid.signUpButton;
+import static utilites.Utilities.*;
 
 public class SignUpPageAndroid extends AndroidSetup {
 
@@ -21,75 +25,112 @@ public class SignUpPageAndroid extends AndroidSetup {
     public By selectCamera = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     public By makeShoot = By.id("com.android.camera:id/shutter_button");
     public By imageDone = By.id("com.android.camera:id/btn_done");
+    public By imageDoneMotorola = By.id("com.motorola.camera:id/review_approve");
     public By dateOfBirth = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
     public By dateOfBirthSet = By.id(APP_PACKAGE_NAME + "ok");
     public By dateOfBirthField = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
     public By termAndConditions = By.id(APP_PACKAGE_NAME + "welcome_sign_up_terms_and_conditions_checkbox");
 
-/*
-       @Test
-    public SignUpPageAndroid registerWithPointsData(String email, String password, String confirmPassword, String name) throws InterruptedException {
-        waitForVisibilityOf(driver, signUpButton);
+    public void registrationByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
+
+        waitForVisibilityOf(signUpButton);
+
         //step #1
-        driver.findElement(signUpButton).click();
-        driver.findElement(this.email).sendKeys(email);
-        driver.findElement(this.password).sendKeys(password);
-        driver.findElement(this.confirmPassword).sendKeys(confirmPassword);
-        hideKeyboard(driver);
-        driver.findElement(this.name).sendKeys(name);
-        hideKeyboard(driver);
-        try {
-            swipingVerticalToTop(driver);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        tapOn(signUpButton);
+
+        waitForVisibilityOf(this.email);
+
+        if (photo) {
+            addPhoto();
         }
 
+        sendKeys(this.email, email);
+        hideKeyboard();
+        Thread.sleep(2000);
+
+        sendKeys(this.password, password);
+        hideKeyboard();
+        Thread.sleep(2000);
+
+        sendKeys(this.confirmPassword, password);
+        hideKeyboard();
+        Thread.sleep(4000);
+
+        sendKeys(this.name, name);
+        hideKeyboard();
+        Thread.sleep(2000);
+
+        swipingVerticalToTop();
+
+        if (!location.equals("")) {
+            driver.findElement(this.location).sendKeys(location);
+            Thread.sleep(10000);
+            driver.getKeyboard().pressKey(Keys.RETURN);
+        }
+
+        Thread.sleep(10000);
+
+
+        setDateOfBirth();
+        Thread.sleep(2000);
+        hideKeyboard();
+
+        String birth = driver.findElement(dateOfBirthField).getText();
+
+        driver.findElement(termAndConditions).click();
+
+        System.out.println("Try to create:\n" +
+                "[" +
+                "Email: " + email +
+                "; Password: " + password +
+                "; Name: " + name +
+                "; Location: " + location +
+                "; Birthday: " + birth +
+                "]");
+
         Thread.sleep(3000);
-        driver.findElement(nextStepButton).click();
+        tapOn(nextStepButton);
 
         //step #2
-        waitForVisibilityOf(driver, tagSports);
+        waitForVisibilityOf(tagSports);
         driver.findElement(tagSports).click();
         driver.findElement(createAccountButton).click();
+
+        waitForVisibilityOf(MyPostsPageAndroid.titleScreen);
 
         System.out.println("User created: " +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
                 "; Name: " + name +
+                "; Location: " + location +
+                "; Birthday: " + birth +
                 "]");
-
-        return new SignUpPageAndroid(driver);
     }
 
-
-    @Test
-    public SignUpPageAndroid registerWithPhoto() throws InterruptedException {
-        addPhoto();
-        validSignUp();
-        return new SignUpPageAndroid(driver);
+    public void setDateOfBirth() {
+        tapOn(dateOfBirth);
+        tapOn(dateOfBirthSet);
     }
 
-    @Test
-    public SignUpPageAndroid addPhoto() throws InterruptedException {
+    public void addPhoto() throws InterruptedException {
 
-        waitForVisibilityOf(driver, signUpButton);
+        waitForVisibilityOf(signUpButton);
+        tapOn(signUpButton);
 
-        driver.findElement(signUpButton).click();
+        waitForVisibilityOf(addPhotoButton);
+        tapOn(addPhotoButton);
 
-        driver.findElement(addPhotoButton).click();
+        waitForVisibilityOf(selectCamera);
+        tapOn(selectCamera);
 
-        Thread.sleep(2000);
-        driver.findElement(selectCamera).click();
+        Thread.sleep(3000);
 
-        waitForVisibilityOf(driver, makeShoot);
-        driver.findElement(makeShoot).click();
+        driver.tap(1, 300, 300, 300);
 
-        waitForVisibilityOf(driver, imageDone);
-        driver.findElement(imageDone).click();
+        waitAndTap(imageDoneMotorola);
 
-        driver.findElement(imageCrop).click();
+        tapOn(imageCrop);
+    }
 
-        return new SignUpPageAndroid(driver);
-    }*/
 }

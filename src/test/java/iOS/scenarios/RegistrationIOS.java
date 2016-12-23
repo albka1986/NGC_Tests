@@ -42,11 +42,6 @@ public class RegistrationIOS implements Registration {
         waitForVisibilityOf(signUpPage.email);
         driver.findElement(signInPage.signUpButton).click();
 
-        /** Bug #3594 - Sign Up: validation for field email is wrong
-         waitForVisibilityOf(driver, signUpPage.email);
-         String email = validation.randomValidEmail();
-         */
-
         waitForVisibilityOf(signUpPage.email);
         String email = "newUser" + new Random().nextInt(9999) + "@gmail.com";
 
@@ -113,20 +108,8 @@ public class RegistrationIOS implements Registration {
 
     }
 
-    private void allowingCamera(AppiumDriver driver) throws InterruptedException {
-        try {
-            WebElement element = driver.findElement(signUpPage.titleRequestCamera);
-            tapOn(signUpPage.allowCamera);
-        } catch (Exception e) {
-            System.out.println("Права уже предоставлены");
-        }
-    }
-
-
     @Override
-    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws
-            InterruptedException {
-
+    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location, boolean photo) throws InterruptedException {
         waitForVisibilityOf(signInPage.signUpButton);
         driver.findElement(signInPage.signUpButton).click();
 
@@ -178,6 +161,16 @@ public class RegistrationIOS implements Registration {
                 "]");
     }
 
+    private void allowingCamera(AppiumDriver driver) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(signUpPage.titleRequestCamera);
+            tapOn(signUpPage.allowCamera);
+        } catch (Exception e) {
+            System.out.println("Права уже предоставлены");
+        }
+    }
+
+
     @Override
     public void registrationForProduction() {
 
@@ -191,7 +184,7 @@ public class RegistrationIOS implements Registration {
 
     @Override
     public void signIn(AppiumDriver driver) {
-        waitForVisibilityOf(signInPage.signInButton);
-        tapOn(signInPage.signInButton);
+        waitForVisibilityOf(signUpPage.signInButton);
+        tapOn(signUpPage.signInButton);
     }
 }

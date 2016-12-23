@@ -23,15 +23,10 @@ public class Utilities {
     public static void takeScreenShot(AppiumDriver driver) {
         String destDir;
         DateFormat dateFormat;
-        // Set folder name to store screenshots.
         destDir = "screenshots";
-        // Capture screenshot.
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        // Set date format to set It as screenshot file name.
         dateFormat = new SimpleDateFormat("dd-MMM-yyyy__hh_mm_ssaa");
-        // Create folder under project with name "screenshots" provided to destDir.
         new File(destDir).mkdirs();
-        // Set file name using current date time.
         String destFile = dateFormat.format(new Date()) + ".png";
 
         try {
@@ -76,20 +71,23 @@ public class Utilities {
 
     public static void swipeRightToLeft(AppiumDriver driver) {
         driver.swipe(300, 300, 1, 300, 1500);
-
-
     }
 
-    public static void waitForVisibilityOf(By locator) {
+    public static void waitForVisibilityOf(By identification) {
         AppiumDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(identification));
     }
 
-    public static void waitForClickabilityOf(By locator) {
+    public static void waitAndTap(By locator) {
+        waitForVisibilityOf(locator);
+        tapOn(locator);
+    }
+
+    public static void waitForClickabilityOf(By identification) {
         AppiumDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        wait.until(ExpectedConditions.elementToBeClickable(identification));
     }
 
     public static By xpathBuilderByValue(String value) {
@@ -113,6 +111,7 @@ public class Utilities {
     }
 
     public static void sendKeys(By identification, String keys) {
+        waitForClickabilityOf(identification);
         driver.findElement(identification).sendKeys(keys);
     }
 

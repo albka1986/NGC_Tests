@@ -7,7 +7,7 @@ import static utilites.Utilities.xpathBuilderByValue;
 
 public class SignUpPageIOS {
 
-
+    public By signInButton = By.name("Sign In");
     public By email = xpathBuilderByValue("Email*");
     public By password = xpathBuilderByValue("Password*");
     public By confirmPassword = xpathBuilderByValue("Confirm Password*");

@@ -7,7 +7,6 @@ import android.pages.SignInPageAndroid;
 import android.pages.SignUpPageAndroid;
 import interfaces.Registration;
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.Keys;
 import utilites.Validation;
 
 import static utilites.Utilities.*;
@@ -93,97 +92,17 @@ public class RegistrationAndroid implements Registration {
         myProfilePage.logout();
     }
 
-
+    @Override
     public void addPhoto(AppiumDriver driver) throws InterruptedException {
 
-        waitForVisibilityOf(signInPage.signUpButton);
-        driver.findElement(signInPage.signUpButton).click();
-
-        waitForVisibilityOf(signUpPage.addPhotoButton);
-        driver.findElement(signUpPage.addPhotoButton).click();
-
-        waitForVisibilityOf(signUpPage.selectCamera);
-        driver.findElement(signUpPage.selectCamera).click();
-
-        waitForVisibilityOf(signUpPage.makeShoot);
-        driver.findElement(signUpPage.makeShoot).click();
-
-        waitForVisibilityOf(signUpPage.imageDone);
-        driver.findElement(signUpPage.imageDone).click();
-
-        driver.findElement(signUpPage.imageCrop).click();
     }
 
-    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location) throws InterruptedException {
 
-        waitForVisibilityOf(signInPage.signUpButton);
-
-        //step #1
-        tapOn(signInPage.signUpButton);
-
-        waitForVisibilityOf(signUpPage.email);
-
-        sendKeys(signUpPage.email, email);
-        hideKeyboard();
-        Thread.sleep(2000);
-
-        sendKeys(signUpPage.password, password);
-        hideKeyboard();
-        Thread.sleep(2000);
-
-        sendKeys(signUpPage.confirmPassword, password);
-        hideKeyboard();
-        Thread.sleep(2000);
-
-        sendKeys(signUpPage.name, name);
-        hideKeyboard();
-        Thread.sleep(2000);
-
-        swipingVerticalToTop();
-
-        if (!location.equals("")) {
-            driver.findElement(signUpPage.location).sendKeys(location);
-            Thread.sleep(10000);
-            driver.getKeyboard().pressKey(Keys.RETURN);
-        }
-
-        Thread.sleep(10000);
-
-
-        setDateOfBirth(driver);
-        Thread.sleep(2000);
-        hideKeyboard();
-
-        String birth = driver.findElement(signUpPage.dateOfBirthField).getText();
-
-        driver.findElement(signUpPage.termAndConditions).click();
-
-        System.out.println("Try to create:\n" +
-                "[" +
-                "Email: " + email +
-                "; Password: " + password +
-                "; Name: " + name +
-                "; Location: " + location +
-                "; Birthday: " + birth +
-                "]");
-
-        Thread.sleep(3000);
-        driver.findElement(signUpPage.nextStepButton).click();
-
-        //step #2
-        waitForVisibilityOf(signUpPage.tagSports);
-        driver.findElement(signUpPage.tagSports).click();
-        driver.findElement(signUpPage.createAccountButton).click();
-
-        waitForVisibilityOf(MyPostsPageAndroid.titleScreen);
-
-        System.out.println("User created: " +
-                "[" +
-                "Email: " + email +
-                "; Password: " + password +
-                "; Name: " + name +
-                "]");
+    @Override
+    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location, boolean photo) throws InterruptedException {
+        signUpPage.registrationByData(email, password, name, location, photo);
     }
+
 
     public void registrationForProduction() {
 
@@ -191,8 +110,7 @@ public class RegistrationAndroid implements Registration {
 
     @Override
     public void setDateOfBirth(AppiumDriver driver) {
-        tapOn(signUpPage.dateOfBirth);
-        tapOn(signUpPage.dateOfBirthSet);
+        signUpPage.setDateOfBirth();
     }
 
     @Override

@@ -1,97 +1,66 @@
 package interfaces;
 
-import io.appium.java_client.AppiumDriver;
-
-import static config.MyListener.getDriver;
+import static utilites.Validation.*;
 
 public interface Mapping {
 
-    default void mapper(String email, String password) throws InterruptedException {
+    default void mapper() throws InterruptedException {
 
-        AppiumDriver driver = getDriver();
+        String email = randomValidEmail();
+        String password = randomValidPassword();
+        String name = randomValidName();
+        String location = "";
 
-        signIn(email, password);
-        openDrawer();
-        openMyProfile();
-        openEditProfile();
-        saveChangesOnEditProfile();
-        logout();
+        openSignUp();
         openSignIn();
-        signUp();
-        openDrawer();
-        openSearch();
-        openSearchResult();
-        openUserProfile();
-        navBarBack();
-        navBarBack();
-        openDrawer();
-        openSettings();
-        openDrawer();
-        openMyFriends();
-        openDrawer();
-        openEventList();
-        //TODO: openEventDetails
-        openDrawer();
-        openAboutUs();
-        openDrawer();
-        openHotSpots();
-        openCreateHotspot();
-        openHotspotDetails();
-        openHotspotEdit();
-        saveChangesOnHotspot();
-        navBarBack();
-        openDrawer();
-        openCamps();
-        //TODO: addNewCamp();
-        //TODO: openCampDetails();
-        navBarBack();
+        signUp(email, password, name, location, true);
         logout();
+        signIn(email, password);
+        openMyProfile();
+        openSearch();
+        openMyPosts();
+        openHotspots();
+        openMyFriends();
+        openCamps();
+        openEvents();
+        openSettings();
+        openDirectories();
+        openInfoSources();
+
+        logout();
+
     }
 
-    void addNewCamp();
+    void openInfoSources();
+
+    void openDirectories();
+
+    void openMyPosts();
 
     void openCamps();
 
-    void saveChangesOnHotspot();
+    void openHotspots();
 
-    void openHotspotEdit();
-
-    void openHotspotDetails();
-
-    void openCreateHotspot();
-
-    void openHotSpots();
-
-    void openAboutUs();
-
-    void openEventList();
+    void openEvents();
 
     void openMyFriends();
 
-
     void openSettings();
 
-    void navBarBack();
+    void openSearch() throws InterruptedException;
 
-    void openUserProfile();
+    void signUp(String email, String password, String name, String location, boolean photo) throws InterruptedException;
 
-    void openSearchResult();
-
-    void openSearch();
-
-    void signUp();
 
     void signIn(String email, String password);
 
     void logout() throws InterruptedException;
-
-    void saveChangesOnEditProfile();
-
-    void openEditProfile();
 
     void openMyProfile() throws InterruptedException;
 
     void openDrawer() throws InterruptedException;
 
     void openSignIn();
+
+    void openSignUp();
 }

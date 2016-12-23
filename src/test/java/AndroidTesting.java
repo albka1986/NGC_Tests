@@ -34,12 +34,11 @@ public class AndroidTesting extends AndroidSetup {
 
     @Test
     public void registrationByData() throws InterruptedException {
-        registrationAndroid.registrationByData(driver, "mail4@mail.com", "12345678", "Oleh", "Odessa");
+        registrationAndroid.registrationByData(driver, "mail4@mail.com", "12345678", "Oleh", "Odessa", false);
     }
 
-    @Test
+    @Test(invocationCount = 10)
     public void mapping() throws InterruptedException {
-        mappingAndroid.mapper("mail@mail.com", "12345678");
+        mappingAndroid.mapper();
     }
-
 }

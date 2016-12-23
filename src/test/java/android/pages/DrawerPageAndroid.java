@@ -5,12 +5,29 @@ import org.openqa.selenium.By;
 
 public class DrawerPageAndroid extends AndroidSetup {
 
-    public static By drawerTap = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.view.View[1]/android.widget.ImageButton[1]");
+    public static By drawerButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.ImageButton[1]");
     public static By drawerAvatar = By.id(APP_PACKAGE_NAME + "drawer_avatar");
     public static By searchButton = By.id(APP_PACKAGE_NAME + "drawer_search_btn");
+    public static By myPostsButton = By.id(APP_PACKAGE_NAME + "drawer_posts_btn");
+    public static By hotspotsButton = By.id(APP_PACKAGE_NAME + "drawer_hotspots_btn");
+    public static By friendsButton = By.id(APP_PACKAGE_NAME + "drawer_friends_btn");
+    public static By campsButton = By.id(APP_PACKAGE_NAME + "drawer_camps_btn");
+    public static By eventsButton = By.id(APP_PACKAGE_NAME + "drawer_events_btn");
+    public static By settingsButton = By.id(APP_PACKAGE_NAME + "drawer_settings_btn");
+    public static By directoriesButton = By.id(APP_PACKAGE_NAME + "drawer_directories_btn");
+    public static By infoSourcesButton = By.id(APP_PACKAGE_NAME + "drawer_info_sources_btn");
 
-    public void drawerOpen() throws InterruptedException {
-        Thread.sleep(2500);
-        driver.tap(1, 100, 190, 1);
+
+    public void drawerOpen() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        int tapX = (int) (driver.manage().window().getSize().getWidth() * 0.08);
+        int tapY = (int) (driver.manage().window().getSize().getHeight() * 0.08);
+        driver.tap(1, tapX, tapY, 200);
     }
+
 }

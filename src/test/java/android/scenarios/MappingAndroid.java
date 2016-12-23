@@ -3,131 +3,140 @@ package android.scenarios;
 import android.pages.DrawerPageAndroid;
 import android.pages.MyProfilePageAndroid;
 import android.pages.SignInPageAndroid;
+import android.pages.SignUpPageAndroid;
 import interfaces.Mapping;
 
-import static utilites.Utilities.tapOn;
-import static utilites.Utilities.waitForVisibilityOf;
+import static android.pages.DrawerPageAndroid.*;
+import static utilites.Utilities.*;
 
 public class MappingAndroid implements Mapping {
-
-    SignInPageAndroid signInPage = new SignInPageAndroid();
-    DrawerPageAndroid drawerPage = new DrawerPageAndroid();
-    MyProfilePageAndroid myProfilePage = new MyProfilePageAndroid();
+    SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
+    SignInPageAndroid signInPageAndroid = new SignInPageAndroid();
+    DrawerPageAndroid drawerPageAndroid = new DrawerPageAndroid();
+    MyProfilePageAndroid myProfilePageAndroid = new MyProfilePageAndroid();
 
     @Override
-    public void addNewCamp() {
+    public void openInfoSources() {
+        openDrawer();
 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            swipingVerticalToTop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitAndTap(infoSourcesButton);
+    }
+
+    @Override
+    public void openDirectories() {
+        openDrawer();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            swipingVerticalToDown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitAndTap(directoriesButton);
+    }
+
+    @Override
+    public void openMyPosts() {
+        openDrawer();
+        waitAndTap(drawerPageAndroid.myPostsButton);
     }
 
     @Override
     public void openCamps() {
-
+        openDrawer();
+        waitAndTap(campsButton);
     }
 
     @Override
-    public void saveChangesOnHotspot() {
-
+    public void openHotspots() {
+        openDrawer();
+        waitAndTap(hotspotsButton);
     }
 
-    @Override
-    public void openHotspotEdit() {
-
-    }
 
     @Override
-    public void openHotspotDetails() {
-
-    }
-
-    @Override
-    public void openCreateHotspot() {
-
-    }
-
-    @Override
-    public void openHotSpots() {
-
-    }
-
-    @Override
-    public void openAboutUs() {
-
-    }
-
-    @Override
-    public void openEventList() {
-
+    public void openEvents() {
+        openDrawer();
+        waitAndTap(eventsButton);
     }
 
     @Override
     public void openMyFriends() {
-
+        openDrawer();
+        waitAndTap(friendsButton);
     }
 
     @Override
     public void openSettings() {
-
-    }
-
-    @Override
-    public void navBarBack() {
-
-    }
-
-    @Override
-    public void openUserProfile() {
-
-    }
-
-    @Override
-    public void openSearchResult() {
-
+        openDrawer();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            swipingVerticalToTop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitAndTap(settingsButton);
     }
 
     @Override
     public void openSearch() {
-
+        openDrawer();
+        waitAndTap(drawerPageAndroid.searchButton);
     }
 
     @Override
-    public void signUp() {
-
+    public void signUp(String email, String password, String name, String location, boolean photo) throws InterruptedException {
+        SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
+        signUpPageAndroid.registrationByData(email, password, name, location, photo);
     }
 
     @Override
     public void signIn(String email, String password) {
-        signInPage.signIn(email, password);
+        signInPageAndroid.signIn(email, password);
     }
 
     @Override
     public void logout() throws InterruptedException {
-        myProfilePage.logout();
+        myProfilePageAndroid.logout();
     }
 
     @Override
-    public void saveChangesOnEditProfile() {
-
+    public void openMyProfile() {
+        openDrawer();
+        waitForVisibilityOf(drawerPageAndroid.drawerAvatar);
+        tapOn(drawerPageAndroid.drawerAvatar);
     }
 
     @Override
-    public void openEditProfile() {
-    }
-
-    @Override
-    public void openMyProfile() throws InterruptedException {
-        drawerPage.drawerOpen();
-        waitForVisibilityOf(drawerPage.drawerAvatar);
-        tapOn(drawerPage.drawerAvatar);
-
-    }
-
-    @Override
-    public void openDrawer() throws InterruptedException {
-        drawerPage.drawerOpen();
+    public void openDrawer() {
+        drawerPageAndroid.drawerOpen();
     }
 
     @Override
     public void openSignIn() {
+        waitAndTap(signUpPageAndroid.signInButton);
+    }
 
+    @Override
+    public void openSignUp() {
+        waitAndTap(signInPageAndroid.signUpButton);
     }
 }
