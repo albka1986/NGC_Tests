@@ -11,13 +11,13 @@ import java.net.URL;
 
 public class IOSSetup {
 
-    public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_4";
-    public final static String BUILD_NAME = "ngc_0.4.3.app";
+    public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_5";
+    public final static String BUILD_NAME = "ngc_0.5.3.app";
     protected IOSDriver driver;
 
     public void prepareIosSimulator() throws IOException, InterruptedException {
 
-        Terminal.sendCommandToTerminal();
+        Terminal.sendCommandToTerminalDetails();
 
         System.out.println("Setting capabilities...");
         File appDir = new File(BUILD_PATH);

@@ -45,8 +45,8 @@ public class IOSTesting extends IOSSetup {
     }
 
     @Test
-    public void mapping() {
-
+    public void mapping() throws InterruptedException {
+        mappingIOS.mapper();
     }
 
     @AfterClass

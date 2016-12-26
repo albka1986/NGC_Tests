@@ -2,8 +2,8 @@ package iOS.pages;/* Created by Ponomarenko Oleh on 29/11/16. */
 
 import org.openqa.selenium.By;
 
-import static utilites.Utilities.xpathBuilderByText;
-import static utilites.Utilities.xpathBuilderByValue;
+import static android.pages.SignInPageAndroid.signUpButton;
+import static utilites.Utilities.*;
 
 public class SignUpPageIOS {
 
@@ -24,4 +24,14 @@ public class SignUpPageIOS {
     public By allowCamera = By.name("OK");
     public By cameraRoll = xpathBuilderByText("Camera Roll");
     public By chooseButton = By.name("Choose");
+
+    public void openSignIn() {
+        waitAndTap(signInButton);
+    }
+
+    public void registrationByData(String email, String password, String name, String location, boolean photo) {
+        waitAndTap(signUpButton);
+
+    }
+
 }

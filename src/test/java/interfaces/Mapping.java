@@ -20,7 +20,7 @@ public interface Mapping {
         openSearch();
         openMyPosts();
         openHotspots();
-        openMyFriends();
+        openFriends();
         openCamps();
         openEvents();
         openSettings();
@@ -43,7 +43,7 @@ public interface Mapping {
 
     void openEvents();
 
-    void openMyFriends();
+    void openFriends();
 
     void openSettings();
 

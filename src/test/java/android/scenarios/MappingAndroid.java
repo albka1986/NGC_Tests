@@ -75,7 +75,7 @@ public class MappingAndroid implements Mapping {
     }
 
     @Override
-    public void openMyFriends() {
+    public void openFriends() {
         openDrawer();
         waitAndTap(friendsButton);
     }

@@ -17,8 +17,8 @@ public class AndroidSetup {
     public final static File app = new File(BUILD_PATH, BUILD_NAME);
     public static AndroidDriver driver;
 
-    private final String udidMotorolaMotoE = "ZX1B24GVX2";
-    private final String udidMotorolaMotoEWIFI = "192.168.0.92:5555";
+    private final String DEVICE_MOTOROLA = "ZX1B24GVX2";
+    private final String DEVICE_MOTOROLA_WIFI = "192.168.0.92:5555";
 
 
     public static AndroidDriver getDriver() {
@@ -33,7 +33,7 @@ public class AndroidSetup {
         System.out.println("Testing build: " + BUILD_NAME);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("udid", udidMotorolaMotoEWIFI); // Motorola Moto E
+        capabilities.setCapability("udid", DEVICE_MOTOROLA); // Motorola Moto E
         capabilities.setCapability("deviceName", "AndroidEmulator");
         capabilities.setCapability("platformName", "Android");
 

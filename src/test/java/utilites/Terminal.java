@@ -17,7 +17,7 @@ public class Terminal {
     }
 
     @Test
-    public static void sendCommandToTerminal2() throws IOException, InterruptedException {
+    public static void sendCommandToTerminalDetails() throws IOException, InterruptedException {
         System.out.println("Running Appium...");
         Runtime.getRuntime().exec("killall node");
         String command = "appium --reboot --address 127.0.0.1 --port 4723";
