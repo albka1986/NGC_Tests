@@ -56,11 +56,11 @@ public class SignUpPageAndroid extends AndroidSetup {
         hideKeyboard();
         Thread.sleep(4000);
 
+        swipingVerticalToTop();
+
         sendKeys(this.name, name);
         hideKeyboard();
         Thread.sleep(2000);
-
-        swipingVerticalToTop();
 
         if (!location.equals("")) {
             driver.findElement(this.location).sendKeys(location);
@@ -79,7 +79,7 @@ public class SignUpPageAndroid extends AndroidSetup {
 
         driver.findElement(termAndConditions).click();
 
-        System.out.println("Try to create:\n" +
+        System.out.println("Try to create: " +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
