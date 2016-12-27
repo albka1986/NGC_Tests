@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 
@@ -117,5 +119,15 @@ public class Utilities {
 
     public static boolean trueOrFalse() {
         return new Random().nextBoolean();
+    }
+
+    public static String getTimeNow() {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm");
+
+        LocalDateTime now = LocalDateTime.now();
+        String timeNow = dtf.format(now);
+
+        return timeNow;
     }
 }

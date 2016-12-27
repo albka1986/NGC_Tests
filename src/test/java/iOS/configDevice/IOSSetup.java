@@ -30,8 +30,8 @@ public class IOSSetup {
         capabilities.setCapability("platformVersion", "10.1");
         capabilities.setCapability("udid", "17E09D32-9C73-4461-997F-F9F92CC1B64A");
         capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("fullReset", "false");
-        capabilities.setCapability("noReset", "true");
+        capabilities.setCapability("fullReset", "true");
+        capabilities.setCapability("noReset", "false");
 
         System.out.printf("Begin to create a new Driver");
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

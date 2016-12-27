@@ -127,7 +127,10 @@ public class MappingIOS implements Mapping {
     public void mapper() throws InterruptedException {
         String email = "";
         String password = "";
+        openSignUp();
+        openSignIn();
         signIn(email, password);
+
         openMyProfile();
         openSearch();
         openMyPosts();

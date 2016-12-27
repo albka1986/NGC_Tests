@@ -1,22 +1,11 @@
 package utilites;
 
-import org.testng.annotations.Test;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Terminal {
 
-    public static void sendCommandToTerminal() throws IOException, InterruptedException {
-        System.out.println("Running Appium ");
-        String command = "appium --reboot --address 127.0.0.1 --port 4723";
-        Runtime.getRuntime().exec(command);
-        Thread.sleep(15000);
-        System.out.println("Appium launched");
-    }
-
-    @Test
     public static void sendCommandToTerminalDetails() throws IOException, InterruptedException {
         System.out.println("Running Appium...");
         Runtime.getRuntime().exec("killall node");
