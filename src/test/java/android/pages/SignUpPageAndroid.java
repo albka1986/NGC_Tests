@@ -42,6 +42,7 @@ public class SignUpPageAndroid extends AndroidSetup {
 
         if (photo) {
             addPhoto();
+            Thread.sleep(5000);
         }
 
         sendKeys(this.email, email);
@@ -124,9 +125,11 @@ public class SignUpPageAndroid extends AndroidSetup {
         waitForVisibilityOf(selectCamera);
         tapOn(selectCamera);
 
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
-        driver.tap(1, 300, 300, 300);
+        driver.tap(1, 300, 300, 200);
+
+        Thread.sleep(3000);
 
         waitAndTap(imageDoneMotorola);
 

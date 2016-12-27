@@ -65,6 +65,11 @@ public class MappingAndroid implements Mapping {
     public void openHotspots() {
         openDrawer();
         waitAndTap(hotspotsButton);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 

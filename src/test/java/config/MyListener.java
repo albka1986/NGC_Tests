@@ -5,12 +5,6 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import utilites.Utilities;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
-
-import static utilites.Record.startRecord;
-import static utilites.Record.stopVideo;
-
 public class MyListener extends TestListenerAdapter {
     public static String platform;
     public static AppiumDriver driver;
@@ -43,23 +37,22 @@ public class MyListener extends TestListenerAdapter {
     @Override
     public void onTestStart(ITestResult result) {
         super.onTestStart(result);
-
+/*
         try {
             startRecord(platform, device);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        try {
+        Utilities.takeScreenShot(this.driver);
+       /* try {
             stopVideo("android");
         } catch (IOException | InterruptedException | TimeoutException e) {
             e.printStackTrace();
-        }
-
-        Utilities.takeScreenShot(this.driver);
+        }*/
         driver.quit();
     }
 
@@ -70,17 +63,24 @@ public class MyListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
+/*
         try {
-            stopVideo("android");
-        } catch (IOException | InterruptedException | TimeoutException e) {
+            cancelVideo("android");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
+
         try {
             Thread.sleep(120000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        System.out.println("Test is OK");
+        }*/
+
+        System.out.println("The tests are OK!!!");
 
     }
 
