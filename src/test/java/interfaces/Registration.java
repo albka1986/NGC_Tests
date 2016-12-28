@@ -7,8 +7,6 @@ public interface Registration {
 
     void logout(AppiumDriver driver) throws InterruptedException;
 
-    void addPhoto(AppiumDriver driver) throws InterruptedException;
-
     default void validRandomRegistration(AppiumDriver driver) throws InterruptedException {
         validRandomSignUp(driver);
         logout(driver);
@@ -16,9 +14,4 @@ public interface Registration {
 
     void registrationByData(AppiumDriver driver, String email, String password, String name, String location, boolean photo) throws InterruptedException;
 
-    void registrationForProduction();
-
-    void setDateOfBirth(AppiumDriver driver);
-
-    void signIn(AppiumDriver driver);
 }

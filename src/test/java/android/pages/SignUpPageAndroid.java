@@ -4,7 +4,7 @@ import android.configDevice.AndroidSetup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-import static android.pages.SignInPageAndroid.signUpButton;
+import static iOS.pages.SignInPageIOS.signUpButton;
 import static utilites.Utilities.*;
 import static utilites.Validation.*;
 
@@ -143,17 +143,17 @@ public class SignUpPageAndroid extends AndroidSetup {
         //TODO: change to method trueOrFalse when problem with memory will be fixed;
         if (false) {
             addPhoto();
-            waitForVisibilityOf(signUpButton);
+            waitForVisibilityOf(this.email);
         }
 
         //step #1
-        driver.findElement(signUpButton).click();
+        waitAndTap(signUpButton);
 
         String email = randomValidEmail();
-        driver.findElement(this.email).sendKeys(email);
+        sendKeys(this.email, email);
 
         String password = randomValidPassword();
-        driver.findElement(this.password).sendKeys(password);
+        sendKeys(this.password, password);
         hideKeyboard();
 
         sendKeys(this.confirmPassword, password);

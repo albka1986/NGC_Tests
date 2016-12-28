@@ -5,6 +5,7 @@ import static utilites.Utilities.hideKeyboard;
 
 public interface Camps {
 
+
     default void createCamp(int amount) throws InterruptedException {
         validRandomSignUp();
         openCamps();
@@ -14,7 +15,7 @@ public interface Camps {
         logout();
     }
 
-    void logout();
+    void logout() throws InterruptedException;
 
     void validRandomSignUp() throws InterruptedException;
 

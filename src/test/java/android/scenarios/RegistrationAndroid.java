@@ -27,11 +27,6 @@ public class RegistrationAndroid implements Registration {
         myProfilePage.logout();
     }
 
-    @Override
-    public void addPhoto(AppiumDriver driver) throws InterruptedException {
-
-    }
-
 
     @Override
     public void registrationByData(AppiumDriver driver, String email, String password, String name, String location, boolean photo) throws InterruptedException {
@@ -43,12 +38,4 @@ public class RegistrationAndroid implements Registration {
 
     }
 
-    @Override
-    public void setDateOfBirth(AppiumDriver driver) {
-        signUpPage.setDateOfBirth();
-    }
-
-    @Override
-    public void signIn(AppiumDriver driver) {
-    }
 }

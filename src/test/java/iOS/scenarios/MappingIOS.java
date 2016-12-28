@@ -1,16 +1,10 @@
 package iOS.scenarios;/* Created by Ponomarenko Oleh on 23/12/16. */
 
-import config.MyListener;
 import iOS.pages.DrawerPageIOS;
 import iOS.pages.MyProfilePageIOS;
 import iOS.pages.SignInPageIOS;
 import iOS.pages.SignUpPageIOS;
 import interfaces.Mapping;
-import io.appium.java_client.AppiumDriver;
-
-import static iOS.pages.DrawerPageIOS.*;
-import static utilites.Utilities.swipingVerticalToTop;
-import static utilites.Utilities.waitAndTap;
 
 public class MappingIOS implements Mapping {
 
@@ -19,74 +13,6 @@ public class MappingIOS implements Mapping {
     DrawerPageIOS drawerPageIOS = new DrawerPageIOS();
     MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
 
-    @Override
-    public void openInfoSources() {
-        openDrawer();
-        try {
-            swipingVerticalToTop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitAndTap(infoSourcesButton);
-    }
-
-    @Override
-    public void openDirectories() {
-        openDrawer();
-        waitAndTap(directoriesButton);
-    }
-
-    @Override
-    public void openMyPosts() {
-        openDrawer();
-        waitAndTap(myPostsButton);
-
-    }
-
-    @Override
-    public void openCamps() {
-        openDrawer();
-        waitAndTap(campsButton);
-
-    }
-
-    @Override
-    public void openHotspots() {
-        openDrawer();
-        waitAndTap(hotspotsButton);
-        AppiumDriver driver = MyListener.getDriver();
-        String allow = "Allow \"Camp Dev\" to access your location while you use the app?";
-    }
-
-    @Override
-    public void openEvents() {
-        openDrawer();
-        waitAndTap(eventsButton);
-    }
-
-    @Override
-    public void openFriends() {
-        openDrawer();
-        waitAndTap(friendsButton);
-    }
-
-    @Override
-    public void openSettings() {
-        openDrawer();
-        try {
-            swipingVerticalToTop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitAndTap(settingsButton);
-
-    }
-
-    @Override
-    public void openSearch() {
-        openDrawer();
-        waitAndTap(searchButton);
-    }
 
     @Override
     public void signUp(String email, String password, String name, String location, boolean photo) throws InterruptedException {
@@ -95,7 +21,7 @@ public class MappingIOS implements Mapping {
 
     @Override
     public void signIn(String email, String password) {
-        signInPageIOS.signInByData("", "");
+        signInPageIOS.signIn("", "");
     }
 
     @Override
@@ -105,7 +31,7 @@ public class MappingIOS implements Mapping {
 
     @Override
     public void openMyProfile() throws InterruptedException {
-
+        drawerPageIOS.openMyProfile();
     }
 
     @Override
@@ -143,5 +69,50 @@ public class MappingIOS implements Mapping {
         openInfoSources();
 
         logout();
+    }
+
+    @Override
+    public void openInfoSources() {
+        drawerPageIOS.openInfoSources();
+    }
+
+    @Override
+    public void openDirectories() {
+        drawerPageIOS.openDirectories();
+    }
+
+    @Override
+    public void openMyPosts() {
+        drawerPageIOS.openMyPosts();
+    }
+
+    @Override
+    public void openCamps() {
+        drawerPageIOS.openCamps();
+    }
+
+    @Override
+    public void openHotspots() {
+        drawerPageIOS.openHotspots();
+    }
+
+    @Override
+    public void openEvents() {
+        drawerPageIOS.openEvents();
+    }
+
+    @Override
+    public void openFriends() {
+        drawerPageIOS.openFriends();
+    }
+
+    @Override
+    public void openSettings() {
+        drawerPageIOS.openSettings();
+    }
+
+    @Override
+    public void openSearch() throws InterruptedException {
+        drawerPageIOS.openSearch();
     }
 }
