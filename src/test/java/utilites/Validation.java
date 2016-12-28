@@ -19,8 +19,8 @@ public class Validation {
     public final static int MIN_LENGTH_PASSWORD = 8;
     public final static int MAX_LENGTH_PASSWORD = 18;
     public final static String PASSWORD_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._";
-    /***/
-    //ConfirmPassword == password
+
+    //ConfirmPassword = password;
 
     // name
     public final static int MIN_LENGTH_NAME = 2;
@@ -30,8 +30,6 @@ public class Validation {
     public final static int MIN_LENGTH_LOCATION = 5;
     public final static int MAX_LENGTH_LOCATION = 40;
     public final static String LOCATION_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz /.,";
-
-    //[]*
 
     /*
      Birthday: minAge >= 18;
@@ -49,6 +47,17 @@ public class Validation {
     public final static int MIN_LENGTH_TAG = 2;
     public final static int MAX_LENGTH_TAG = 15;
     public final static String TAG_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
+    //Camp Title
+    public final static int MIN_CAMP_TITLE_LENGTH = 3;
+    public final static int MAX_CAMP_TITLE_LENGTH = 20;
+    public final static String CAMP_TITLE_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789_-.!?',";
+
+    //Camp Start Message
+    public final static int MIN_CAMP_START_MESSAGE_LENGTH = 3;
+    public final static int MAX_CAMP_START_MESSAGE_LENGTH = 300;
+    public final static String CAMP_START_MESSAGE_CONTAINS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789_-.!?',";
+
 
     static Random random = new Random();
 
@@ -76,7 +85,7 @@ public class Validation {
                     break;
                 case 2:
                     if (randomChar == '_' && randomChar == '-') {
-                        continue;
+                        break;
                     }
                     z += randomChar;
                     break;
@@ -155,6 +164,30 @@ public class Validation {
             tag.append(randomChar);
         } while (tag.length() != randomLengthTag);
         return tag.toString();
+    }
+
+    public static String randomValidCampTitle() {
+        int randomLengthOfCampTitle = random.nextInt(MAX_CAMP_TITLE_LENGTH - MIN_CAMP_TITLE_LENGTH + 1) + MIN_CAMP_TITLE_LENGTH;
+        StringBuilder campTitle = new StringBuilder(randomLengthOfCampTitle);
+        do {
+            int numberChar = random.nextInt(CAMP_TITLE_CONTAINS.length());
+            char randomChar = CAMP_TITLE_CONTAINS.charAt(numberChar);
+            campTitle.append(randomChar);
+        }
+        while (campTitle.length() != randomLengthOfCampTitle);
+        return campTitle.toString();
+    }
+
+    public static String randomValidCampStartMessage() {
+        int randomLengthOfCampStartMessage = random.nextInt(MAX_CAMP_START_MESSAGE_LENGTH - MIN_CAMP_START_MESSAGE_LENGTH + 1) + MIN_CAMP_START_MESSAGE_LENGTH;
+        StringBuilder campTitle = new StringBuilder(randomLengthOfCampStartMessage);
+        do {
+            int numberChar = random.nextInt(CAMP_START_MESSAGE_CONTAINS.length());
+            char randomChar = CAMP_START_MESSAGE_CONTAINS.charAt(numberChar);
+            campTitle.append(randomChar);
+        }
+        while (campTitle.length() != randomLengthOfCampStartMessage);
+        return campTitle.toString();
     }
 
     public String randomFavoriteProduct() {
