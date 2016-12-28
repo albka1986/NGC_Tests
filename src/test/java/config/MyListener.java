@@ -48,7 +48,7 @@ public class MyListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult tr) {
         Utilities.takeScreenShot(this.driver);
-       /* try {
+        /*try {
             stopVideo("android");
         } catch (IOException | InterruptedException | TimeoutException e) {
             e.printStackTrace();

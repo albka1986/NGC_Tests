@@ -6,8 +6,7 @@ import android.pages.SignInPageAndroid;
 import android.pages.SignUpPageAndroid;
 import interfaces.Mapping;
 
-import static android.pages.DrawerPageAndroid.*;
-import static utilites.Utilities.*;
+import static utilites.Utilities.waitAndTap;
 
 public class MappingAndroid implements Mapping {
     SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
@@ -17,99 +16,52 @@ public class MappingAndroid implements Mapping {
 
     @Override
     public void openInfoSources() {
-        openDrawer();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            swipingVerticalToTop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitAndTap(infoSourcesButton);
+        drawerPageAndroid.openInfoSources();
     }
 
     @Override
     public void openDirectories() {
-        openDrawer();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            swipingVerticalToDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitAndTap(directoriesButton);
+        drawerPageAndroid.openDirectories();
     }
 
     @Override
     public void openMyPosts() {
-        openDrawer();
-        waitAndTap(drawerPageAndroid.myPostsButton);
+        drawerPageAndroid.openMyPosts();
     }
 
     @Override
     public void openCamps() {
-        openDrawer();
-        waitAndTap(campsButton);
+        drawerPageAndroid.openCamps();
     }
 
     @Override
     public void openHotspots() {
-        openDrawer();
-        waitAndTap(hotspotsButton);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        drawerPageAndroid.openHotspots();
     }
 
 
     @Override
     public void openEvents() {
-        openDrawer();
-        waitAndTap(eventsButton);
+        drawerPageAndroid.openDirectories();
     }
 
     @Override
     public void openFriends() {
-        openDrawer();
-        waitAndTap(friendsButton);
+        drawerPageAndroid.openFriends();
     }
 
     @Override
     public void openSettings() {
-        openDrawer();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            swipingVerticalToTop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitAndTap(settingsButton);
+        drawerPageAndroid.openSettings();
     }
 
     @Override
     public void openSearch() {
-        openDrawer();
-        waitAndTap(drawerPageAndroid.searchButton);
+        drawerPageAndroid.openSearch();
     }
 
     @Override
     public void signUp(String email, String password, String name, String location, boolean photo) throws InterruptedException {
-        SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
         signUpPageAndroid.registrationByData(email, password, name, location, photo);
     }
 
@@ -125,9 +77,7 @@ public class MappingAndroid implements Mapping {
 
     @Override
     public void openMyProfile() {
-        openDrawer();
-        waitForVisibilityOf(drawerPageAndroid.drawerAvatar);
-        tapOn(drawerPageAndroid.drawerAvatar);
+        drawerPageAndroid.openMyProfile();
     }
 
     @Override

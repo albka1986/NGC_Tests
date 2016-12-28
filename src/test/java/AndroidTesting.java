@@ -1,7 +1,9 @@
 import android.configDevice.AndroidSetup;
+import android.scenarios.CampsAndroid;
 import android.scenarios.MappingAndroid;
 import android.scenarios.RegistrationAndroid;
 import config.MyListener;
+import interfaces.Camps;
 import interfaces.Mapping;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -13,11 +15,12 @@ public class AndroidTesting extends AndroidSetup {
 
     RegistrationAndroid registrationAndroid = new RegistrationAndroid();
     Mapping mappingAndroid = new MappingAndroid();
+    Camps camps;
 
     @BeforeClass
     public void setUp() throws Exception {
         prepareAndroidDevice();
-        System.out.println("Has prepared device Android");
+        System.out.println("Android is ready for testing!");
     }
 
     @AfterClass
@@ -27,7 +30,7 @@ public class AndroidTesting extends AndroidSetup {
         driver.quit();
     }
 
-    @Test(invocationCount = 100)
+    @Test(invocationCount = 10)
     public void validRandomRegistration() throws InterruptedException {
         registrationAndroid.validRandomRegistration(driver);
     }
@@ -40,5 +43,11 @@ public class AndroidTesting extends AndroidSetup {
     @Test(invocationCount = 10)
     public void mapping() throws InterruptedException {
         mappingAndroid.mapper();
+    }
+
+    @Test
+    public void camps() throws InterruptedException {
+        camps = new CampsAndroid();
+        camps.createCamp(1);
     }
 }

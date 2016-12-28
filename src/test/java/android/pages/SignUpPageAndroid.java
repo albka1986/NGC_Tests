@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 
 import static android.pages.SignInPageAndroid.signUpButton;
 import static utilites.Utilities.*;
+import static utilites.Validation.*;
 
 public class SignUpPageAndroid extends AndroidSetup {
 
@@ -134,6 +135,73 @@ public class SignUpPageAndroid extends AndroidSetup {
         waitAndTap(imageDoneMotorola);
 
         tapOn(imageCrop);
+    }
+
+    public void validRandomSignUp() throws InterruptedException {
+
+        waitForVisibilityOf(signUpButton);
+        //TODO: change to method trueOrFalse when problem with memory will be fixed;
+        if (false) {
+            addPhoto();
+            waitForVisibilityOf(signUpButton);
+        }
+
+        //step #1
+        driver.findElement(signUpButton).click();
+
+        String email = randomValidEmail();
+        driver.findElement(this.email).sendKeys(email);
+
+        String password = randomValidPassword();
+        driver.findElement(this.password).sendKeys(password);
+        hideKeyboard();
+
+        sendKeys(this.confirmPassword, password);
+        hideKeyboard();
+
+
+        String name = randomValidName();
+        sendKeys(this.name, name);
+        hideKeyboard();
+
+        swipingVerticalToTop();
+
+        String location = randomValidLocation();
+        driver.findElement(this.location).sendKeys(location);
+        hideKeyboard();
+
+        setDateOfBirth();
+        String birth = driver.findElement(dateOfBirthField).getText();
+
+        driver.findElement(this.termAndConditions).click();
+
+        System.out.println("Try to create:\n" +
+                "[" +
+                "Email: " + email +
+                "; Password: " + password +
+                "; Name: " + name +
+                "; Location: " + location +
+                "; Birthday: " + birth +
+                "]");
+
+        Thread.sleep(3000);
+        driver.findElement(nextStepButton).click();
+
+        //step #2
+        waitForVisibilityOf(tagSports);
+        driver.findElement(tagSports).click();
+        driver.findElement(createAccountButton).click();
+
+        waitForVisibilityOf(MyPostsPageAndroid.titleScreen);
+
+        System.out.println("Try to create:\n" +
+                "[" +
+                "Email: " + email +
+                "; Password: " + password +
+                "; Name: " + name +
+                "; Location: " + location +
+                "; Birthday: " + birth +
+                "]");
     }
 
 }

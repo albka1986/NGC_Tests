@@ -39,7 +39,7 @@ public class AndroidSetup {
 
         capabilities.setCapability("app", app.getAbsolutePath());
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-
+        System.out.println("driver is set");
         MyListener.setDriver(driver);
         MyListener.setDevice(device);
         MyListener.setPlatform(platform);

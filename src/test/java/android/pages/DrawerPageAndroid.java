@@ -3,6 +3,8 @@ package android.pages;/* Created by Ponomarenko Oleh on 07/11/16. */
 import android.configDevice.AndroidSetup;
 import org.openqa.selenium.By;
 
+import static utilites.Utilities.*;
+
 public class DrawerPageAndroid extends AndroidSetup {
 
     public static By drawerButton = By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.ImageButton[1]");
@@ -28,6 +30,95 @@ public class DrawerPageAndroid extends AndroidSetup {
         int tapX = (int) (driver.manage().window().getSize().getWidth() * 0.08);
         int tapY = (int) (driver.manage().window().getSize().getHeight() * 0.08);
         driver.tap(1, tapX, tapY, 200);
+    }
+
+    public void openInfoSources() {
+        drawerOpen();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            swipingVerticalToTop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitAndTap(infoSourcesButton);
+    }
+
+    public void openDirectories() {
+        drawerOpen();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            swipingVerticalToDown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitAndTap(this.directoriesButton);
+    }
+
+    public void openMyPosts() {
+        drawerOpen();
+        waitAndTap(this.myPostsButton);
+    }
+
+    public void openCamps() {
+        drawerOpen();
+        waitAndTap(campsButton);
+    }
+
+    public void openHotspots() {
+        drawerOpen();
+        waitAndTap(hotspotsButton);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void openEvents() {
+        drawerOpen();
+        waitAndTap(eventsButton);
+    }
+
+    public void openFriends() {
+        drawerOpen();
+        waitAndTap(friendsButton);
+    }
+
+    public void openSettings() {
+        drawerOpen();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            swipingVerticalToTop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitAndTap(settingsButton);
+    }
+
+    public void openSearch() {
+        drawerOpen();
+        waitAndTap(this.searchButton);
+    }
+
+    public void openMyProfile() {
+        drawerOpen();
+        waitForVisibilityOf(this.drawerAvatar);
+        tapOn(this.drawerAvatar);
     }
 
 }
