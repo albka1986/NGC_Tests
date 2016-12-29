@@ -1,9 +1,11 @@
 import config.MyListener;
 import iOS.configDevice.IOSSetup;
 import iOS.scenarios.CampsIOS;
+import iOS.scenarios.HotspotsIOS;
 import iOS.scenarios.MappingIOS;
 import iOS.scenarios.RegistrationIOS;
 import interfaces.Camps;
+import interfaces.Hotspot;
 import interfaces.Mapping;
 import interfaces.Registration;
 import org.testng.annotations.AfterClass;
@@ -45,7 +47,13 @@ public class IOSTesting extends IOSSetup {
     @Test
     public void camps() throws InterruptedException {
         Camps camps = new CampsIOS();
-        camps.createCamp(10);
+        camps.createCamp(3);
+    }
+
+    @Test
+    public void hotspots() throws InterruptedException {
+        Hotspot hotspot = new HotspotsIOS();
+        hotspot.createHotspot(1);
     }
 
     @AfterClass

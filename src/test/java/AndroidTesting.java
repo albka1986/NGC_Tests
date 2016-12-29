@@ -1,9 +1,11 @@
 import android.configDevice.AndroidSetup;
 import android.scenarios.CampsAndroid;
+import android.scenarios.HotspotAndroid;
 import android.scenarios.MappingAndroid;
 import android.scenarios.RegistrationAndroid;
 import config.MyListener;
 import interfaces.Camps;
+import interfaces.Hotspot;
 import interfaces.Mapping;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,6 +18,7 @@ public class AndroidTesting extends AndroidSetup {
     RegistrationAndroid registrationAndroid = new RegistrationAndroid();
     Mapping mappingAndroid = new MappingAndroid();
     Camps camps;
+
 
     @BeforeClass
     public void setUp() throws Exception {
@@ -40,7 +43,7 @@ public class AndroidTesting extends AndroidSetup {
         registrationAndroid.registrationByData(driver, "mail4@mail.com", "12345678", "Oleh", "Odessa", false);
     }
 
-    @Test(invocationCount = 10)
+    @Test(invocationCount = 5)
     public void mapping() throws InterruptedException {
         mappingAndroid.mapper();
     }
@@ -50,4 +53,11 @@ public class AndroidTesting extends AndroidSetup {
         camps = new CampsAndroid();
         camps.createCamp(1);
     }
+
+    @Test
+    public void hotspots() throws InterruptedException {
+        Hotspot hotspot = new HotspotAndroid();
+        hotspot.createHotspot(1);
+    }
+
 }

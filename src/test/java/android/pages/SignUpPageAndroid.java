@@ -4,7 +4,7 @@ import android.configDevice.AndroidSetup;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-import static iOS.pages.SignInPageIOS.signUpButton;
+import static android.pages.SignInPageAndroid.signUpButton;
 import static utilites.Utilities.*;
 import static utilites.Validation.*;
 

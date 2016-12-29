@@ -115,7 +115,7 @@ public class Utilities {
     public static void sendKeys(By identification, String keys) {
         waitForClickabilityOf(identification);
         driver.findElement(identification).sendKeys(keys);
-        System.out.println("Keys: " + keys);
+        System.out.println(identification + keys);
     }
 
     public static boolean trueOrFalse() {
