@@ -6,7 +6,6 @@ import iOS.scenarios.MappingIOS;
 import iOS.scenarios.RegistrationIOS;
 import interfaces.Camps;
 import interfaces.Hotspot;
-import interfaces.Mapping;
 import interfaces.Registration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,11 +16,12 @@ import org.testng.annotations.Test;
 public class IOSTesting extends IOSSetup {
 
     Registration registration = new RegistrationIOS();
-    Mapping mappingIOS = new MappingIOS();
+
 
     @BeforeClass
     public void setUp() throws Exception {
         prepareIosSimulator();
+//        prepareIosDevice();
     }
 
     @Test(invocationCount = 30)
@@ -39,8 +39,9 @@ public class IOSTesting extends IOSSetup {
         registration.logout(driver);
     }
 
-    @Test
+    @Test(invocationCount = 3)
     public void mapping() throws InterruptedException {
+        MappingIOS mappingIOS = new MappingIOS();
         mappingIOS.mapper();
     }
 

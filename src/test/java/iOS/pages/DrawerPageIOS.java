@@ -100,6 +100,6 @@ public class DrawerPageIOS extends IOSSetup {
 
         driver.tap(1, 100, 100, 500); //tap on drawerAvatar
 
-        waitAndTap(logoutButton);
+        waitForVisibilityOf(logoutButton);
     }
 }

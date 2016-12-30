@@ -62,7 +62,7 @@ public class SignUpPageAndroid extends AndroidSetup {
 
         sendKeys(this.name, name);
         hideKeyboard();
-        Thread.sleep(2000);
+        swipingVerticalToTop();
 
         if (!location.equals("")) {
             driver.findElement(this.location).sendKeys(location);

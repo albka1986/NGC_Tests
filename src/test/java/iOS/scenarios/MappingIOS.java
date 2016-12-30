@@ -55,6 +55,7 @@ public class MappingIOS implements Mapping {
         String password = "";
         openSignUp();
         openSignIn();
+
         signIn(email, password);
 
         openMyProfile();
