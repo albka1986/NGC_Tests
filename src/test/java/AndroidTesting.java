@@ -1,8 +1,6 @@
 import android.configDevice.AndroidSetup;
-import android.scenarios.CampsAndroid;
-import android.scenarios.HotspotAndroid;
-import android.scenarios.MappingAndroid;
-import android.scenarios.RegistrationAndroid;
+import android.pages.SignInPageAndroid;
+import android.scenarios.*;
 import config.MyListener;
 import interfaces.Camps;
 import interfaces.Hotspot;
@@ -43,7 +41,7 @@ public class AndroidTesting extends AndroidSetup {
         registrationAndroid.registrationByData(driver, "mail6@mail.com", "12345678", "Oleh", "", false);
     }
 
-    @Test(invocationCount = 3)
+    @Test(invocationCount = 1)
     public void mapping() throws InterruptedException {
         mappingAndroid.mapper();
     }
@@ -58,6 +56,20 @@ public class AndroidTesting extends AndroidSetup {
     public void hotspots() throws InterruptedException {
         Hotspot hotspot = new HotspotAndroid();
         hotspot.createHotspot(1);
+    }
+
+    @Test
+    public void friendship() throws InterruptedException {
+        FriendsAndroid friendsAndroid = new FriendsAndroid();
+        friendsAndroid.friendship(2);
+    }
+
+    @Test
+    public void signIn() {
+        String email = "";
+        String password = "";
+        SignInPageAndroid signInPageAndroid = new SignInPageAndroid();
+        signInPageAndroid.signInByData(email, password);
     }
 
 }

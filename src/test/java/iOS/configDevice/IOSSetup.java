@@ -13,11 +13,11 @@ public class IOSSetup {
 
     public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_5";
     public static String BUILD_NAME = "ngc_0.5.5.app";
-    protected IOSDriver driver;
+    public static IOSDriver driver;
 
     public void prepareIosSimulator() throws IOException, InterruptedException {
 
-        Terminal.sendCommandToTerminalDetails();
+//        Terminal.sendCommandToTerminalDetails();
 
         System.out.println("Setting capabilities...");
         File appDir = new File(BUILD_PATH);

@@ -10,10 +10,11 @@ public interface Mapping {
         String password = randomValidPassword();
         String name = randomValidName();
         String location = "";
+        boolean photo = true;
 
         openSignUp();
         openSignIn();
-        signUp(email, password, name, location, true);
+        signUpByData(email, password, name, location, photo);
         logout();
         signIn(email, password);
         openMyProfile();
@@ -23,15 +24,15 @@ public interface Mapping {
         openFriends();
         openCamps();
         openEvents();
-        openSettings();
         openDirectories();
-        openInfoSources();
+        openSettings();
+        openOtherSources();
 
         logout();
 
     }
 
-    void openInfoSources();
+    void openOtherSources();
 
     void openDirectories();
 
@@ -45,11 +46,11 @@ public interface Mapping {
 
     void openFriends();
 
-    void openSettings();
+    void openSettings() throws InterruptedException;
 
     void openSearch() throws InterruptedException;
 
-    void signUp(String email, String password, String name, String location, boolean photo) throws InterruptedException;
+    void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException;
 
 
     void signIn(String email, String password);

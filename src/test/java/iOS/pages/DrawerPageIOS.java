@@ -20,22 +20,17 @@ public class DrawerPageIOS extends IOSSetup {
     public static By eventsButton = By.name("Events");
     public static By settingsButton = By.name("Settings");
     public static By directoriesButton = By.name("Directories");
-    public static By infoSourcesButton = By.name("Info Sources");
+    public static By otherSourcesButton = By.name("Other Sources");
     public static By drawerButton = MobileBy.id("hamburger");
 
     public void drawerOpen() {
         waitAndTap(drawerButton);
-        waitForClickabilityOf(searchButton);
     }
 
-    public void openInfoSources() {
+    public void openOtherSources() {
         drawerOpen();
-        try {
-            swipingVerticalToTop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        waitAndTap(infoSourcesButton);
+        swipingToTopIOS();
+        waitAndTap(otherSourcesButton);
     }
 
     public void openDirectories() {
@@ -74,11 +69,7 @@ public class DrawerPageIOS extends IOSSetup {
 
     public void openSettings() {
         drawerOpen();
-        try {
-            swipingVerticalToTop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        swipingToTopIOS();
         waitAndTap(settingsButton);
 
     }
@@ -101,5 +92,9 @@ public class DrawerPageIOS extends IOSSetup {
         driver.tap(1, 100, 100, 500); //tap on drawerAvatar
 
         waitForVisibilityOf(logoutButton);
+    }
+
+    public void tapOnAvatar() {
+        driver.tap(1, 100, 100, 500);
     }
 }

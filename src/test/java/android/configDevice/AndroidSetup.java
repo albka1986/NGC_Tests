@@ -29,7 +29,7 @@ public class AndroidSetup {
 
     public void prepareAndroidDevice() throws MalformedURLException, InterruptedException {
         System.out.println("Testing build: " + BUILD_NAME);
-        String device = DEVICE_MOTOROLA;
+        String device = DEVICE_MOTOROLA_WIFI;
         String platform = "Android";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

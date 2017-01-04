@@ -7,13 +7,14 @@ import java.util.List;
 
 public interface Friends {
 
-    default void friendship() {
+    default void friendship(int amountUser) throws InterruptedException {
         List<User> userList = new LinkedList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < amountUser; i++) {
             User user = randomValidSignUp();
             userList.add(user);
-
+            logout();
         }
+
         for (User user : userList) {
             signInByData(user.getEmail(), user.getPassword());
             for (User user1 : userList) {
@@ -24,9 +25,14 @@ public interface Friends {
             }
 
         }
+        for (User user : userList) {
+            System.out.println(user);
+        }
+
 
     }
 
+    void logout();
 
     void sendRequestFriendship();
 
@@ -34,6 +40,6 @@ public interface Friends {
 
     void signInByData(String email, String password);
 
-    User randomValidSignUp();
+    User randomValidSignUp() throws InterruptedException;
 
 }

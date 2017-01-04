@@ -116,37 +116,53 @@ public class SignUpPageIOS {
         }
     }
 
-    public void registrationByData(AppiumDriver driver, String email, String password, String name, String location, boolean photo) throws InterruptedException {
+    public void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
+
         waitAndTap(signUpButton);
 
         //step #1
+
+        //attaching a photo
+        //TODO: always without photo. The function doesn't work.
         if (photo) {
+            System.out.println("With a photo");
             addPhoto();
+        } else {
+            System.out.println("Without any photo");
         }
 
+        waitForVisibilityOf(this.email);
+
         sendKeys(this.email, email);
+
         sendKeys(this.password, password);
+
         sendKeys(this.confirmPassword, password);
+
         sendKeys(this.name, name);
+
         sendKeys(this.location, location);
 
         setDateOfBirth();
 
         System.out.println("Step1\n" +
-                "Try to create: " +
-                "[" + "Email: " + email + "; Password: " + password + "; Name: " + name + "; Location: " + location + "]");
+                "Try to create:\n" +
+                "[" +
+                "Email: " + email +
+                "; Password: " + password +
+                "; Name: " + name +
+                "; Location: " + location +
+                "]");
 
-        waitAndTap(this.nextStepButton);
+        Thread.sleep(3000);
+        waitAndTap(nextStepButton);
 
         //step #2
-        //TODO: make randomTag generator;
         By tag = this.tags[new Random().nextInt(7)];
         waitAndTap(tag);
-
-        waitAndTap(this.createAccountButton);
+        waitAndTap(createAccountButton);
 
         waitForVisibilityOf(drawerButton);
-
         System.out.println("User created: " +
                 "[" +
                 "Email: " + email +

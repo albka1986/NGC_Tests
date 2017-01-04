@@ -45,13 +45,13 @@ public class Utilities {
         try {
             getDriver();
             Thread.sleep(2000);
-            driver.hideKeyboard();
+            getDriver().hideKeyboard();
             Thread.sleep(2000);
         } catch (WebDriverException | InterruptedException e) {
         }
     }
 
-    public static void swipingVerticalToTop() throws InterruptedException {
+    public static void swipingToTop() throws InterruptedException {
         AppiumDriver driver = MyListener.getDriver();
         Dimension size = driver.manage().window().getSize();
         int starty = (int) (size.height * 0.80);
@@ -61,7 +61,7 @@ public class Utilities {
         Thread.sleep(2000);
     }
 
-    public static void swipingVerticalToDown() throws InterruptedException {
+    public static void swipingToDown() throws InterruptedException {
         AppiumDriver driver = MyListener.getDriver();
         Dimension size = driver.manage().window().getSize();
         int starty = (int) (size.height * 0.80);
@@ -69,6 +69,14 @@ public class Utilities {
         int startx = (int) (size.width * 0.3);
         driver.swipe(startx, endy, startx, starty, 3000);
         Thread.sleep(2000);
+    }
+
+    public static void swipingToTopIOS() {
+        driver.swipe(0, 200, 0, -400, 500);
+    }
+
+    public static void swipingToDownIOS() {
+        driver.swipe(0, -400, 0, 200, 500);
     }
 
     public static void swipeRightToLeft(AppiumDriver driver) {
@@ -115,7 +123,7 @@ public class Utilities {
     public static void sendKeys(By identification, String keys) {
         waitForClickabilityOf(identification);
         driver.findElement(identification).sendKeys(keys);
-        System.out.println(identification + keys);
+        System.out.println(identification + " = " + keys);
     }
 
     public static boolean trueOrFalse() {

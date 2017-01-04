@@ -2,7 +2,7 @@ package tests;
 
 import static utilites.Utilities.trueOrFalse;
 
-public class Test {
+public class OthersTests {
 
     @org.testng.annotations.Test(invocationCount = 100)
     public void testFalseOrTrue() {

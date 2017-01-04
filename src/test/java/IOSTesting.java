@@ -1,5 +1,6 @@
 import config.MyListener;
 import iOS.configDevice.IOSSetup;
+import iOS.pages.DrawerPageIOS;
 import iOS.scenarios.CampsIOS;
 import iOS.scenarios.HotspotsIOS;
 import iOS.scenarios.MappingIOS;
@@ -11,6 +12,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import static utilites.Utilities.swipingToDownIOS;
+import static utilites.Utilities.swipingToTopIOS;
 
 @Listeners(MyListener.class)
 public class IOSTesting extends IOSSetup {
@@ -57,9 +61,21 @@ public class IOSTesting extends IOSSetup {
         hotspot.createHotspot(1);
     }
 
+
+    @Test
+    public void swiping() throws InterruptedException {
+        new DrawerPageIOS().drawerOpen();
+        Thread.sleep(2000);
+        swipingToTopIOS();
+        swipingToDownIOS();
+    }
+
+
+
     @AfterClass
     public void tearDown() throws Exception {
         Thread.sleep(5000);
+        driver.closeApp();
         driver.quit();
     }
 }

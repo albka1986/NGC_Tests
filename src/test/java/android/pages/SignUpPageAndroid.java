@@ -1,6 +1,7 @@
 package android.pages;
 
 import android.configDevice.AndroidSetup;
+import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -32,7 +33,7 @@ public class SignUpPageAndroid extends AndroidSetup {
     public By dateOfBirthField = By.id(APP_PACKAGE_NAME + "welcome_sign_up_age");
     public By termAndConditions = By.id(APP_PACKAGE_NAME + "welcome_sign_up_terms_and_conditions_checkbox");
 
-    public void registrationByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
+    public void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
 
         waitForVisibilityOf(signUpButton);
 
@@ -58,11 +59,11 @@ public class SignUpPageAndroid extends AndroidSetup {
         hideKeyboard();
         Thread.sleep(4000);
 
-        swipingVerticalToTop();
+        swipingToTop();
 
         sendKeys(this.name, name);
         hideKeyboard();
-        swipingVerticalToTop();
+        swipingToTop();
 
         if (!location.equals("")) {
             driver.findElement(this.location).sendKeys(location);
@@ -137,8 +138,8 @@ public class SignUpPageAndroid extends AndroidSetup {
         tapOn(imageCrop);
     }
 
-    public void validRandomSignUp() throws InterruptedException {
-
+    public User validRandomSignUp() throws InterruptedException {
+        User user = new User();
         waitForVisibilityOf(signUpButton);
         //TODO: change to method trueOrFalse when problem with memory will be fixed;
         if (false) {
@@ -150,9 +151,11 @@ public class SignUpPageAndroid extends AndroidSetup {
         waitAndTap(signUpButton);
 
         String email = randomValidEmail();
+        user.setEmail(email);
         sendKeys(this.email, email);
 
         String password = randomValidPassword();
+        user.setPassword(password);
         sendKeys(this.password, password);
         hideKeyboard();
 
@@ -161,10 +164,11 @@ public class SignUpPageAndroid extends AndroidSetup {
 
 
         String name = randomValidName();
+        user.setName(name);
         sendKeys(this.name, name);
         hideKeyboard();
 
-        swipingVerticalToTop();
+        swipingToTop();
 
         String location = randomValidLocation();
         driver.findElement(this.location).sendKeys(location);
@@ -175,7 +179,8 @@ public class SignUpPageAndroid extends AndroidSetup {
 
         driver.findElement(this.termAndConditions).click();
 
-        System.out.println("Try to create:\n" +
+        System.out.println("Step #1. " +
+                "Try to create:\n" +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
@@ -194,7 +199,8 @@ public class SignUpPageAndroid extends AndroidSetup {
 
         waitForVisibilityOf(MyPostsPageAndroid.titleScreen);
 
-        System.out.println("Try to create:\n" +
+        System.out.println("Step #2. " +
+                "Try to create:\n" +
                 "[" +
                 "Email: " + email +
                 "; Password: " + password +
@@ -202,6 +208,7 @@ public class SignUpPageAndroid extends AndroidSetup {
                 "; Location: " + location +
                 "; Birthday: " + birth +
                 "]");
+        return user;
     }
 
 }

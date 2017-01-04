@@ -12,6 +12,7 @@ public class FriendsPageAndroid extends AndroidSetup {
     private By rejectButton = By.id(APP_PACKAGE_NAME + "friends_invite_item_reject_btn");
     private By searchButton = By.id(APP_PACKAGE_NAME + "search_button");
     private By query = By.id(APP_PACKAGE_NAME + "search_src_text");
+    private By sendRequestButton = By.id("");
 
 
     void acceptFriendship() {
@@ -29,5 +30,7 @@ public class FriendsPageAndroid extends AndroidSetup {
         driver.getKeyboard().pressKey(Keys.ENTER);
     }
 
-
+    public void sendRequestFriendship() {
+        waitAndTap(sendRequestButton);
+    }
 }

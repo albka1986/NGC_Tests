@@ -3,6 +3,7 @@ package iOS.pages;/* Created by Ponomarenko Oleh on 28/12/16. */
 import org.openqa.selenium.By;
 
 import static utilites.Utilities.*;
+import static utilites.Validation.randomValidCampTitle;
 
 public class CampsPageIOS {
     public By createCampButton = By.name("plusIcon");
@@ -15,7 +16,7 @@ public class CampsPageIOS {
     public void enterStartMessage() {
         //TODO: bug #3934
 //        String keys = randomValidCampStartMessage();
-        String keys = "Test";
+        String keys = "OthersTests";
         sendKeys(this.startMessage, keys);
     }
 
@@ -25,8 +26,8 @@ public class CampsPageIOS {
 
     public void enterCampTitle() {
         //TODO:create bug about validation;
-//        String campTitle = randomValidCampTitle();
-        String campTitle = "test";
+        String campTitle = randomValidCampTitle();
+//        String campTitle = "test";
         sendKeys(this.campTitle, campTitle);
     }
 

@@ -30,7 +30,7 @@ public class RegistrationAndroid implements Registration {
 
     @Override
     public void registrationByData(AppiumDriver driver, String email, String password, String name, String location, boolean photo) throws InterruptedException {
-        signUpPage.registrationByData(email, password, name, location, photo);
+        signUpPage.signUpByData(email, password, name, location, photo);
     }
 
 

@@ -6,6 +6,7 @@ import iOS.pages.SignInPageIOS;
 import iOS.pages.SignUpPageIOS;
 import interfaces.Mapping;
 
+
 public class MappingIOS implements Mapping {
 
     SignInPageIOS signInPageIOS = new SignInPageIOS();
@@ -15,8 +16,10 @@ public class MappingIOS implements Mapping {
 
 
     @Override
-    public void signUp(String email, String password, String name, String location, boolean photo) throws InterruptedException {
-
+    public void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
+        SignUpPageIOS signUpPageIOS = new SignUpPageIOS();
+        //TODO: paste a variable photo to the method when a method photo will be ready
+        signUpPageIOS.signUpByData(email, password, name, location, false);
     }
 
     @Override
@@ -50,31 +53,9 @@ public class MappingIOS implements Mapping {
     }
 
     @Override
-    public void mapper() throws InterruptedException {
-        String email = "";
-        String password = "";
-        openSignUp();
-        openSignIn();
-
-        signIn(email, password);
-
-        openMyProfile();
-        openSearch();
-        openMyPosts();
-        openHotspots();
-        openFriends();
-        openCamps();
-        openEvents();
-        openSettings();
-        openDirectories();
-        openInfoSources();
-
-        logout();
-    }
-
-    @Override
-    public void openInfoSources() {
-        drawerPageIOS.openInfoSources();
+    public void openOtherSources() {
+        //TODO: skipped due to a bug #3943
+//        drawerPageIOS.openOtherSources();
     }
 
     @Override
@@ -99,7 +80,8 @@ public class MappingIOS implements Mapping {
 
     @Override
     public void openEvents() {
-        drawerPageIOS.openEvents();
+        //TODO: при переходе на Events, зависает приложение (только на Симуляторе!!!).
+        //drawerPageIOS.openEvents();
     }
 
     @Override
@@ -108,7 +90,7 @@ public class MappingIOS implements Mapping {
     }
 
     @Override
-    public void openSettings() {
+    public void openSettings() throws InterruptedException {
         drawerPageIOS.openSettings();
     }
 

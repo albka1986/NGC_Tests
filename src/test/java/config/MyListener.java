@@ -58,7 +58,7 @@ public class MyListener extends TestListenerAdapter {
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        System.out.println("Test was skipped");
+        System.out.println("OthersTests was skipped");
     }
 
     @Override
