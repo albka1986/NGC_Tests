@@ -12,12 +12,19 @@ public class FriendsPageAndroid extends AndroidSetup {
     private By rejectButton = By.id(APP_PACKAGE_NAME + "friends_invite_item_reject_btn");
     private By searchButton = By.id(APP_PACKAGE_NAME + "search_button");
     private By query = By.id(APP_PACKAGE_NAME + "search_src_text");
-    private By sendRequestButton = By.id("");
+    private By sendRequestButton = By.id(APP_PACKAGE_NAME + "user_profile_add_friend");
 
 
-    void acceptFriendship() {
+    public void acceptFriendship() {
+        new DrawerPageAndroid().openMyProfile();
         new DrawerPageAndroid().openFriends();
-        waitAndTap(acceptButton);
+        try {
+            while (driver.findElement(acceptButton) != null) {
+                waitAndTap(acceptButton);
+                new DrawerPageAndroid().openFriends();
+            }
+        } catch (Exception e) {
+        }
     }
 
     void rejectFriendship() {

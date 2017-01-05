@@ -1,10 +1,9 @@
 import config.MyListener;
 import iOS.configDevice.IOSSetup;
 import iOS.pages.DrawerPageIOS;
-import iOS.scenarios.CampsIOS;
-import iOS.scenarios.HotspotsIOS;
-import iOS.scenarios.MappingIOS;
-import iOS.scenarios.RegistrationIOS;
+import iOS.pages.MyProfilePageIOS;
+import iOS.pages.SignInPageIOS;
+import iOS.scenarios.*;
 import interfaces.Camps;
 import interfaces.Hotspot;
 import interfaces.Registration;
@@ -71,6 +70,19 @@ public class IOSTesting extends IOSSetup {
     }
 
 
+    @Test
+    public void friendship() throws InterruptedException {
+        FriendsIOS friendsIOS = new FriendsIOS();
+        friendsIOS.friendship(10);
+    }
+
+    @Test
+    public void signInByData() throws InterruptedException {
+        SignInPageIOS signInPageIOS = new SignInPageIOS();
+        signInPageIOS.signInByData("mail@mail.com", "12345678");
+        MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
+        myProfilePageIOS.logout();
+    }
 
     @AfterClass
     public void tearDown() throws Exception {

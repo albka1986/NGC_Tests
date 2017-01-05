@@ -11,8 +11,8 @@ import java.net.URL;
 
 public class IOSSetup {
 
-    public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_5";
-    public static String BUILD_NAME = "ngc_0.5.5.app";
+    public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_6";
+    public static String BUILD_NAME = "ngc_0.6.0.app";
     public static IOSDriver driver;
 
     public void prepareIosSimulator() throws IOException, InterruptedException {

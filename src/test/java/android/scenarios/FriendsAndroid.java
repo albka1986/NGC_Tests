@@ -1,4 +1,4 @@
-package android.scenarios;/* Created by Ponomarenko Oleh on 03/01/17. */
+package android.scenarios;
 
 import android.pages.*;
 import interfaces.Friends;
@@ -6,6 +6,18 @@ import model.User;
 
 public class FriendsAndroid implements Friends {
 
+
+    @Override
+    public void acceptFriendship() {
+        FriendsPageAndroid friendsPageAndroid = new FriendsPageAndroid();
+        friendsPageAndroid.acceptFriendship();
+    }
+
+    @Override
+    public void back() {
+        NavigationAndroid navigationAndroid = new NavigationAndroid();
+        navigationAndroid.back();
+    }
 
     @Override
     public void logout() {
@@ -20,7 +32,7 @@ public class FriendsAndroid implements Friends {
     }
 
     @Override
-    public void findUserByName(String name) {
+    public void findUserByName(String name) throws InterruptedException {
         SearchPageAndroid searchPageAndroid = new SearchPageAndroid();
         searchPageAndroid.findUserByName(name);
     }
@@ -38,4 +50,6 @@ public class FriendsAndroid implements Friends {
         User user = signUpPageAndroid.validRandomSignUp();
         return user;
     }
+
+
 }

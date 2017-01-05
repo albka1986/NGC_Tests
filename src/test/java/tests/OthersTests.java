@@ -1,5 +1,10 @@
 package tests;
 
+import org.testng.annotations.Test;
+import utilites.SendCTRLC;
+
+import java.io.IOException;
+
 import static utilites.Utilities.trueOrFalse;
 
 public class OthersTests {
@@ -9,5 +14,25 @@ public class OthersTests {
         boolean result = trueOrFalse();
         System.out.println(result);
     }
+
+    @Test
+    public void recorderTest() throws InterruptedException, IOException {
+
+        try {
+            Runtime.getRuntime().exec("adb shell screenrecord /sdcard/movie.mp4 --time-limit 1800");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Thread.sleep(10000);
+
+        SendCTRLC sendCTRLC = new SendCTRLC();
+        sendCTRLC.sendCTRLC(12437);
+
+
+    }
+
+
+
 
 }

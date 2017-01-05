@@ -61,6 +61,4 @@ public class AndroidSetup {
 
         MyListener.setDriver(driver);
     }
-
-
 }

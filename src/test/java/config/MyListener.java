@@ -37,22 +37,13 @@ public class MyListener extends TestListenerAdapter {
     @Override
     public void onTestStart(ITestResult result) {
         super.onTestStart(result);
-/*
-        try {
-            startRecord(platform, device);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Override
     public void onTestFailure(ITestResult tr) {
         Utilities.takeScreenShot(this.driver);
-        /*try {
-            stopVideo("android");
-        } catch (IOException | InterruptedException | TimeoutException e) {
-            e.printStackTrace();
-        }*/
+
+
         driver.quit();
     }
 
@@ -63,25 +54,7 @@ public class MyListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-/*
-        try {
-            cancelVideo("android");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Thread.sleep(120000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
         System.out.println("The tests are OK!!!");
-
     }
 
 

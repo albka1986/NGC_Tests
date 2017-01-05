@@ -1,25 +1,23 @@
-package android.pages;/* Created by Ponomarenko Oleh on 03/01/17. */
+package iOS.pages;/* Created by Ponomarenko Oleh on 04/01/17. */
 
-import android.configDevice.AndroidSetup;
+import iOS.configDevice.IOSSetup;
 import org.openqa.selenium.By;
 
 import static utilites.Utilities.*;
 
-public class SearchPageAndroid extends AndroidSetup {
+public class SearchPageIOS extends IOSSetup {
 
-    private By request = By.id(APP_PACKAGE_NAME + "base_search_search_view_text");
-    private By searchButton = By.id(APP_PACKAGE_NAME + "button_base_search_search");
+    public By request = xpathBuilderByValue("search");
+    private By searchButton = By.name("Search");
 
     public void findUserByName(String name) throws InterruptedException {
-        DrawerPageAndroid drawerPageAndroid = new DrawerPageAndroid();
+        DrawerPageIOS drawerPageAndroid = new DrawerPageIOS();
         drawerPageAndroid.openSearch();
         driver.findElement(request).clear();
         sendKeys(request, name);
         hideKeyboard();
         pressSearchButton();
         openUserProfile(name);
-
-
     }
 
 

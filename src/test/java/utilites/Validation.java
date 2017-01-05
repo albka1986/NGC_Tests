@@ -68,7 +68,7 @@ public class Validation {
         String y = "";
         String z = "";
 
-        m:
+
         do {
             int numberRandomChar = random.nextInt(EMAIL_CONTAINS.length());
             char randomChar = EMAIL_CONTAINS.charAt(numberRandomChar);
@@ -80,16 +80,17 @@ public class Validation {
                     break;
                 case 1:
                     if (randomChar == '_') {
-                        continue;
+                    } else {
+                        y += randomChar;
                     }
-                    y += randomChar;
                     break;
                 case 2:
-                    if (randomChar == '_' && randomChar == '-') {
-                        continue m;
+                    if (randomChar == '_' || randomChar == '-') {
+                    } else {
+                        z += randomChar;
                     }
-                    z += randomChar;
                     break;
+
             }
             if ((x.length() + y.length() + z.length()) == randomLengthOfEmail - 2) {
                 if (x.length() == 0) {

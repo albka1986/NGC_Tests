@@ -1,4 +1,5 @@
 import android.configDevice.AndroidSetup;
+import android.pages.SearchPageAndroid;
 import android.pages.SignInPageAndroid;
 import android.scenarios.*;
 import config.MyListener;
@@ -61,7 +62,7 @@ public class AndroidTesting extends AndroidSetup {
     @Test
     public void friendship() throws InterruptedException {
         FriendsAndroid friendsAndroid = new FriendsAndroid();
-        friendsAndroid.friendship(2);
+        friendsAndroid.friendship(3);
     }
 
     @Test
@@ -70,6 +71,20 @@ public class AndroidTesting extends AndroidSetup {
         String password = "";
         SignInPageAndroid signInPageAndroid = new SignInPageAndroid();
         signInPageAndroid.signInByData(email, password);
+    }
+
+    @Test
+    public void findUserByName() throws InterruptedException {
+        SignInPageAndroid signInPageAndroid = new SignInPageAndroid();
+        signInPageAndroid.signInByData("mail@mail.com", "12345678");
+        SearchPageAndroid searchPageAndroid = new SearchPageAndroid();
+        searchPageAndroid.findUserByName("MF");
+    }
+
+    @Test
+    public void acceptFriendship() {
+        FriendsAndroid friendsAndroid = new FriendsAndroid();
+        friendsAndroid.acceptFriendship();
     }
 
 }

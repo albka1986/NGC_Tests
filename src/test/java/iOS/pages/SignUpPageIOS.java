@@ -1,6 +1,7 @@
 package iOS.pages;/* Created by Ponomarenko Oleh on 29/11/16. */
 
 import io.appium.java_client.AppiumDriver;
+import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -35,8 +36,8 @@ public class SignUpPageIOS {
         waitAndTap(signInButton);
     }
 
-    public void validRandomSignUp() throws InterruptedException {
-
+    public User validRandomSignUp() throws InterruptedException {
+        User user = new User();
         waitAndTap(signUpButton);
 
         //step #1
@@ -53,18 +54,23 @@ public class SignUpPageIOS {
         waitForVisibilityOf(this.email);
 
         String email = randomValidEmail();
+        user.setEmail(email);
         sendKeys(this.email, email);
 
         String password = randomValidPassword();
+        user.setPassword(password);
         sendKeys(this.password, password);
 
         sendKeys(this.confirmPassword, password);
 
         String name = randomValidName();
+        user.setName(name);
         sendKeys(this.name, name);
 
         String location = randomValidLocation();
-        sendKeys(this.location, location);
+        if (!location.equals("")) {
+            sendKeys(this.location, location);
+        }
 
         setDateOfBirth();
 
@@ -93,6 +99,7 @@ public class SignUpPageIOS {
                 "; Name: " + name +
                 "; Location: " + location +
                 "]");
+        return user;
     }
 
     private void addPhoto() {

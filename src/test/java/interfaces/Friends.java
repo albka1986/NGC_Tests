@@ -14,6 +14,9 @@ public interface Friends {
             userList.add(user);
             logout();
         }
+        for (User user : userList) {
+            System.out.println(user);
+        }
 
         for (User user : userList) {
             signInByData(user.getEmail(), user.getPassword());
@@ -21,24 +24,25 @@ public interface Friends {
                 if (!user.getName().equals(user1.getName())) {
                     findUserByName(user1.getName());
                     sendRequestFriendship();
+                    back();
+                    back();
                 }
             }
-
+            logout();
         }
-        for (User user : userList) {
-            System.out.println(user);
-        }
-
-
     }
 
-    void logout();
+    void acceptFriendship();
+
+    void back();
+
+    void logout() throws InterruptedException;
 
     void sendRequestFriendship();
 
-    void findUserByName(String name);
+    void findUserByName(String name) throws InterruptedException;
 
-    void signInByData(String email, String password);
+    void signInByData(String email, String password) throws InterruptedException;
 
     User randomValidSignUp() throws InterruptedException;
 
