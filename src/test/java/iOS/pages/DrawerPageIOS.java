@@ -19,9 +19,10 @@ public class DrawerPageIOS extends IOSSetup {
     public static By campsButton = By.name("Camps");
     public static By eventsButton = By.name("Events");
     public static By settingsButton = By.name("Settings");
-    public static By directoriesButton = By.name("Directories");
+    public static By directoriesButton = By.name("DirectoriesIOS");
     public static By otherSourcesButton = By.name("Other Sources");
     public static By drawerButton = MobileBy.id("hamburger");
+    private By topRated = By.name("Top Rated");
 
     public void drawerOpen() {
         waitAndTap(drawerButton);
@@ -96,5 +97,11 @@ public class DrawerPageIOS extends IOSSetup {
 
     public void tapOnAvatar() {
         driver.tap(1, 100, 100, 500);
+    }
+
+    public void openTopRated() {
+        drawerOpen();
+        swipingToTopIOS();
+        waitAndTap(topRated);
     }
 }

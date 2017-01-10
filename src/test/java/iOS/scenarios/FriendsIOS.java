@@ -12,7 +12,7 @@ public class FriendsIOS implements Friends {
     }
 
     @Override
-    public void back() {
+    public void back() throws InterruptedException {
         NavigationIOS navigationAndroid = new NavigationIOS();
         navigationAndroid.back();
     }

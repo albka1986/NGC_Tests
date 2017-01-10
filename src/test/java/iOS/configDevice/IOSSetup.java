@@ -12,7 +12,7 @@ import java.net.URL;
 public class IOSSetup {
 
     public final static String BUILD_PATH = "/Users/oleh/Documents/App/NGC/iOS/build/sprint_6";
-    public static String BUILD_NAME = "ngc_0.6.0.app";
+    public static String BUILD_NAME = "Campfiire.app";
     public static IOSDriver driver;
 
     public void prepareIosSimulator() throws IOException, InterruptedException {

@@ -5,7 +5,8 @@ import org.openqa.selenium.By;
 
 import static utilites.Utilities.sendKeys;
 import static utilites.Utilities.tapOn;
-import static utilites.Validation.randomValidName;
+import static utilites.Validation.randomValidCampStartMessage;
+import static utilites.Validation.randomValidCampTitle;
 
 public class CampsPageAndroid extends AndroidSetup {
     public By createCampButton = By.id(APP_PACKAGE_NAME + "add_camp_fab");
@@ -16,15 +17,13 @@ public class CampsPageAndroid extends AndroidSetup {
     private By chooseCategory = By.xpath("//android.widget.ListView[1]/android.widget.CheckedTextView[2]");
 
     public void enterCampTitle() {
-        //TODO: generate method randomCampTitle();
-        String campTitle = randomValidName();
+        String campTitle = randomValidCampTitle();
         System.out.println("Camp Title: " + campTitle);
         sendKeys(this.campTitle, campTitle);
     }
 
     public void enterStartMessage() {
-        //TODO: generate method randomStartMessage();
-        String startMessage = randomValidName();
+        String startMessage = randomValidCampStartMessage();
         System.out.printf("Start Message: " + startMessage);
         sendKeys(this.startMessage, startMessage);
     }

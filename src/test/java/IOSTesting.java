@@ -6,6 +6,7 @@ import iOS.pages.SignInPageIOS;
 import iOS.scenarios.*;
 import interfaces.Camps;
 import interfaces.Hotspot;
+import interfaces.Like;
 import interfaces.Registration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -82,6 +83,12 @@ public class IOSTesting extends IOSSetup {
         signInPageIOS.signInByData("mail@mail.com", "12345678");
         MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
         myProfilePageIOS.logout();
+    }
+
+    @Test(invocationCount = 1000000)
+    public void likeDoctors() throws InterruptedException {
+        Like likeIOS = new LikeIOS();
+        likeIOS.setLike();
     }
 
     @AfterClass

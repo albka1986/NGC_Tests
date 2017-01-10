@@ -34,7 +34,7 @@ public interface Friends {
 
     void acceptFriendship();
 
-    void back();
+    void back() throws InterruptedException;
 
     void logout() throws InterruptedException;
 

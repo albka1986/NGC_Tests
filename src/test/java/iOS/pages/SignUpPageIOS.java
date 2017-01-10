@@ -66,10 +66,12 @@ public class SignUpPageIOS {
         String name = randomValidName();
         user.setName(name);
         sendKeys(this.name, name);
+        hideKeyboard();
 
         String location = randomValidLocation();
         if (!location.equals("")) {
             sendKeys(this.location, location);
+            hideKeyboard();
         }
 
         setDateOfBirth();

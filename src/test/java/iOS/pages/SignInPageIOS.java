@@ -33,6 +33,8 @@ public class SignInPageIOS extends IOSSetup {
         driver.findElement(this.password).clear();
         sendKeys(this.password, password);
 
+        hideKeyboard();
+
         waitAndTap(signInButton);
 
     }

@@ -50,7 +50,7 @@ public class AndroidTesting extends AndroidSetup {
     @Test
     public void camps() throws InterruptedException {
         camps = new CampsAndroid();
-        camps.createCamp(1);
+        camps.createCamp(100);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class AndroidTesting extends AndroidSetup {
     @Test
     public void friendship() throws InterruptedException {
         FriendsAndroid friendsAndroid = new FriendsAndroid();
-        friendsAndroid.friendship(3);
+        friendsAndroid.friendship(10);
     }
 
     @Test

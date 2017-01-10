@@ -11,9 +11,9 @@ import java.net.URL;
 public class AndroidSetup {
 
     public static final String APP_PACKAGE_NAME = "com.erminesoft.ngc:id/";
-    public final static String sprint = "5";
+    public final static String sprint = "6";
     public final static File BUILD_PATH = new File("/Users/oleh/Documents/App/NGC/Android/build/sprint_" + sprint);
-    public final static String BUILD_NAME = "Campfiire-0.0.7_4-qaDebug.apk";
+    public final static String BUILD_NAME = "Campfiire-0.6.2-qaDebug.apk";
     public final static File app = new File(BUILD_PATH, BUILD_NAME);
     public static final String DEVICE_MOTOROLA = "ZX1B24GVX2";
     public static AndroidDriver driver;
