@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import static config.MyListener.driver;
@@ -138,5 +139,10 @@ public class Utilities {
         String timeNow = dtf.format(now);
 
         return timeNow;
+    }
+
+    public static List<WebElement> findListOfElementsById(String id) {
+        List<WebElement> webElements = driver.findElements(By.id(id));
+        return webElements;
     }
 }

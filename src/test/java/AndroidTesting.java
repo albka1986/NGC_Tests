@@ -42,7 +42,7 @@ public class AndroidTesting extends AndroidSetup {
         registrationAndroid.registrationByData(driver, "mail6@mail.com", "12345678", "Oleh", "", false);
     }
 
-    @Test(invocationCount = 1)
+    @Test(invocationCount = 20)
     public void mapping() throws InterruptedException {
         mappingAndroid.mapper();
     }
@@ -86,5 +86,6 @@ public class AndroidTesting extends AndroidSetup {
         FriendsAndroid friendsAndroid = new FriendsAndroid();
         friendsAndroid.acceptFriendship();
     }
+
 
 }

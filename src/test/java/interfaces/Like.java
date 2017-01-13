@@ -7,7 +7,7 @@ public interface Like {
     default void setLike() throws InterruptedException {
         validRandomSignUp();
         openTopRated();
-        String category = "Doctors";
+        String category = "DoctorsPageAndroid";
         selectCategory(category);
         String name = "Alaska";
         selectObject(name);

@@ -17,7 +17,7 @@ public class DrawerPageAndroid extends AndroidSetup {
     public static By eventsButton = By.id(APP_PACKAGE_NAME + "drawer_events_btn");
     public static By settingsButton = By.id(APP_PACKAGE_NAME + "drawer_settings_btn");
     public static By directoriesButton = By.id(APP_PACKAGE_NAME + "drawer_directories_btn");
-    public static By otherSourcesButton = By.id(APP_PACKAGE_NAME + "drawer_other_sources_btn");
+    public static By otherSourcesButton = By.id(APP_PACKAGE_NAME + "drawer_other_btn");
 
 
     public void drawerOpen() {
@@ -35,13 +35,9 @@ public class DrawerPageAndroid extends AndroidSetup {
     public void openInfoSources() {
         drawerOpen();
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         try {
+            Thread.sleep(3000);
             swipingToTop();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -52,14 +48,9 @@ public class DrawerPageAndroid extends AndroidSetup {
     public void openDirectories() {
         drawerOpen();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
+            swipingToTop();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            swipingToDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         waitAndTap(this.directoriesButton);
     }

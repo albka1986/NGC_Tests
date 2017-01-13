@@ -39,11 +39,11 @@ public class IOSTesting extends IOSSetup {
     public void registrationByData() throws InterruptedException {
         System.out.println("Ready for test");
 
-        registration.registrationByData(driver, "newUser5771@gmail.com", "5Th1LhQO3FZdkJ", ".RsOlGdAffObc.sZB", "", false);
+        registration.registrationByData(driver, "unicorn.myqateam@gmail.com", "12345678", "12345678", "", false);
         registration.logout(driver);
     }
 
-    @Test(invocationCount = 3)
+    @Test(invocationCount = 10)
     public void mapping() throws InterruptedException {
         MappingIOS mappingIOS = new MappingIOS();
         mappingIOS.mapper();
@@ -81,15 +81,24 @@ public class IOSTesting extends IOSSetup {
     public void signInByData() throws InterruptedException {
         SignInPageIOS signInPageIOS = new SignInPageIOS();
         signInPageIOS.signInByData("mail@mail.com", "12345678");
-        MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
-        myProfilePageIOS.logout();
+        Thread.sleep(120000);
+//        MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
+//        myProfilePageIOS.logout();
     }
 
-    @Test(invocationCount = 1000000)
+    @Test(invocationCount = 1000)
     public void likeDoctors() throws InterruptedException {
         Like likeIOS = new LikeIOS();
         likeIOS.setLike();
     }
+
+    @Test
+    public void testEvent() throws InterruptedException {
+        new SignInPageIOS().signIn("", "");
+        new DrawerPageIOS().drawerOpen();
+        new MyProfilePageIOS().logout();
+    }
+
 
     @AfterClass
     public void tearDown() throws Exception {

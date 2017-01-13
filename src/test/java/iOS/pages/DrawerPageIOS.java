@@ -5,6 +5,7 @@ import iOS.configDevice.IOSSetup;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 
 import static iOS.pages.MyProfilePageIOS.logoutButton;
 import static utilites.Utilities.*;
@@ -19,9 +20,11 @@ public class DrawerPageIOS extends IOSSetup {
     public static By campsButton = By.name("Camps");
     public static By eventsButton = By.name("Events");
     public static By settingsButton = By.name("Settings");
-    public static By directoriesButton = By.name("DirectoriesIOS");
+    public static By directoriesButton = By.name("Directories");
     public static By otherSourcesButton = By.name("Other Sources");
     public static By drawerButton = MobileBy.id("hamburger");
+    private By alertPermissionLocation = By.name("Allow “Camp Dev” to access your location while you use the app?");
+    private By allowPermission = By.name("Allow");
     private By topRated = By.name("Top Rated");
 
     public void drawerOpen() {
@@ -54,8 +57,14 @@ public class DrawerPageIOS extends IOSSetup {
     public void openHotspots() {
         drawerOpen();
         waitAndTap(hotspotsButton);
-        AppiumDriver driver = MyListener.getDriver();
-        String allow = "Allow \"Camp Dev\" to access your location while you use the app?";
+
+        try {
+            Thread.sleep(2000);
+            waitAndTap(allowPermission);
+        } catch (TimeoutException | InterruptedException e) {
+
+        }
+
     }
 
     public void openEvents() {

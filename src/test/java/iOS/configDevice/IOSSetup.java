@@ -17,7 +17,7 @@ public class IOSSetup {
 
     public void prepareIosSimulator() throws IOException, InterruptedException {
 
-//        Terminal.sendCommandToTerminalDetails();
+        Terminal.sendCommandToTerminalDetails();
 
         System.out.println("Setting capabilities...");
         File appDir = new File(BUILD_PATH);
@@ -53,7 +53,7 @@ public class IOSSetup {
         capabilities.setCapability("deviceName", "iPhone 5");
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("platformVersion", "10.0.2"); //white iOS
-        capabilities.setCapability("udid", "0dbccb9b899550db539a6be4533955a29880133d"); //white iOS
+        capabilities.setCapability("udid", "17E09D32-9C73-4461-997F-F9F92CC1B64A"); //white iOS
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("fullReset", "false");
         capabilities.setCapability("noReset", "true");

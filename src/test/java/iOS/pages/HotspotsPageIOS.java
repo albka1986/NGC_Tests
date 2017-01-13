@@ -36,11 +36,6 @@ public class HotspotsPageIOS extends IOSSetup {
 
     public void pressCreateHotspotButton() throws InterruptedException {
         waitAndTap(this.createHotspotButton);
-//        WebElement element = driver.findElement(By.id("android:id/message"));
-//        if (element.getText() != null) {
-//            System.out.println(element.getText());
-//            waitAndTap(By.id("android:id/button1"));
-//        }
         Thread.sleep(10000);
     }
 }

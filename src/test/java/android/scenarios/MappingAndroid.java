@@ -1,23 +1,75 @@
 package android.scenarios;
 
-import android.pages.DrawerPageAndroid;
-import android.pages.MyProfilePageAndroid;
-import android.pages.SignInPageAndroid;
-import android.pages.SignUpPageAndroid;
+import android.pages.*;
 import interfaces.Mapping;
 
 import static utilites.Utilities.waitAndTap;
+import static utilites.Validation.*;
 
 public class MappingAndroid implements Mapping {
     SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
     SignInPageAndroid signInPageAndroid = new SignInPageAndroid();
     DrawerPageAndroid drawerPageAndroid = new DrawerPageAndroid();
     MyProfilePageAndroid myProfilePageAndroid = new MyProfilePageAndroid();
+    DirectoriesPageAndroid directoriesPageAndroid = new DirectoriesPageAndroid();
+    NavigationAndroid navigationAndroid = new NavigationAndroid();
+
+    @Override
+    public void mapper() throws InterruptedException {
+        String email = randomValidEmail();
+        String password = randomValidPassword();
+        String name = randomValidName();
+        String location = "";
+        boolean photo = true;
+
+        openSignUp();
+        openSignIn();
+        signUpByData(email, password, name, location, photo);
+        logout();
+        signIn(email, password);
+        openMyProfile();
+        openSearch();
+        openMyPosts();
+        openHotspots();
+        openFriends();
+        openCamps();
+        openEvents();
+
+        openDirectories();
+
+        directoriesPageAndroid.openDoctors();
+        navigationAndroid.back();
+
+        directoriesPageAndroid.openPainClinics();
+        navigationAndroid.back();
+
+        directoriesPageAndroid.openLicensedProducers();
+        navigationAndroid.back();
+
+        directoriesPageAndroid.openOnlineStores();
+        navigationAndroid.back();
+
+        directoriesPageAndroid.openDispensaries();
+        navigationAndroid.back();
+
+        directoriesPageAndroid.openBudtenders();
+        directoriesPageAndroid.openApplicationForm();
+        navigationAndroid.back();
+        directoriesPageAndroid.confirmBack();
+        navigationAndroid.back();
+
+        openSettings();
+        openOtherSources();
+
+        Thread.sleep(3000);
+
+        logout();
+    }
 
     @Override
     public void openOtherSources() {
-        //TODO: skipped due to a bug #3942
-//        drawerPageAndroid.openInfoSources();
+        //TODO: Here was a bug #3942
+        drawerPageAndroid.openInfoSources();
     }
 
     @Override
@@ -43,7 +95,7 @@ public class MappingAndroid implements Mapping {
 
     @Override
     public void openEvents() {
-        drawerPageAndroid.openDirectories();
+        drawerPageAndroid.openEvents();
     }
 
     @Override
