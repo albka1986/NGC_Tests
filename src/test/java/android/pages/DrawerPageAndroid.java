@@ -112,4 +112,7 @@ public class DrawerPageAndroid extends AndroidSetup {
         tapOn(this.drawerAvatar);
     }
 
+    public void openTopRated() {
+        //TODO: fill method openTopRated();
+    }
 }

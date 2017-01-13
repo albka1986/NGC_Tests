@@ -4,7 +4,6 @@ import android.pages.*;
 import interfaces.Mapping;
 
 import static utilites.Utilities.waitAndTap;
-import static utilites.Validation.*;
 
 public class MappingAndroid implements Mapping {
     SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
@@ -15,60 +14,82 @@ public class MappingAndroid implements Mapping {
     NavigationAndroid navigationAndroid = new NavigationAndroid();
 
     @Override
-    public void mapper() throws InterruptedException {
-        String email = randomValidEmail();
-        String password = randomValidPassword();
-        String name = randomValidName();
-        String location = "";
-        boolean photo = true;
+    public void openTorRatedDispensaries() {
+        //TODO: sprint #7
+    }
 
-        openSignUp();
-        openSignIn();
-        signUpByData(email, password, name, location, photo);
-        logout();
-        signIn(email, password);
-        openMyProfile();
-        openSearch();
-        openMyPosts();
-        openHotspots();
-        openFriends();
-        openCamps();
-        openEvents();
+    @Override
+    public void openTopRatedStores() {
+        //TODO: sprint #7
+    }
 
-        openDirectories();
+    @Override
+    public void openTopRatedProducers() {
+        //TODO: sprint #7
+    }
 
-        directoriesPageAndroid.openDoctors();
-        navigationAndroid.back();
+    @Override
+    public void openTopRatedClinics() {
+        //TODO: sprint #7
+    }
 
-        directoriesPageAndroid.openPainClinics();
-        navigationAndroid.back();
+    @Override
+    public void openTopRatedDoctors() {
+        //TODO: sprint #7
+    }
 
-        directoriesPageAndroid.openLicensedProducers();
-        navigationAndroid.back();
+    @Override
+    public void openTopRated() {
+        drawerPageAndroid.openTopRated();
+    }
 
-        directoriesPageAndroid.openOnlineStores();
-        navigationAndroid.back();
-
-        directoriesPageAndroid.openDispensaries();
-        navigationAndroid.back();
-
-        directoriesPageAndroid.openBudtenders();
-        directoriesPageAndroid.openApplicationForm();
-        navigationAndroid.back();
+    @Override
+    public void confirmBack() {
         directoriesPageAndroid.confirmBack();
+    }
+
+    @Override
+    public void openApplicationForm() {
+        directoriesPageAndroid.openApplicationForm();
+    }
+
+    @Override
+    public void openDispensaries() throws InterruptedException {
+        directoriesPageAndroid.openDispensaries();
+    }
+
+    @Override
+    public void openBudtenders() throws InterruptedException {
+        directoriesPageAndroid.openBudtenders();
+    }
+
+    @Override
+    public void openOnlineStores() throws InterruptedException {
+        directoriesPageAndroid.openOnlineStores();
+    }
+
+    @Override
+    public void openLicensedProducers() throws InterruptedException {
+        directoriesPageAndroid.openLicensedProducers();
+    }
+
+    @Override
+    public void openPainClinics() throws InterruptedException {
+        directoriesPageAndroid.openPainClinics();
+    }
+
+    @Override
+    public void openDoctors() throws InterruptedException {
+        directoriesPageAndroid.openDoctors();
+    }
+
+    @Override
+    public void back() {
         navigationAndroid.back();
-
-        openSettings();
-        openOtherSources();
-
-        Thread.sleep(3000);
-
-        logout();
     }
 
     @Override
     public void openOtherSources() {
-        //TODO: Here was a bug #3942
         drawerPageAndroid.openInfoSources();
     }
 

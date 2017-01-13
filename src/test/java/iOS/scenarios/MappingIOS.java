@@ -6,14 +6,12 @@ import iOS.pages.SignInPageIOS;
 import iOS.pages.SignUpPageIOS;
 import interfaces.Mapping;
 
-
 public class MappingIOS implements Mapping {
 
     SignInPageIOS signInPageIOS = new SignInPageIOS();
     SignUpPageIOS signUpPageIOS = new SignUpPageIOS();
     DrawerPageIOS drawerPageIOS = new DrawerPageIOS();
     MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
-
 
     @Override
     public void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
@@ -53,9 +51,84 @@ public class MappingIOS implements Mapping {
     }
 
     @Override
+    public void openTorRatedDispensaries() {
+        drawerPageIOS.openTopRated();
+    }
+
+    @Override
+    public void openTopRatedStores() {
+
+    }
+
+    @Override
+    public void openTopRatedProducers() {
+
+    }
+
+    @Override
+    public void openTopRatedClinics() {
+
+    }
+
+    @Override
+    public void openTopRatedDoctors() {
+
+    }
+
+    @Override
+    public void openTopRated() {
+
+    }
+
+    @Override
+    public void confirmBack() {
+
+    }
+
+    @Override
+    public void openApplicationForm() {
+
+    }
+
+    @Override
+    public void openDispensaries() throws InterruptedException {
+
+    }
+
+    @Override
+    public void openBudtenders() throws InterruptedException {
+
+    }
+
+    @Override
+    public void openOnlineStores() throws InterruptedException {
+
+    }
+
+    @Override
+    public void openLicensedProducers() throws InterruptedException {
+
+    }
+
+    @Override
+    public void openPainClinics() throws InterruptedException {
+
+    }
+
+    @Override
+    public void openDoctors() throws InterruptedException {
+
+    }
+
+    @Override
+    public void back() {
+
+    }
+
+    @Override
     public void openOtherSources() {
         //TODO: skipped due to a bug #3943
-//        drawerPageIOS.openOtherSources();
+        drawerPageIOS.openOtherSources();
     }
 
     @Override

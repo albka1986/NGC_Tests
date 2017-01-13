@@ -12,7 +12,6 @@ import static utilites.Utilities.*;
 
 public class DrawerPageIOS extends IOSSetup {
 
-    public static By drawerAvatar;
     public static By searchButton = By.name("Search");
     public static By myPostsButton = By.name("My Posts");
     public static By hotspotsButton = By.name("Hotspots");

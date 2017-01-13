@@ -25,12 +25,73 @@ public interface Mapping {
         openCamps();
         openEvents();
         openDirectories();
+
+        openDoctors();
+        back();
+
+        openPainClinics();
+        back();
+
+        openLicensedProducers();
+        back();
+
+        openOnlineStores();
+        back();
+
+        openDispensaries();
+        back();
+
+        openBudtenders();
+        openApplicationForm();
+        back();
+        confirmBack();
+        back();
+
+        openTopRated();
+        openTopRatedDoctors();
+        openTopRatedClinics();
+        openTopRatedProducers();
+        openTopRatedStores();
+        openTorRatedDispensaries();
+
         openSettings();
+
         openOtherSources();
+
 
         logout();
 
     }
+
+    void openTorRatedDispensaries();
+
+    void openTopRatedStores();
+
+    void openTopRatedProducers();
+
+    void openTopRatedClinics();
+
+    void openTopRatedDoctors();
+
+    void openTopRated();
+
+    void confirmBack();
+
+    void openApplicationForm();
+
+    void openDispensaries() throws InterruptedException;
+
+    void openBudtenders() throws InterruptedException;
+
+    void openOnlineStores() throws InterruptedException;
+
+    void openLicensedProducers() throws InterruptedException;
+
+    void openPainClinics() throws InterruptedException;
+
+    void openDoctors() throws InterruptedException;
+
+    void back();
 
     void openOtherSources();
 
@@ -51,7 +112,6 @@ public interface Mapping {
     void openSearch() throws InterruptedException;
 
     void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException;
-
 
     void signIn(String email, String password);
 
