@@ -4,6 +4,7 @@ public class User {
     String email;
     String password;
     String name;
+    String location;
 
     public String getEmail() {
         return email;
@@ -29,13 +30,21 @@ public class User {
         this.name = name;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
                 '}';
     }
-
 }

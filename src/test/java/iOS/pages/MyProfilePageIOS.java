@@ -3,7 +3,8 @@ package iOS.pages;/* Created by Ponomarenko Oleh on 29/11/16. */
 import iOS.configDevice.IOSSetup;
 import org.openqa.selenium.By;
 
-import static utilites.Utilities.*;
+import static utilites.Utilities.swipingToDown;
+import static utilites.Utilities.waitAndTap;
 
 public class MyProfilePageIOS extends IOSSetup {
     public static By logoutButton = By.name("logOutButton");
@@ -16,12 +17,9 @@ public class MyProfilePageIOS extends IOSSetup {
         swipingToDown();
         Thread.sleep(1000);
         drawerPage.tapOnAvatar();
-        System.out.println("Taped");
         waitAndTap(logoutButton);
 
-        if (driver.findElement(xpathBuilderByValue("Please confirm")) != null) {
-            waitAndTap(By.name("Yes"));
-        }
+        waitAndTap(By.name("Yes"));
 
     }
 

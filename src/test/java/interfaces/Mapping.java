@@ -1,22 +1,24 @@
 package interfaces;
 
+import model.User;
+
 import static utilites.Validation.*;
 
 public interface Mapping {
 
     default void mapper() throws InterruptedException {
-
-        String email = randomValidEmail();
-        String password = randomValidPassword();
-        String name = randomValidName();
-        String location = "";
+        User user = new User();
+        user.setEmail(randomValidEmail());
+        user.setPassword(randomValidPassword());
+        user.setName(randomValidName());
+        user.setLocation("");
         boolean photo = true;
 
         openSignUp();
         openSignIn();
-        signUpByData(email, password, name, location, photo);
+        signUpByData(user.getEmail(), user.getPassword(), user.getName(), user.getLocation(), photo);
         logout();
-        signIn(email, password);
+        signIn(user.getEmail(), user.getPassword());
         openMyProfile();
         openSearch();
         openMyPosts();
@@ -24,28 +26,15 @@ public interface Mapping {
         openFriends();
         openCamps();
         openEvents();
+
         openDirectories();
-
         openDoctors();
-        back();
-
         openPainClinics();
-        back();
-
         openLicensedProducers();
-        back();
-
         openOnlineStores();
-        back();
-
         openDispensaries();
-        back();
-
         openBudtenders();
         openApplicationForm();
-        back();
-        confirmBack();
-        back();
 
         openTopRated();
         openTopRatedDoctors();
@@ -58,26 +47,24 @@ public interface Mapping {
 
         openOtherSources();
 
-
         logout();
-
     }
 
-    void openTorRatedDispensaries();
+    void openTorRatedDispensaries() throws InterruptedException;
 
-    void openTopRatedStores();
+    void openTopRatedStores() throws InterruptedException;
 
-    void openTopRatedProducers();
+    void openTopRatedProducers() throws InterruptedException;
 
-    void openTopRatedClinics();
+    void openTopRatedClinics() throws InterruptedException;
 
-    void openTopRatedDoctors();
+    void openTopRatedDoctors() throws InterruptedException;
 
     void openTopRated();
 
     void confirmBack();
 
-    void openApplicationForm();
+    void openApplicationForm() throws InterruptedException;
 
     void openDispensaries() throws InterruptedException;
 
@@ -91,7 +78,7 @@ public interface Mapping {
 
     void openDoctors() throws InterruptedException;
 
-    void back();
+    void back() throws InterruptedException;
 
     void openOtherSources();
 
@@ -113,7 +100,7 @@ public interface Mapping {
 
     void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException;
 
-    void signIn(String email, String password);
+    void signIn(String email, String password) throws InterruptedException;
 
     void logout() throws InterruptedException;
 

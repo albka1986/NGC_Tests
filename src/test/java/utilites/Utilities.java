@@ -73,6 +73,11 @@ public class Utilities {
     }
 
     public static void swipingToTopIOS() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.swipe(0, 200, 0, -400, 500);
     }
 

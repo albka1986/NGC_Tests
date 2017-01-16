@@ -150,7 +150,11 @@ public class SignUpPageIOS {
 
         sendKeys(this.name, name);
 
-        sendKeys(this.location, location);
+        hideKeyboard();
+
+        if (!location.equals("")) {
+            sendKeys(this.location, location);
+        }
 
         setDateOfBirth();
 

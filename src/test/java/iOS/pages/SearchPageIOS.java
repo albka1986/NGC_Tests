@@ -7,7 +7,7 @@ import static utilites.Utilities.*;
 
 public class SearchPageIOS extends IOSSetup {
 
-    public By request = xpathBuilderByValue("search");
+    public By request = By.name("searchField");
     private By searchButton = By.name("Search");
 
     public void findUserByName(String name) throws InterruptedException {

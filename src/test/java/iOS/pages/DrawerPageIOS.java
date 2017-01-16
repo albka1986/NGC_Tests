@@ -112,4 +112,5 @@ public class DrawerPageIOS extends IOSSetup {
         swipingToTopIOS();
         waitAndTap(topRated);
     }
+
 }

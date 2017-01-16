@@ -1,9 +1,6 @@
 package iOS.scenarios;/* Created by Ponomarenko Oleh on 23/12/16. */
 
-import iOS.pages.DrawerPageIOS;
-import iOS.pages.MyProfilePageIOS;
-import iOS.pages.SignInPageIOS;
-import iOS.pages.SignUpPageIOS;
+import iOS.pages.*;
 import interfaces.Mapping;
 
 public class MappingIOS implements Mapping {
@@ -12,17 +9,20 @@ public class MappingIOS implements Mapping {
     SignUpPageIOS signUpPageIOS = new SignUpPageIOS();
     DrawerPageIOS drawerPageIOS = new DrawerPageIOS();
     MyProfilePageIOS myProfilePageIOS = new MyProfilePageIOS();
+    TopRatedPageIOS topRatedPageIOS = new TopRatedPageIOS();
+    DirectoriesIOS directoriesIOS = new DirectoriesIOS();
+    NavigationIOS navigationIOS = new NavigationIOS();
+
 
     @Override
     public void signUpByData(String email, String password, String name, String location, boolean photo) throws InterruptedException {
-        SignUpPageIOS signUpPageIOS = new SignUpPageIOS();
         //TODO: paste a variable photo to the method when a method photo will be ready
         signUpPageIOS.signUpByData(email, password, name, location, false);
     }
 
     @Override
-    public void signIn(String email, String password) {
-        signInPageIOS.signIn("", "");
+    public void signIn(String email, String password) throws InterruptedException {
+        signInPageIOS.signInByData(email, password);
     }
 
     @Override
@@ -51,78 +51,104 @@ public class MappingIOS implements Mapping {
     }
 
     @Override
-    public void openTorRatedDispensaries() {
-        drawerPageIOS.openTopRated();
+    public void openTorRatedDispensaries() throws InterruptedException {
+        topRatedPageIOS.openTorRatedDispensaries();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
-    public void openTopRatedStores() {
-
+    public void openTopRatedStores() throws InterruptedException {
+        topRatedPageIOS.openTopRatedStores();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
-    public void openTopRatedProducers() {
-
+    public void openTopRatedProducers() throws InterruptedException {
+        //TODO: the method is  skipped while a bug #4066
+        /*topRatedPageIOS.openTopRatedProducers();
+        Thread.sleep(2000);
+        back();*/
     }
 
     @Override
-    public void openTopRatedClinics() {
-
+    public void openTopRatedClinics() throws InterruptedException {
+        //TODO: the method is  skipped while a bug #4066
+       /* topRatedPageIOS.openTopRatedClinics();
+        Thread.sleep(2000);
+        back();*/
     }
 
     @Override
-    public void openTopRatedDoctors() {
-
+    public void openTopRatedDoctors() throws InterruptedException {
+        topRatedPageIOS.openTopRatedDoctors();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
     public void openTopRated() {
-
+        drawerPageIOS.openTopRated();
     }
 
     @Override
     public void confirmBack() {
-
+        directoriesIOS.confirmBack();
     }
 
     @Override
-    public void openApplicationForm() {
-
+    public void openApplicationForm() throws InterruptedException {
+        directoriesIOS.openApplicationForm();
+        back();
+        confirmBack();
+        back();
     }
 
     @Override
     public void openDispensaries() throws InterruptedException {
-
+        directoriesIOS.openDispensaries();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
     public void openBudtenders() throws InterruptedException {
-
+        directoriesIOS.openBudtenders();
+        Thread.sleep(2000);
     }
 
     @Override
     public void openOnlineStores() throws InterruptedException {
-
+        directoriesIOS.openOnlineStores();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
     public void openLicensedProducers() throws InterruptedException {
-
+        directoriesIOS.openLicensedProducers();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
     public void openPainClinics() throws InterruptedException {
-
+        directoriesIOS.openPainClinics();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
     public void openDoctors() throws InterruptedException {
-
+        directoriesIOS.openDoctors();
+        Thread.sleep(2000);
+        back();
     }
 
     @Override
-    public void back() {
-
+    public void back() throws InterruptedException {
+        navigationIOS.back();
     }
 
     @Override

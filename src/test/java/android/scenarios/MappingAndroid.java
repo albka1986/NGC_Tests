@@ -51,36 +51,45 @@ public class MappingAndroid implements Mapping {
     @Override
     public void openApplicationForm() {
         directoriesPageAndroid.openApplicationForm();
+        back();
+        confirmBack();
     }
 
     @Override
     public void openDispensaries() throws InterruptedException {
         directoriesPageAndroid.openDispensaries();
+        back();
     }
 
     @Override
     public void openBudtenders() throws InterruptedException {
+        //TODO: it skips Bug# 4060a
         directoriesPageAndroid.openBudtenders();
+
     }
 
     @Override
     public void openOnlineStores() throws InterruptedException {
         directoriesPageAndroid.openOnlineStores();
+        back();
     }
 
     @Override
     public void openLicensedProducers() throws InterruptedException {
         directoriesPageAndroid.openLicensedProducers();
+        back();
     }
 
     @Override
     public void openPainClinics() throws InterruptedException {
         directoriesPageAndroid.openPainClinics();
+        back();
     }
 
     @Override
     public void openDoctors() throws InterruptedException {
         directoriesPageAndroid.openDoctors();
+        back();
     }
 
     @Override
@@ -95,6 +104,7 @@ public class MappingAndroid implements Mapping {
 
     @Override
     public void openDirectories() {
+
         drawerPageAndroid.openDirectories();
     }
 

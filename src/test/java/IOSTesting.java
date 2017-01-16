@@ -43,7 +43,7 @@ public class IOSTesting extends IOSSetup {
         registration.logout(driver);
     }
 
-    @Test(invocationCount = 10)
+    @Test(invocationCount = 3)
     public void mapping() throws InterruptedException {
         MappingIOS mappingIOS = new MappingIOS();
         mappingIOS.mapper();
