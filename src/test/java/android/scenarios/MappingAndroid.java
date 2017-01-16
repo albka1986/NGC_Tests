@@ -53,6 +53,7 @@ public class MappingAndroid implements Mapping {
         directoriesPageAndroid.openApplicationForm();
         back();
         confirmBack();
+        back();
     }
 
     @Override
@@ -63,7 +64,6 @@ public class MappingAndroid implements Mapping {
 
     @Override
     public void openBudtenders() throws InterruptedException {
-        //TODO: it skips Bug# 4060a
         directoriesPageAndroid.openBudtenders();
 
     }
