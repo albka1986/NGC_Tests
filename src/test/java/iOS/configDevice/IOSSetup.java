@@ -15,6 +15,7 @@ public class IOSSetup {
     public static String BUILD_NAME = "ngc_0.6.4.app";
     public static IOSDriver driver;
 
+
     public void prepareIosSimulator() throws IOException, InterruptedException {
 
         Terminal.sendCommandToTerminalDetails();
