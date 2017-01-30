@@ -7,6 +7,8 @@ import model.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Random;
+
 import static config.MyListener.webDriver;
 import static utilites.Utilities.*;
 
@@ -83,6 +85,12 @@ public class GeneratorInstances {
         sleep(2000);
         scrollBrowserToDown();
         waitAndTapBrowser(buttonCreateReturn);
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         new Toolbar().logout();
 
     }
@@ -141,54 +149,74 @@ public class GeneratorInstances {
 
     public void createDirectoryInstances(int amount) {
 
-
         for (int i = 0; i < amount; i++) {
-            Doctor doctor = new Doctor();
-            doctor.setName(nameMan());
-            doctor.setSpecialization("psychiatrist");
-            doctor.setPhoneNumber("777777779");
-            doctor.setEmail("email10@mail.com");
-            doctor.setLocation("Canada");
-            createDoctor(doctor);
+            createRandomDoctor();
 
+            createRandomPainClinic();
+
+            createRandomLicensedProducer();
+
+            createRandomOnlineStore();
+
+            createRandomDispensary();
         }
+    }
 
+    public void createRandomDoctor() {
+        Doctor doctor = new Doctor();
+        String doctorName = randomTopName();
+        doctor.setName(doctorName);
+        doctor.setSpecialization("psychiatrist");
+        doctor.setPhoneNumber(String.valueOf(new Random().nextInt(999999999) + 1111));
+        doctor.setEmail(doctorName + "@mail.com");
+        doctor.setLocation("Canada");
+        createDoctor(doctor);
+    }
 
+    public void createRandomPainClinic() {
+        String nameClinic = randomTopName();
         PainClinic painClinic = new PainClinic();
-        painClinic.setName("Clini23c2");
-        painClinic.setSpecialization("psyc23hiatrist2");
-        painClinic.setPhoneNumber("77777237778");
-        painClinic.setEmail("ma2il2@mail.com");
+        painClinic.setName("Doctor " + nameClinic + " Clinic");
+        painClinic.setSpecialization("psychiatrist");
+        painClinic.setPhoneNumber(String.valueOf(new Random().nextInt(999999999) + 1111));
+        painClinic.setEmail(nameClinic + "@mail.com");
         painClinic.setScheduleStartTime(8);
         painClinic.setScheduleEndTime(20);
         painClinic.setLocation("Canada");
         createPainClinic(painClinic);
+    }
 
-
-        LicensedProducer licensedProducer = new LicensedProducer();
-        licensedProducer.setName("Bot 3");
-        licensedProducer.setPhoneNumber("77771377");
-        licensedProducer.setEmail("mail3@mai2l.com");
-        licensedProducer.setWebsite("mail3@2mail.com");
-        licensedProducer.setLocation("Canada");
-        createLicensedProducer(licensedProducer);
-
-        OnlineStore onlineStore = new OnlineStore();
-        onlineStore.setName("Online Store 1");
-        onlineStore.setPhoneNumber("7777777");
-        onlineStore.setEmail("mail@mail.com3");
-        onlineStore.setWebsite("http://google.com.ua");
-        createOnlineStore(onlineStore);
-
+    public void createRandomDispensary() {
+        String nameDispensary = randomTopName();
         Dispensary dispensary = new Dispensary();
-        dispensary.setName("Dispensary 2");
-        dispensary.setEmail("mail2@mail.com");
-        dispensary.setPhoneNumber("77777772");
+        dispensary.setName(nameDispensary + " Dispensary");
+        dispensary.setEmail(nameDispensary + "@mail.com");
+        dispensary.setPhoneNumber(String.valueOf(new Random().nextInt(999999999) + 1111));
         dispensary.setScheduleStartTime(8);
         dispensary.setScheduleEndTime(20);
         dispensary.setLocation("Canada");
         createDispensary(dispensary);
+    }
 
+    public void createRandomOnlineStore() {
+        String nameStore = randomTopName();
+        OnlineStore onlineStore = new OnlineStore();
+        onlineStore.setName("Online Store " + nameStore);
+        onlineStore.setPhoneNumber(String.valueOf(new Random().nextInt(999999999) + 1111));
+        onlineStore.setEmail(nameStore + "@mail.com");
+        onlineStore.setWebsite("http://www." + nameStore + ".com");
+        createOnlineStore(onlineStore);
+    }
+
+    public void createRandomLicensedProducer() {
+        String nameProducer = randomTopName();
+        LicensedProducer licensedProducer = new LicensedProducer();
+        licensedProducer.setName(nameProducer + " Producer");
+        licensedProducer.setPhoneNumber(String.valueOf(new Random().nextInt(999999999) + 1111));
+        licensedProducer.setEmail(nameProducer + "@mail.com");
+        licensedProducer.setWebsite("http://www." + nameProducer + ".com");
+        licensedProducer.setLocation("Canada");
+        createLicensedProducer(licensedProducer);
     }
 
 

@@ -46,6 +46,11 @@ public class AdminPanelTesting {
         loginAdminPanel.logout();
     }
 
+    @Test
+    public void createRandomLicensedProducer() {
+        generator.createRandomLicensedProducer();
+
+    }
 
     @Test
     public void createDirectoryInstances() {
