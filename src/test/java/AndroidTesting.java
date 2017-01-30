@@ -39,7 +39,7 @@ public class AndroidTesting extends AndroidSetup {
 
     @Test
     public void registrationByData() throws InterruptedException {
-        registrationAndroid.registrationByData(driver, "mail6@mail.com", "12345678", "Oleh", "", false);
+        registrationAndroid.registrationByData(driver, "albka1986@mail.com", "12345678", "Oleh", "", false);
     }
 
     @Test(invocationCount = 3)

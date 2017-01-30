@@ -17,8 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import static config.MyListener.driver;
-import static config.MyListener.getDriver;
+import static config.MyListener.*;
 
 public class Utilities {
 
@@ -100,16 +99,36 @@ public class Utilities {
         tapOn(locator);
     }
 
+    public static void waitAndTapBrowser(By locator) {
+        WebDriverWait wait = new WebDriverWait(webDriver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
     public static void waitForClickabilityOf(By identification) {
         AppiumDriver driver = getDriver();
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(identification));
     }
 
+    public static void waitForVisibilityOfBrowser(By identification) {
+        WebDriverWait wait = new WebDriverWait(webDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(identification));
+    }
+
+
     public static By xpathBuilderByValue(String value) {
         String xpathPart1 = "//*[@value='";
         String xpathPart2 = "']";
         String xpath = xpathPart1 + value + xpathPart2;
+        return By.xpath(xpath);
+    }
+
+    public static By xpathContainsIdBrowser(String contain) {
+        String xpathPart1 = "//input[contains(@id,'";
+        String xpathPart2 = contain;
+        String xpathPart3 = "')]";
+
+        String xpath = xpathPart1 + xpathPart2 + xpathPart3;
         return By.xpath(xpath);
     }
 
@@ -130,6 +149,15 @@ public class Utilities {
         waitForClickabilityOf(identification);
         driver.findElement(identification).sendKeys(keys);
         System.out.println(identification + " = " + keys);
+    }
+
+    public static void sendKeysBrowser(By identification, String keys) {
+
+        WebDriverWait wait = new WebDriverWait(webDriver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(identification));
+
+        webDriver.findElement(identification).sendKeys(keys);
+        System.out.println(identification + ": " + keys);
     }
 
     public static boolean trueOrFalse() {

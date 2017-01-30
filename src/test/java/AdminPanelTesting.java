@@ -1,36 +1,62 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import adminPanel.scenarios.DrawerAdminPanel;
+import adminPanel.scenarios.GeneratorInstances;
+import adminPanel.scenarios.LoginAdminPanel;
+import model.Doctor;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static adminPanel.configAdminPanel.AdminPanelSetup.prepareChrome;
+import static config.MyListener.webDriver;
+
 public class AdminPanelTesting {
-    WebDriver driver;
-    private String address = "http://campfiire.gotests.com/login";
 
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "/usr/libexec/SeleniumDrivers/chromedriver");
-        driver = new ChromeDriver();
-    }
-
-    @Test
-    public void dumping() throws InterruptedException {
-
-        System.out.println(driver.getTitle());
-        driver.get(address);
-        Thread.sleep(10000);
-        driver.findElement(By.id("username")).sendKeys("qa");
-        driver.findElement(By.id("password")).sendKeys("4i?7662r*6z60bZ");
-        driver.findElement(By.xpath("/html/body/div/form/div[3]/div[2]/button")).click();
-        Thread.sleep(10000);
-
+        prepareChrome();
     }
 
     @AfterClass
-    public void tearDown() {
-        driver.quit();
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(14000);
+        webDriver.quit();
     }
+
+    @Test
+    public void login() {
+        LoginAdminPanel login = new LoginAdminPanel();
+        login.loginByDefaultData();
+    }
+
+    @Test
+    public void testDrawer() {
+        DrawerAdminPanel drawerAdminPanel = new DrawerAdminPanel();
+        drawerAdminPanel.testOpenCloseDrawer();
+    }
+
+    @Test(invocationCount = 120)
+    public void loginLogout() throws InterruptedException {
+        LoginAdminPanel loginAdminPanel = new LoginAdminPanel();
+        Thread.sleep(2000);
+
+        loginAdminPanel.loginByDefaultData();
+        Thread.sleep(2000);
+        loginAdminPanel.logout();
+    }
+
+    @Test
+    public void createDoctor() throws InterruptedException {
+        GeneratorInstances generator = new GeneratorInstances();
+        Doctor doctor = new Doctor();
+        doctor.setName("Oleh Ponomarenko6");
+        doctor.setSpecialization("psychiatrist");
+        doctor.setPhoneNumber("777777776");
+        doctor.setEmail("email6@mail.com");
+        doctor.setLocation("Canada");
+
+        generator.createDoctor(doctor);
+
+    }
+
 
 }

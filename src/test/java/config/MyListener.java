@@ -2,6 +2,7 @@ package config;
 
 import iOS.pages.MyProfilePageIOS;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import utilites.Utilities;
@@ -10,6 +11,7 @@ public class MyListener extends TestListenerAdapter {
     public static String platform;
     public static AppiumDriver driver;
     public static String device;
+    public static WebDriver webDriver;
 
     public static String getPlatform() {
         return platform;
@@ -33,6 +35,14 @@ public class MyListener extends TestListenerAdapter {
 
     public static void setDriver(AppiumDriver driver) {
         MyListener.driver = driver;
+    }
+
+    public static WebDriver getWebDriver() {
+        return webDriver;
+    }
+
+    public static void setWebDriver(WebDriver webDriver) {
+        MyListener.webDriver = webDriver;
     }
 
     @Override
