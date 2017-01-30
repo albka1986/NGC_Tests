@@ -3,9 +3,7 @@ package adminPanel.scenarios;
 import adminPanel.pages.DrawerPage;
 import adminPanel.pages.LoginPage;
 import adminPanel.pages.Toolbar;
-import model.Doctor;
-import model.LicensedProducer;
-import model.PainClinic;
+import model.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -89,6 +87,44 @@ public class GeneratorInstances {
 
     }
 
+    public void createOnlineStore(OnlineStore onlineStore) {
+        new LoginPage().loginByDefaultData();
+        drawerPage.openDrawer();
+        drawerPage.openDirectories();
+        drawerPage.addOnlineStore();
+
+        sendKeysBrowser(fieldName, onlineStore.getName());
+        sendKeysBrowser(fieldPhoneNumber, onlineStore.getPhoneNumber());
+        sendKeysBrowser(fieldEmail, onlineStore.getEmail());
+        sendKeysBrowser(fieldWebSite, onlineStore.getWebsite());
+        setPhoto();
+        waitAndTapBrowser(buttonCreateReturn);
+        new Toolbar().logout();
+    }
+
+    public void createDispensary(Dispensary dispensary) {
+        new LoginPage().loginByDefaultData();
+        drawerPage.openDrawer();
+        drawerPage.openDirectories();
+        drawerPage.addDispensary();
+
+        sendKeysBrowser(fieldName, dispensary.getName());
+        sendKeysBrowser(fieldPhoneNumber, dispensary.getPhoneNumber());
+        sendKeysBrowser(fieldEmail, dispensary.getEmail());
+        sendKeysBrowser(fieldScheduleStartTime, String.valueOf(dispensary.getScheduleStartTime()));
+        sendKeysBrowser(fieldScheduleEndTime, String.valueOf(dispensary.getScheduleEndTime()));
+        sleep(2000);
+        scrollBrowserToDown();
+        setPhoto();
+        sleep(2000);
+        scrollBrowserToDown();
+        webDriver.findElement(fieldLocation).clear();
+        sendKeysBrowser(fieldLocation, dispensary.getLocation());
+        waitAndTapBrowser(buttonCreateReturn);
+        new Toolbar().logout();
+
+
+    }
 
     private void setPhoto() {
         WebElement fileInput = webDriver.findElement(By.xpath("//*[@id=\"file_ajax\"]"));
@@ -102,5 +138,6 @@ public class GeneratorInstances {
             e.printStackTrace();
         }
     }
+
 
 }

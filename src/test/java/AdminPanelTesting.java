@@ -1,9 +1,7 @@
 import adminPanel.scenarios.DrawerAdminPanel;
 import adminPanel.scenarios.GeneratorInstances;
 import adminPanel.scenarios.LoginAdminPanel;
-import model.Doctor;
-import model.LicensedProducer;
-import model.PainClinic;
+import model.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -84,6 +82,30 @@ public class AdminPanelTesting {
         licensedProducer.setLocation("Canada");
 
         generator.createLicensedProducer(licensedProducer);
+    }
+
+    @Test
+    public void createOnlineStore() {
+        OnlineStore onlineStore = new OnlineStore();
+        onlineStore.setName("Online Store 1");
+        onlineStore.setPhoneNumber("7777777");
+        onlineStore.setEmail("mail@mail.com3");
+        onlineStore.setWebsite("http://google.com.ua");
+
+        generator.createOnlineStore(onlineStore);
+    }
+
+    @Test
+    public void createDispensary() {
+        Dispensary dispensary = new Dispensary();
+        dispensary.setName("Dispensary 2");
+        dispensary.setEmail("mail2@mail.com");
+        dispensary.setPhoneNumber("77777772");
+        dispensary.setScheduleStartTime(8);
+        dispensary.setScheduleEndTime(20);
+        dispensary.setLocation("Canada");
+
+        generator.createDispensary(dispensary);
 
     }
 
