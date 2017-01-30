@@ -48,10 +48,10 @@ public class AdminPanelTesting {
     public void createDoctor() throws InterruptedException {
         GeneratorInstances generator = new GeneratorInstances();
         Doctor doctor = new Doctor();
-        doctor.setName("Oleh Ponomarenko6");
+        doctor.setName("Oleh Ponomarenko8");
         doctor.setSpecialization("psychiatrist");
-        doctor.setPhoneNumber("777777776");
-        doctor.setEmail("email6@mail.com");
+        doctor.setPhoneNumber("777777779");
+        doctor.setEmail("email10@mail.com");
         doctor.setLocation("Canada");
 
         generator.createDoctor(doctor);

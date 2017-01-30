@@ -5,7 +5,7 @@ import adminPanel.pages.LoginPage;
 import adminPanel.pages.Toolbar;
 import model.Doctor;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import static config.MyListener.webDriver;
 import static utilites.Utilities.*;
@@ -32,13 +32,19 @@ public class GeneratorInstances {
         sendKeysBrowser(fieldSpecialization, doctor.getSpecialization());
         sendKeysBrowser(fieldPhoneNumber, doctor.getPhoneNumber());
         sendKeysBrowser(fieldEmail, doctor.getEmail());
-        JavascriptExecutor js = (JavascriptExecutor) webDriver;
-        js.executeScript("window.scrollBy(0,250)", "");
+        scrollBrowserToDown();
         webDriver.findElement(fieldLocation).clear();
+        setPhoto();
         sendKeysBrowser(fieldLocation, doctor.getLocation());
-        js.executeScript("window.scrollBy(0,250)", "");
+        scrollBrowserToDown();
         Thread.sleep(3000);
         waitAndTapBrowser(buttonCreateReturn);
         new Toolbar().logout();
     }
+
+    private void setPhoto() throws InterruptedException {
+        WebElement fileInput = webDriver.findElement(By.xpath("//*[@id=\"file_ajax\"]"));
+        fileInput.sendKeys("/Users/oleg/IdeaProjects/NGC_Tests/src/test/recources/images/doctor_avatar.png");
+    }
+
 }

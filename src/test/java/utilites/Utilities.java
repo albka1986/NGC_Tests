@@ -178,4 +178,9 @@ public class Utilities {
         List<WebElement> webElements = driver.findElements(By.id(id));
         return webElements;
     }
+
+    public static void scrollBrowserToDown() {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0,250)", "");
+    }
 }

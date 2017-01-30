@@ -6,7 +6,7 @@ import org.openqa.selenium.TimeoutException;
 import static utilites.Utilities.waitAndTapBrowser;
 import static utilites.Utilities.waitForVisibilityOfBrowser;
 
-public class DrawerPage<E> {
+public class DrawerPage {
 
 
     private By drawerButton = By.xpath("/html/body/header/nav/a");
