@@ -1,14 +1,10 @@
 package model;
 
-public class PainClinic {
-
+public class LicensedProducer {
     private String name;
-    private String specialization;
     private String phoneNumber;
     private String email;
-    private int scheduleStartTime;
-    private int scheduleEndTime;
-
+    private String website;
     private String location;
 
     public String getName() {
@@ -17,14 +13,6 @@ public class PainClinic {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
     }
 
     public String getPhoneNumber() {
@@ -43,20 +31,12 @@ public class PainClinic {
         this.email = email;
     }
 
-    public int getScheduleStartTime() {
-        return scheduleStartTime;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setScheduleStartTime(int scheduleStartTime) {
-        this.scheduleStartTime = scheduleStartTime;
-    }
-
-    public int getScheduleEndTime() {
-        return scheduleEndTime;
-    }
-
-    public void setScheduleEndTime(int scheduleEndTime) {
-        this.scheduleEndTime = scheduleEndTime;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public String getLocation() {
