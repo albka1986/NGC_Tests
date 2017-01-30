@@ -128,7 +128,7 @@ public class GeneratorInstances {
 
     private void setPhoto() {
         WebElement fileInput = webDriver.findElement(By.xpath("//*[@id=\"file_ajax\"]"));
-        fileInput.sendKeys("/Users/oleg/IdeaProjects/NGC_Tests/src/test/recources/images/doctor_avatar.png");
+        fileInput.sendKeys("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/images/doctor_avatar.png");
     }
 
     private void sleep(int x) {
@@ -137,6 +137,58 @@ public class GeneratorInstances {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void createDirectoryInstances(int amount) {
+
+
+        for (int i = 0; i < amount; i++) {
+            Doctor doctor = new Doctor();
+            doctor.setName(nameMan());
+            doctor.setSpecialization("psychiatrist");
+            doctor.setPhoneNumber("777777779");
+            doctor.setEmail("email10@mail.com");
+            doctor.setLocation("Canada");
+            createDoctor(doctor);
+
+        }
+
+
+        PainClinic painClinic = new PainClinic();
+        painClinic.setName("Clini23c2");
+        painClinic.setSpecialization("psyc23hiatrist2");
+        painClinic.setPhoneNumber("77777237778");
+        painClinic.setEmail("ma2il2@mail.com");
+        painClinic.setScheduleStartTime(8);
+        painClinic.setScheduleEndTime(20);
+        painClinic.setLocation("Canada");
+        createPainClinic(painClinic);
+
+
+        LicensedProducer licensedProducer = new LicensedProducer();
+        licensedProducer.setName("Bot 3");
+        licensedProducer.setPhoneNumber("77771377");
+        licensedProducer.setEmail("mail3@mai2l.com");
+        licensedProducer.setWebsite("mail3@2mail.com");
+        licensedProducer.setLocation("Canada");
+        createLicensedProducer(licensedProducer);
+
+        OnlineStore onlineStore = new OnlineStore();
+        onlineStore.setName("Online Store 1");
+        onlineStore.setPhoneNumber("7777777");
+        onlineStore.setEmail("mail@mail.com3");
+        onlineStore.setWebsite("http://google.com.ua");
+        createOnlineStore(onlineStore);
+
+        Dispensary dispensary = new Dispensary();
+        dispensary.setName("Dispensary 2");
+        dispensary.setEmail("mail2@mail.com");
+        dispensary.setPhoneNumber("77777772");
+        dispensary.setScheduleStartTime(8);
+        dispensary.setScheduleEndTime(20);
+        dispensary.setLocation("Canada");
+        createDispensary(dispensary);
+
     }
 
 

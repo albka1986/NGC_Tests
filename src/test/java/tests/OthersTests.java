@@ -1,7 +1,9 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilites.SendCTRLC;
+import utilites.Utilities;
 
 import java.io.IOException;
 
@@ -32,7 +34,24 @@ public class OthersTests {
 
     }
 
+    @Test(invocationCount = 10000)
+    public void testRandomName() {
+        String x = Utilities.nameMan();
+        System.out.println(x);
+        Assert.assertTrue(x.length() > 0);
+
+        String y = Utilities.nameWoman();
+        System.out.println(y);
+        Assert.assertTrue(y.length() > 0);
+    }
 
 
+    @Test(invocationCount = 50000)
+    public void testTopName() {
+        String s = Utilities.randomTopName();
+        Assert.assertNotNull(s);
+        Assert.assertTrue(s.length() > 0);
+        System.out.println(s);
+    }
 
 }

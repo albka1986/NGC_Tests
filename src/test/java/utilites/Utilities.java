@@ -7,13 +7,16 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -182,5 +185,54 @@ public class Utilities {
     public static void scrollBrowserToDown() {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
         js.executeScript("window.scrollBy(0,250)", "");
+    }
+
+    public static String nameMan() {
+        List<String> namesMen = new LinkedList<>();
+        try {
+            File file = new File("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/topNamesMan.txt");
+            BufferedReader in = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = in.readLine()) != null) {
+                namesMen.add(line);
+            }
+            in.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int i = new Random().nextInt(namesMen.size());
+
+        return namesMen.get(i);
+
+    }
+
+    public static String nameWoman() {
+        List<String> namesWomen = new LinkedList<>();
+        try {
+            File file = new File("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/topNamesWoman.txt");
+            BufferedReader in = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = in.readLine()) != null) {
+                namesWomen.add(line);
+            }
+            in.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int i = new Random().nextInt(namesWomen.size());
+
+        return namesWomen.get(i);
+    }
+
+    public static String randomTopName() {
+        String name = null;
+        if (new Random().nextBoolean()) {
+            name = nameMan();
+        } else {
+            name = nameWoman();
+        }
+        return name;
     }
 }
