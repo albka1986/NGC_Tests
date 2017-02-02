@@ -120,6 +120,10 @@ public class Validation {
         return validPassword.toString();
     }
 
+    public static String randomTopLocation() {
+        //TODO: write this method;
+        return "";
+    }
     public static String randomValidName() {
         int randomLengthOfName = random.nextInt(MAX_LENGTH_NAME - MIN_LENGTH_NAME + 1) + MIN_LENGTH_NAME;
         StringBuilder name = new StringBuilder(randomLengthOfName);

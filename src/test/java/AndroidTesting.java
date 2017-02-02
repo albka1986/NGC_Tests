@@ -1,6 +1,8 @@
 import android.configDevice.AndroidSetup;
+import android.pages.MyProfilePageAndroid;
 import android.pages.SearchPageAndroid;
 import android.pages.SignInPageAndroid;
+import android.pages.SignUpPageAndroid;
 import android.scenarios.*;
 import config.MyListener;
 import interfaces.Camps;
@@ -16,6 +18,8 @@ public class AndroidTesting extends AndroidSetup {
 
     RegistrationAndroid registrationAndroid = new RegistrationAndroid();
     Mapping mappingAndroid = new MappingAndroid();
+    SignUpPageAndroid signUpPageAndroid = new SignUpPageAndroid();
+    MyProfilePageAndroid myProfile = new MyProfilePageAndroid();
     Camps camps;
 
 
@@ -85,6 +89,11 @@ public class AndroidTesting extends AndroidSetup {
     public void acceptFriendship() {
         FriendsAndroid friendsAndroid = new FriendsAndroid();
         friendsAndroid.acceptFriendship();
+    }
+
+    @Test
+    public void createUser() throws InterruptedException {
+        new RegistrationAndroid().createUsers(10);
     }
 
 

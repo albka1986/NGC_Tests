@@ -1,0 +1,35 @@
+Airdrie
+Barrie
+Calgary
+Charlottetown
+Chicoutimi
+Edmonton
+Fredericton
+Grande Prairie
+Greater Sudbury
+Halifax
+Hamilton
+Iqaluit
+Lethbridge
+Markham
+Medicine Hat
+Mississauga
+Moncton
+Montreal
+Ottawa
+Quebec City
+Red Deer
+Regina
+Richmond Hill
+Richmond
+St. Albert
+St. John's
+Sault Ste. Marie
+Thunder Bay
+Toronto
+Vancouver
+Vaughan
+Victoria
+Whitehorse
+Winnipeg
+Yellowknife

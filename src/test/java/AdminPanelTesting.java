@@ -54,7 +54,7 @@ public class AdminPanelTesting {
 
     @Test
     public void createDirectoryInstances() {
-        generator.createDirectoryInstances(5);
+        generator.createDirectoryInstances(1);
     }
 
 

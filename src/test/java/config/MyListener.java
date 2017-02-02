@@ -1,6 +1,5 @@
 package config;
 
-import iOS.pages.MyProfilePageIOS;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -53,14 +52,6 @@ public class MyListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult tr) {
         Utilities.takeScreenShot(this.driver);
-        System.out.println("\n");
-        System.out.println("Driver:");
-        System.out.println(driver.getCapabilities().getPlatform());
-        try {
-            new MyProfilePageIOS().logout();
-        } catch (InterruptedException e) {
-        }
-
         driver.quit();
     }
 

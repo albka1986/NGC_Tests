@@ -34,8 +34,9 @@ public class RegistrationAndroid implements Registration {
     }
 
 
-    public void registrationForProduction() {
-
+    public void createUsers(int amount) throws InterruptedException {
+        new SignUpPageAndroid().createUserTopName(amount);
     }
+
 
 }

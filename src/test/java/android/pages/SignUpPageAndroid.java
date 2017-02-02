@@ -5,6 +5,9 @@ import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import static android.pages.SignInPageAndroid.signUpButton;
 import static utilites.Utilities.*;
 import static utilites.Validation.*;
@@ -209,6 +212,29 @@ public class SignUpPageAndroid extends AndroidSetup {
                 "; Birthday: " + birth +
                 "]");
         return user;
+    }
+
+
+    public void createUserTopName(int amount) throws InterruptedException {
+        Set<User> users = new LinkedHashSet<>();
+        MyProfilePageAndroid myProfilePageAndroid = new MyProfilePageAndroid();
+
+        while (users.size() < amount) {
+            User user = new User();
+            String name = randomTopName();
+            user.setEmail(name + "@gmail.com");
+            user.setName(name);
+            user.setPassword(randomValidPassword());
+            user.setLocation(randomTopLocation());
+
+            users.add(user);
+        }
+
+        for (User user : users) {
+            signUpByData(user.getEmail(), user.getPassword(), user.getName(), user.getLocation(), false);
+            myProfilePageAndroid.logout();
+        }
+
     }
 
 }
