@@ -187,42 +187,9 @@ public class Utilities {
         js.executeScript("window.scrollBy(0,250)", "");
     }
 
-    public static String nameMan() {
-        List<String> namesMen = new LinkedList<>();
-        try {
-            File file = new File("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/topNamesMan.txt");
-            BufferedReader in = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = in.readLine()) != null) {
-                namesMen.add(line);
-            }
-            in.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        int i = new Random().nextInt(namesMen.size());
-
-        return namesMen.get(i);
-
-    }
-
     public static String nameWoman() {
-        List<String> namesWomen = new LinkedList<>();
-        try {
-            File file = new File("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/topNamesWoman.txt");
-            BufferedReader in = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = in.readLine()) != null) {
-                namesWomen.add(line);
-            }
-            in.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> namesWomen = readFromResources("topNamesWoman.txt");
         int i = new Random().nextInt(namesWomen.size());
-
         return namesWomen.get(i);
     }
 
@@ -235,4 +202,34 @@ public class Utilities {
         }
         return name;
     }
+
+    public static String nameMan() {
+        List<String> namesMen = readFromResources("topNamesMan.txt");
+        int i = new Random().nextInt(namesMen.size());
+        return namesMen.get(i);
+    }
+
+    public static List<String> readFromResources(String fileName) {
+        List<String> stringList = new LinkedList<>();
+        try {
+            File file = new File("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/" + fileName);
+            BufferedReader in = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = in.readLine()) != null) {
+                stringList.add(line);
+            }
+            in.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringList;
+    }
+
+    public static String randomTopLocation() {
+        List<String> stringList = readFromResources("listCitiesCanada.txt");
+        int random = new Random().nextInt(stringList.size());
+        return stringList.get(random);
+    }
+
 }

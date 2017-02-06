@@ -93,7 +93,7 @@ public class AndroidTesting extends AndroidSetup {
 
     @Test
     public void createUser() throws InterruptedException {
-        new RegistrationAndroid().createUsers(10);
+        new RegistrationAndroid().createUsers(20);
     }
 
 

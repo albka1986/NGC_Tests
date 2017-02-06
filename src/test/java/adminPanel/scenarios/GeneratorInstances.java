@@ -7,6 +7,8 @@ import model.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import static config.MyListener.webDriver;
@@ -20,10 +22,11 @@ public class GeneratorInstances {
     private By fieldEmail = xpathContainsIdBrowser("email");
     private By fieldLocation = By.id("us3-address");
     private By buttonCreateReturn = By.name("btn_create_and_list");
-    //    private By buttonCreateReturn = By.xpath("/html/body/div[1]/aside[2]/section[2]/div/form/div[3]/button[2]");
     private By fieldScheduleStartTime = xpathContainsIdBrowser("startTime");
     private By fieldScheduleEndTime = xpathContainsIdBrowser("finishTime");
     private By fieldWebSite = xpathContainsIdBrowser("webSite");
+    private By fieldTitle = xpathContainsIdBrowser("title");
+
 
     public void createDoctor(Doctor doctor) {
         new LoginPage().loginByDefaultData();
@@ -139,6 +142,11 @@ public class GeneratorInstances {
         fileInput.sendKeys("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/images/doctor_avatar.png");
     }
 
+    private void setPhoto(String path) {
+        WebElement fileInput = webDriver.findElement(By.xpath("//*[@id=\"file_ajax\"]"));
+        fileInput.sendKeys("/Users/oleg/IdeaProjects/NGC_Tests/src/test/resources/images/" + path);
+    }
+
     private void sleep(int x) {
         try {
             Thread.sleep(x);
@@ -220,4 +228,31 @@ public class GeneratorInstances {
     }
 
 
+    public void createEvent(int amount) {
+        Event event = new Event();
+
+        String[] events = event.getEvents();
+        int random = new Random().nextInt(events.length);
+        String eventTitle = events[random];
+        String randomImageEvent = "events" + new Random().nextInt(5) + 1 + ".jpg";
+        String description = "It's description about " + eventTitle;
+        String location = "Canada, Ottawa";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate localDate = LocalDate.now();
+        int hours = new Random().nextInt(24);
+        int minutes = new Random().nextInt(60);
+        String time = "" + hours + ":" + minutes;
+
+        event.setTitle(eventTitle);
+        event.setDescription(description);
+        event.setLocation(location);
+        event.setDate(localDate.toString());
+        event.setTime(time);
+
+
+        scrollBrowserToDown();
+        setPhoto(randomImageEvent);
+
+
+    }
 }

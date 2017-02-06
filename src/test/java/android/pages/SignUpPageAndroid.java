@@ -3,7 +3,6 @@ package android.pages;
 import android.configDevice.AndroidSetup;
 import model.User;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -70,11 +69,11 @@ public class SignUpPageAndroid extends AndroidSetup {
 
         if (!location.equals("")) {
             driver.findElement(this.location).sendKeys(location);
-            Thread.sleep(10000);
-            driver.getKeyboard().pressKey(Keys.RETURN);
+            Thread.sleep(7000);
+            hideKeyboard();
         }
 
-        Thread.sleep(10000);
+        Thread.sleep(7000);
 
 
         setDateOfBirth();
@@ -144,7 +143,7 @@ public class SignUpPageAndroid extends AndroidSetup {
     public User validRandomSignUp() throws InterruptedException {
         User user = new User();
         waitForVisibilityOf(signUpButton);
-        //TODO: change to method trueOrFalse when problem with memory will be fixed;
+        //TODO: change to method trueOrFalse when problem with memory on a device will be fixed;
         if (false) {
             addPhoto();
             waitForVisibilityOf(this.email);

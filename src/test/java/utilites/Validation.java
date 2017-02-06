@@ -120,7 +120,7 @@ public class Validation {
         return validPassword.toString();
     }
 
-    public static String randomTopLocation() {
+    public static String randomValidTopLocation() {
         //TODO: write this method;
         return "";
     }

@@ -6,6 +6,7 @@ import utilites.SendCTRLC;
 import utilites.Utilities;
 
 import java.io.IOException;
+import java.util.Random;
 
 import static utilites.Utilities.trueOrFalse;
 
@@ -52,6 +53,22 @@ public class OthersTests {
         Assert.assertNotNull(s);
         Assert.assertTrue(s.length() > 0);
         System.out.println(s);
+    }
+
+    @Test(invocationCount = 1000)
+    public void testRandomLocation() {
+        String location = Utilities.randomTopLocation();
+        Assert.assertNotNull(location);
+        Assert.assertTrue(location.length() > 0);
+        System.out.println(location);
+    }
+
+    @Test(invocationCount = 1000)
+    public void testRandom() {
+        int x = new Random().nextInt(1);
+
+        System.out.println(x);
+        Assert.assertTrue(x == 0);
     }
 
 }
